@@ -5,7 +5,8 @@ using UnityEngine;
 public class ThirdPersonCharacterControl : MonoBehaviour
 {
     public float Speed = 4f;
-
+    float hor = Input.GetAxis("Horizontal");
+    float ver = Input.GetAxis("Vertical");
     void Update()
     {
         PlayerMovement();
@@ -13,8 +14,7 @@ public class ThirdPersonCharacterControl : MonoBehaviour
 
     void PlayerMovement()
     {
-        float hor = Input.GetAxis("Horizontal");
-        float ver = Input.GetAxis("Vertical");
+        
         Vector3 playerMovement = new Vector3(hor, 0f, ver) * Speed * Time.deltaTime;
         transform.Translate(playerMovement, Space.Self);
     }

@@ -8,6 +8,7 @@ public class HealthBar : MonoBehaviour
     public Image barraVida;
     public float vidaActual;
     public float vidaMaxima;
+    public Text vidaActualtxt;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class HealthBar : MonoBehaviour
     void Update()
     {
         barraVida.fillAmount = vidaActual / vidaMaxima;
+        vidaActualtxt.text = (vidaActual + "%");
     }
 
     void OnCollisionEnter(Collision col)
