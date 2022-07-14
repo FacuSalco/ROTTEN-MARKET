@@ -24,6 +24,14 @@ public class FollowerAi : MonoBehaviour
     public Transform sword;
     bool attackAn = false;
 
+    //rutina
+
+    public int rutina;
+    public float cronometro;
+    //public Animation ani;
+    public Quaternion angulo;
+    public float grado;
+
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +53,8 @@ public class FollowerAi : MonoBehaviour
             Vector3 playerPos = new Vector3(Player.position.x, transform.position.y, Player.position.z);
             transform.LookAt(playerPos);
             transform.position = Vector3.MoveTowards(transform.position, playerPos, enemySpeed * Time.deltaTime);
+
+            //run anim
         }
 
         if(estarAlerta2 == true && estarAlerta == false)
@@ -52,35 +62,66 @@ public class FollowerAi : MonoBehaviour
             Vector3 playerPos = new Vector3(Player.position.x, transform.position.y, Player.position.z);
             transform.LookAt(playerPos);
             transform.position = Vector3.MoveTowards(transform.position, playerPos, enemySpeed2 * Time.deltaTime);
+
+            //walk anim
         }
 
-        //todavia no funk esto
+        if(estarAlerta == false && estarAlerta2 == false)
+        {
+            ComportamientoEnemigo();
+        }
+
+        
 
         if(prockAttack == true)
         {
             if(attackAn == false)
             {
-                for (int i = 0; i <= 12; i++)
-                {
-                    sword.transform.eulerAngles -= new Vector3(1, 0, 0);
-                    if (i == 12)
-                    {
-                        attackAn = true;
-                    }
-                }
+                //atack anim
+                attackAn = true;
             }
+            
             if(attackAn == true)
             {
-                for (int i = 0; i <= 12; i++)
+                time -= Time.deltaTime;
+
+                if (time <= 0)
                 {
-                    sword.transform.eulerAngles += new Vector3(1, 0, 0);
-                    if(i == 12)
-                    {
-                        attackAn = false;
-                    }
+                    attackAn = false;
                 }
             }
+
         }
+    }
+
+    public void ComportamientoEnemigo()
+    {
+        cronometro += 1 * Time.deltaTime;
+        if (cronometro >= 4)
+        {
+            rutina = Random.Range(0, 2);
+            cronometro = 0;
+        }
+
+        switch (rutina)
+        {
+            case 0:
+                break;
+
+            case 1:
+                grado = Random.Range(0, 360);
+                angulo = Quaternion.Euler(0, grado, 0);
+                rutina++;
+
+                break;
+
+            case 2:
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, angulo, 0.5f);
+                transform.Translate(Vector3.forward * 1 * Time.deltaTime);
+                break;
+        }
+
+
     }
 
     private void OnDrawGizmos()
