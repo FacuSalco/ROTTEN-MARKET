@@ -5,8 +5,15 @@ using UnityEngine;
 public class ThirdPersonCharacterControl : MonoBehaviour
 {
     public float Speed = 4f;
-    float hor = Input.GetAxis("Horizontal");
-    float ver = Input.GetAxis("Vertical");
+    float hor;
+    float ver;
+
+    void Start()
+    {
+        hor = Input.GetAxis("Horizontal");
+        ver = Input.GetAxis("Vertical");
+    }
+
     void Update()
     {
         PlayerMovement();
