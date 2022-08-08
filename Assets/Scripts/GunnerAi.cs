@@ -7,10 +7,10 @@ public class GunnerAi : MonoBehaviour
 {
    
     //player detect
-    public float rangoDeAlerta, rangoDeAlerta2, correrDelJugador;
+    public float rangoDeAlerta, rangoDeAlerta2, correrDelJugador, fireRange;
     public LayerMask capaDelJugador;
-    bool estarAlerta, estarAlerta2, jugadorCerca;
-    public Transform Player, minusPlayer;
+    bool estarAlerta, estarAlerta2, jugadorCerca, notWalk;
+    public Transform Player, runDir;
     public float enemySpeed, enemySpeed2;
     bool OnAwake = false;
     public float cronometro;
@@ -28,12 +28,8 @@ public class GunnerAi : MonoBehaviour
     float fireRateDelta;
     public Transform turretPivot;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
+    //enemy variables
+    public int health;
 
     // Update is called once per frame
     void Update()
@@ -44,9 +40,11 @@ public class GunnerAi : MonoBehaviour
 
         jugadorCerca = Physics.CheckSphere(transform.position, correrDelJugador, capaDelJugador);
 
+        notWalk = Physics.CheckSphere(transform.position, fireRange, capaDelJugador);
+
         //camina hacia el jugador sin disparar
 
-        if (estarAlerta2 == true && estarAlerta == false && jugadorCerca == false && runAway == false)
+        if (estarAlerta2 == true && estarAlerta == false && jugadorCerca == false && runAway == false && notWalk == false)
         {
             Vector3 playerPos = new Vector3(Player.position.x, transform.position.y, Player.position.z);
             transform.LookAt(playerPos);
@@ -73,12 +71,14 @@ public class GunnerAi : MonoBehaviour
 
         }
 
-        if (jugadorCerca == true)
+        if (jugadorCerca == true && health >= health / 3)
         {
-            Vector3 playerPos = new Vector3(minusPlayer.position.x, transform.position.y, minusPlayer.position.z);
-            transform.LookAt(playerPos);
-            transform.position = Vector3.MoveTowards(transform.position, playerPos, enemySpeed * Time.deltaTime);
-
+             if (notWalk == true)
+            {
+                Vector3 RunDir = new Vector3(runDir.position.x, transform.position.y, runDir.position.z);
+                transform.LookAt(runDir);
+                transform.position = Vector3.MoveTowards(transform.position, RunDir, enemySpeed * Time.deltaTime);
+            }
         }
     }
 
@@ -99,6 +99,9 @@ public class GunnerAi : MonoBehaviour
 
         Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(transform.position, correrDelJugador);
+
+        Gizmos.color = Color.grey;
+        Gizmos.DrawWireSphere(transform.position, fireRange);
 
     }
 }
