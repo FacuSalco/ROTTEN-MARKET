@@ -6,6 +6,7 @@ TagManager:
   tags:
   - 5-Damage
   - Ground
+  - PlayerInteractionZone
   layers:
   - Default
   - TransparentFX

@@ -14,11 +14,13 @@ public class HealthBar : MonoBehaviour
     void Start()
     {
         vidaActual = vidaMaxima;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         int iVidaActual = (int)System.Math.Floor(vidaActual); //Convertir el float a int
         barraVida.fillAmount = vidaActual / vidaMaxima;
         vidaActualtxt.text = (iVidaActual + "%");
@@ -26,7 +28,7 @@ public class HealthBar : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "5-Damage")
+        if (col.gameObject.tag == "5-Damage" || col.gameObject.tag == "Ground")
         {
             vidaActual -= 5;
             Debug.Log("-5 vida");
