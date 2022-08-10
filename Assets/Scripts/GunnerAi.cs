@@ -12,15 +12,10 @@ public class GunnerAi : MonoBehaviour
     bool estarAlerta, estarAlerta2, jugadorCerca, notWalk;
     public Transform Player, runDir;
     public float enemySpeed, enemySpeed2;
-    bool OnAwake = false;
-    public float cronometro;
-    public float runAwayRate;
-    float runAwayDelta;
     bool runAway = false;
 
     //attack
     public float time = 2;
-    bool attackCooldown = false;
 
     //turret
     public GameObject bulletPrefab;
@@ -31,9 +26,16 @@ public class GunnerAi : MonoBehaviour
     //enemy variables
     public int health;
 
+    void Start()
+    {
+        //StartCoroutine(checkFlee());
+    }
+
     // Update is called once per frame
     void Update()
     {
+        //seteando las esferas
+
         estarAlerta = Physics.CheckSphere(transform.position, rangoDeAlerta, capaDelJugador);
 
         estarAlerta2 = Physics.CheckSphere(transform.position, rangoDeAlerta2, capaDelJugador);
@@ -46,20 +48,28 @@ public class GunnerAi : MonoBehaviour
 
         if (estarAlerta2 == true && estarAlerta == false && jugadorCerca == false && runAway == false && notWalk == false)
         {
+            
             Vector3 playerPos = new Vector3(Player.position.x, transform.position.y, Player.position.z);
             transform.LookAt(playerPos);
             transform.position = Vector3.MoveTowards(transform.position, playerPos, enemySpeed2 * Time.deltaTime);
         }
 
-        if (estarAlerta == true && jugadorCerca == false && runAway == false)
+        if (estarAlerta == true)
         {
 
-            //Mira al jugador si esta en el área
-
             Vector3 playerPos = new Vector3(Player.position.x, transform.position.y, Player.position.z);
-            transform.LookAt(playerPos);
-            transform.position = Vector3.MoveTowards(transform.position, playerPos, enemySpeed * Time.deltaTime);
 
+            //Mira al jugador si esta en el área
+            if (jugadorCerca == false)
+            {
+            
+            transform.LookAt(playerPos);
+
+            }
+                if (notWalk == false)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, playerPos, enemySpeed * Time.deltaTime);
+            }
             //turret shot
 
             fireRateDelta -= Time.deltaTime;
@@ -70,16 +80,20 @@ public class GunnerAi : MonoBehaviour
             }
 
         }
-
-        if (jugadorCerca == true && health >= health / 3)
+        /*
+        if(jugadorCerca == true && runAway == false && health >= health/3)
         {
-             if (notWalk == true)
-            {
-                Vector3 RunDir = new Vector3(runDir.position.x, transform.position.y, runDir.position.z);
-                transform.LookAt(runDir);
-                transform.position = Vector3.MoveTowards(transform.position, RunDir, enemySpeed * Time.deltaTime);
-            }
+            
+            runAway = true;
         }
+
+        if (runAway == true && jugadorCerca == true)
+        {
+            Vector3 RunDir = new Vector3(runDir.position.x, transform.position.y, runDir.position.z);
+            transform.LookAt(runDir);
+            transform.position = Vector3.MoveTowards(transform.position, RunDir, enemySpeed * Time.deltaTime);
+        }
+        */
     }
 
     public void Fire()
@@ -88,6 +102,17 @@ public class GunnerAi : MonoBehaviour
         clon = Instantiate(bulletPrefab, turretPivot.transform.position, transform.rotation);
         Destroy(clon, 6);
     }
+    //Start Corutine
+    //corrutina
+    IEnumerator DemoraUnsegundo()
+    {
+
+        Debug.Log("antes");
+        yield return new WaitForSeconds(3f);
+        Debug.Log("Despues de la espera");
+    }
+
+    //stop all coroutines
 
     private void OnDrawGizmos()
     {
@@ -102,6 +127,5 @@ public class GunnerAi : MonoBehaviour
 
         Gizmos.color = Color.grey;
         Gizmos.DrawWireSphere(transform.position, fireRange);
-
-    }
+}
 }

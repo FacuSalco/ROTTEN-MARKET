@@ -28,7 +28,7 @@ public class GuardAi : MonoBehaviour
     void Update()
     {
         var ray = new Ray(this.transform.position, this.transform.forward);
-        RaycastHit hit;
+
         playerSeen = Physics.Raycast(transform.position, Vector3.forward, rangoDeAlerta, player);
        
         if (playerSeen == true)

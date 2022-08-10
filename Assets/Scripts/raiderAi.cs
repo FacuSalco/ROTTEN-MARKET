@@ -1,12 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class FollowerAi : MonoBehaviour
+public class raiderAi : MonoBehaviour
 {
 
-    //variables
     public float rangoDeAlerta, rangoDeAlerta2;
     public LayerMask capaDelJugador;
     bool estarAlerta;
@@ -14,22 +12,12 @@ public class FollowerAi : MonoBehaviour
     public Transform Player;
     public float enemySpeed;
     public float enemySpeed2;
-
-
-    //attack
     public float rangoDeAtaque;
     bool prockAttack;
-    public float time = 2;
-    public Transform sword;
-    bool attackAn = false;
+    bool stopChasing;
 
-    //rutina
-
-    public int rutina;
-    public float cronometro;
-    //public Animation ani;
-    public Quaternion angulo;
-    public float grado;
+    public GameObject blockPrefab;
+   
 
 
     // Start is called before the first frame update
@@ -47,7 +35,7 @@ public class FollowerAi : MonoBehaviour
 
         prockAttack = Physics.CheckSphere(transform.position, rangoDeAtaque, capaDelJugador);
 
-        if (estarAlerta == true)
+        if (estarAlerta == true && prockAttack == false && stopChasing == false)
         {
             Vector3 playerPos = new Vector3(Player.position.x, transform.position.y, Player.position.z);
             transform.LookAt(playerPos);
@@ -56,7 +44,7 @@ public class FollowerAi : MonoBehaviour
             //run anim
         }
 
-        if(estarAlerta2 == true && estarAlerta == false)
+        if (estarAlerta2 == true && estarAlerta == false && stopChasing == false)
         {
             Vector3 playerPos = new Vector3(Player.position.x, transform.position.y, Player.position.z);
             transform.LookAt(playerPos);
@@ -65,61 +53,33 @@ public class FollowerAi : MonoBehaviour
             //walk anim
         }
 
-        if(estarAlerta == false && estarAlerta2 == false)
+        if (estarAlerta == false && estarAlerta2 == false)
         {
-            ComportamientoEnemigo();
+            //sleep anim
         }
 
-        
-
-        if(prockAttack == true)
+        if (prockAttack == true)
         {
-            if(attackAn == false)
-            {
-                //atack anim
-                attackAn = true;
-            }
-            
-            if(attackAn == true)
-            {
-                time -= Time.deltaTime;
+            stopChasing = true;
 
-                if (time <= 0)
+            int counter = 0;
+            while(counter <= 4)
+            {
+                GameObject clon = Instantiate(blockPrefab, transform.position, Quaternion.identity);
+
+                Destroy(clon, 4);
+
+                counter++;
+
+                if(counter <= 3)
                 {
-                    attackAn = false;
+                    Destroy(gameObject);
                 }
             }
 
+         
+            //attack anim
         }
-    }
-
-    public void ComportamientoEnemigo()
-    {
-        cronometro += 1 * Time.deltaTime;
-        if (cronometro >= 4)
-        {
-            rutina = Random.Range(0, 2);
-            cronometro = 0;
-        }
-
-        switch (rutina)
-        {
-            case 0:
-                break;
-
-            case 1:
-                grado = Random.Range(0, 360);
-                angulo = Quaternion.Euler(0, grado, 0);
-                rutina++;
-
-                break;
-
-            case 2:
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, angulo, 0.5f);
-                transform.Translate(Vector3.forward * 1 * Time.deltaTime);
-                break;
-        }
-
 
     }
 
@@ -134,5 +94,5 @@ public class FollowerAi : MonoBehaviour
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position, rangoDeAtaque);
     }
-
+    
 }
