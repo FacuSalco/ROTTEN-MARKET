@@ -9,6 +9,8 @@ public class grapeRaiderAi : MonoBehaviour
     public float enemySpeed;
     public float rangoDeAtaque;
     bool prockAttack;
+    public float mult = 0;
+    public float velocityMultiplier = 0;
 
     public GameObject blockPrefab;
 
@@ -25,32 +27,60 @@ public class grapeRaiderAi : MonoBehaviour
 
         //chasing player
 
+        
+        velocityMultiplier += Time.deltaTime;
+
+        if(velocityMultiplier <= 1)
+        {
+            mult += 0.01f;
+        }else if(velocityMultiplier >= 1 && velocityMultiplier <= 2)
+        {
+            mult += 0.0004f;
+        }else if(velocityMultiplier >= 2 && velocityMultiplier <= 3)
+        {
+            mult += .0007f;
+        }else if(velocityMultiplier >= 3 && velocityMultiplier <= 4)
+        {
+            mult += 0.0009f;
+        }else if(velocityMultiplier >= 4 && velocityMultiplier <= 5)
+        {
+            mult += 0.001f;
+        }else if(velocityMultiplier >= 5 && velocityMultiplier <= 6)
+        {
+            explotion();
+        }
+
         Vector3 playerPos = new Vector3(Player.position.x, transform.position.y, Player.position.z);
         transform.LookAt(playerPos);
-        transform.position = Vector3.MoveTowards(transform.position, playerPos, enemySpeed * Time.deltaTime);
-
+        transform.position = Vector3.MoveTowards(transform.position, playerPos, mult + enemySpeed * Time.deltaTime);
 
         //atack
         if (prockAttack == true)
         {
-
-            int counter = 0;
-            while (counter <= 4)
-            {
-                GameObject clon = Instantiate(blockPrefab, transform.position, Quaternion.identity);
-
-                Destroy(clon, 4);
-
-                counter++;
-
-                if (counter <= 3)
-                {
-                    Destroy(gameObject);
-                }
-            }
+            explotion();
+            
         }
 
     }
+
+    void explotion()
+    {
+        int counter = 0;
+        while (counter <= 4)
+        {
+            GameObject clon = Instantiate(blockPrefab, transform.position, Quaternion.identity);
+
+            Destroy(clon, 4);
+
+            counter++;
+
+            if (counter <= 3)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
 
     private void OnDrawGizmos()
     {

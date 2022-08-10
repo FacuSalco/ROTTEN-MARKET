@@ -11,7 +11,7 @@ public class FollowerAi : MonoBehaviour
     public LayerMask capaDelJugador;
     bool estarAlerta;
     bool estarAlerta2;
-    public Transform Player;
+    private Transform Player;
     public float enemySpeed;
     public float enemySpeed2;
 
@@ -35,7 +35,7 @@ public class FollowerAi : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Player = GameObject.FindWithTag("Player").transform;
     }
 
     // Update is called once per frame

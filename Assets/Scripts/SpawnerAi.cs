@@ -22,15 +22,13 @@ public class SpawnerAi : MonoBehaviour
     public float grado;
 
     //spawner
-    public GameObject bulletPrefab;
     public float rateOfSpawn = 2f;
     float rateOfSpawnDelta;
-    public Transform turretPivot;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        Player = GameObject.FindWithTag("Player").transform;
     }
 
     // Update is called once per frame

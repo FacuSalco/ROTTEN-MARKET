@@ -10,7 +10,8 @@ public class GunnerAi : MonoBehaviour
     public float rangoDeAlerta, rangoDeAlerta2, correrDelJugador, fireRange;
     public LayerMask capaDelJugador;
     bool estarAlerta, estarAlerta2, jugadorCerca, notWalk;
-    public Transform Player, runDir;
+    public Transform runDir;
+    private Transform Player;
     public float enemySpeed, enemySpeed2;
     bool runAway = false;
 
@@ -28,7 +29,7 @@ public class GunnerAi : MonoBehaviour
 
     void Start()
     {
-        //StartCoroutine(checkFlee());
+        Player = GameObject.FindWithTag("Player").transform;
     }
 
     // Update is called once per frame
