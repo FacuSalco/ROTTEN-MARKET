@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerController1 : MonoBehaviour
 {
+
+    //Variables extras
+    bool cooldown = false;
+
     //Variables movimiento
     float horizontalMove;
     float verticalMove;
@@ -129,15 +133,23 @@ public class PlayerController1 : MonoBehaviour
         }
     }
 
+    IEnumerator waitForCooldown() //Cooldown para esperar un segundo al sacarme vida
+    {
+        cooldown = true;
+        yield return new WaitForSeconds(1);
+        cooldown = false;
+    }
+
     //Esta funcion detecta cuando colisinamos con otro objeto mientras nos movemos
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         //Almacenamos la normal del plano contra el que hemos chocado en hitNormal.
         hitNormal = hit.normal;
         
-        if (hit.collider.gameObject.tag == "5-Damage") //Para sacar vida
+        if (hit.collider.gameObject.tag == "5-Damage" && cooldown == false) //Para sacar vida
         {
             HealthBar.vidaActual -= 5;
+            StartCoroutine(waitForCooldown()); //Que espere un segundo
         }
     }
 }
