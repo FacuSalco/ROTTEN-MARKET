@@ -124,9 +124,12 @@ MonoBehaviour:
   capaDelJugador:
     serializedVersion: 2
     m_Bits: 512
-  enemySpeed: 1
+  enemySpeed: 0.3
   rangoDeAtaque: 2
   mult: 0
   velocityMultiplier: 0
   blockPrefab: {fileID: 1382777924113394928, guid: 32f46c8bb177c4642a88efdedab03180,
     type: 3}
+  distancePE: 0
+  totalDamage: 0
+  explotionDelay: 1

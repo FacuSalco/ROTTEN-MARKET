@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4857545357431728667}
   - component: {fileID: 4857545357431728665}
   - component: {fileID: 4857545357431728664}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4857545357635712260}
   - component: {fileID: 4857545357635712259}
   - component: {fileID: 4857545357635712258}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4857545357874410499}
   - component: {fileID: 4857545357874410496}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: InteractionZone
   m_TagString: PlayerInteractionZone
   m_Icon: {fileID: 0}
@@ -213,9 +213,9 @@ GameObject:
   - component: {fileID: 4857545357930411397}
   - component: {fileID: 4857545357930411395}
   - component: {fileID: 4857545357930411392}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -289,7 +289,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barraVida: {fileID: 0}
-  vidaActual: 0
   vidaMaxima: 100
   vidaActualtxt: {fileID: 0}
 --- !u!114 &4857545357930411395

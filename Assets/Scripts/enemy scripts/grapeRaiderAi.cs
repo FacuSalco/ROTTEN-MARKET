@@ -14,6 +14,10 @@ public class grapeRaiderAi : MonoBehaviour
 
     public GameObject blockPrefab;
 
+    public float distancePE;
+    public int totalDamage;
+    public float explotionDelay = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +30,7 @@ public class grapeRaiderAi : MonoBehaviour
         prockAttack = Physics.CheckSphere(transform.position, rangoDeAtaque, capaDelJugador);
 
         //chasing player
-
+        Debug.Log(distancePE);
         
         velocityMultiplier += Time.deltaTime;
 
@@ -61,22 +65,53 @@ public class grapeRaiderAi : MonoBehaviour
             
         }
 
+        distancePE = Vector3.Distance(transform.position, Player.transform.position);
+
     }
 
     void explotion()
     {
-        int counter = 0;
-        while (counter <= 4)
+
+        
+
+        explotionDelay -= Time.deltaTime;
+
+        if(explotionDelay < 0)
         {
-            GameObject clon = Instantiate(blockPrefab, transform.position, Quaternion.identity);
-
-            Destroy(clon, 4);
-
-            counter++;
-
-            if (counter <= 3)
+            if (distancePE >= 0 && distancePE < 1.2)
             {
-                Destroy(gameObject);
+                HealthBar.vidaActual -= 50;
+            }
+            else if (distancePE >= 1.2 && distancePE < 1.8)
+            {
+                HealthBar.vidaActual -= 30;
+            }
+            else if (distancePE >= 1.8 && distancePE < 2.4)
+            {
+                HealthBar.vidaActual -= 20;
+            }
+            else if (distancePE >= 2.4 && distancePE < 3)
+            {
+                HealthBar.vidaActual -= 10;
+            }
+            else
+            {
+                HealthBar.vidaActual -= 0;
+            }
+
+            int counter = 0;
+            while (counter <= 4)
+            {
+                GameObject clon = Instantiate(blockPrefab, transform.position, Quaternion.identity);
+
+                Destroy(clon, 4);
+
+                counter++;
+
+                if (counter <= 3)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }
