@@ -134,6 +134,11 @@ public class PlayerController1 : MonoBehaviour
     {
         //Almacenamos la normal del plano contra el que hemos chocado en hitNormal.
         hitNormal = hit.normal;
+        
+        if (hit.collider.gameObject.tag == "5-Damage") //Para sacar vida
+        {
+            HealthBar.vidaActual -= 5;
+        }
     }
 }
 

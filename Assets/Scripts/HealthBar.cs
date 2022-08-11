@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Image barraVida;
-    public float vidaActual;
+    public static float vidaActual;
     public int vidaMaxima;
     public Text vidaActualtxt;
 
@@ -26,13 +26,13 @@ public class HealthBar : MonoBehaviour
         vidaActualtxt.text = (iVidaActual + "%");
     }
 
-    void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.tag == "5-Damage" || col.gameObject.tag == "Ground")
-        {
-            vidaActual -= 5;
-            Debug.Log("-5 vida");
-        }
-    }
+    //void OnCollisionEnter(Collision col)
+    //{
+    //    if (col.gameObject.tag == "5-Damage")
+    //    {
+    //        vidaActual -= 5;
+    //        Debug.Log("-5 vida");
+    //    }
+    //}
 
 }
