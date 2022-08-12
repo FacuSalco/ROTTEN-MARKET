@@ -72,8 +72,6 @@ public class grapeRaiderAi : MonoBehaviour
     void explotion()
     {
 
-        
-
         explotionDelay -= Time.deltaTime;
 
         if(explotionDelay < 0)
