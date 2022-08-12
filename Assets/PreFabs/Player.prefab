@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 4857545357930411396}
   - component: {fileID: 4857545357930411399}
   - component: {fileID: 4857545357930411394}
+  - component: {fileID: 2443510492696631526}
   - component: {fileID: 4857545357930411397}
   - component: {fileID: 4857545357930411395}
   - component: {fileID: 4857545357930411392}
@@ -276,6 +277,19 @@ MonoBehaviour:
   isOnSlope: 0
   slideVelocity: 10
   slopeForceDown: -10
+--- !u!114 &2443510492696631526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4857545357930411398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd3f7c3b8bcb734486e2f6727c6da26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sword: {fileID: 0}
 --- !u!114 &4857545357930411397
 MonoBehaviour:
   m_ObjectHideFlags: 0

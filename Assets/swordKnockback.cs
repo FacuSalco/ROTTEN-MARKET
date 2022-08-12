@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class po : MonoBehaviour
+public class swordKnockback : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,5 +14,13 @@ public class po : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if(col.gameObject.tag == "Enemy")
+        {
+
+        }
     }
 }
