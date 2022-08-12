@@ -39,7 +39,7 @@ public class PlayerController1 : MonoBehaviour
     {
         player = GetComponent<CharacterController>();
 
-        Cursor.lockState = CursorLockMode.Locked; //Para que no aparezca el mouse en la pantalla
+        //Cursor.lockState = CursorLockMode.Locked; //Para que no aparezca el mouse en la pantalla
     }
 
     // Bucle de juego que se ejecuta en cada frame
