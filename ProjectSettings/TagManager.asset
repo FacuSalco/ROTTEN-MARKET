@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - PlayerInteractionZone
   - Enemy
+  - CameraIgnore
   layers:
   - Default
   - TransparentFX

@@ -9,6 +9,7 @@ public class HealthBar : MonoBehaviour
     public static float vidaActual;
     public int vidaMaxima;
     public Text vidaActualtxt;
+    public bool invincible;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,12 @@ public class HealthBar : MonoBehaviour
         int iVidaActual = (int)System.Math.Floor(vidaActual); //Convertir el float a int
         barraVida.fillAmount = vidaActual / vidaMaxima;
         vidaActualtxt.text = (iVidaActual + "%");
+
+        if (vidaActual <= 0 && invincible == false)
+        {
+            Destroy(gameObject);
+        }
+
     }
 
 }
