@@ -64,7 +64,7 @@ public class tankAi : MonoBehaviour
     {
         gameObject.GetComponent<Animator>().Play("tankAttack");
         yield return new WaitForSeconds(4.0f);
-        gameObject.GetComponent<Animator>().Play("NewState");
+        gameObject.GetComponent<Animator>().Play("New State");
 
     }
 

@@ -1,12 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyHealthBar : MonoBehaviour
 {
     public Image healthBar;
-    public float currentHealth, maximumHealth;
+    private float currentHealth;
+    public float maximumHealth;
+
 
     // Start is called before the first frame update
     void Start()
@@ -19,4 +19,13 @@ public class EnemyHealthBar : MonoBehaviour
     {
         healthBar.fillAmount = currentHealth / maximumHealth;
     }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.name == "espadapersonaje")
+        {
+            currentHealth -= swordScript.swordDamage;
+        }
+    }
+
 }
