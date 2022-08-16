@@ -55,7 +55,16 @@ public class tankAi : MonoBehaviour
         if(prockAttack == true)
         {
             //attack anim
+            StartCoroutine(attack());
         }
+
+    }
+
+    IEnumerator attack()
+    {
+        gameObject.GetComponent<Animator>().Play("tankAttack");
+        yield return new WaitForSeconds(4.0f);
+        gameObject.GetComponent<Animator>().Play("NewState");
 
     }
 
