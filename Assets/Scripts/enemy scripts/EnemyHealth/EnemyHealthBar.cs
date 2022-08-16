@@ -18,6 +18,11 @@ public class EnemyHealthBar : MonoBehaviour
     void Update()
     {
         healthBar.fillAmount = currentHealth / maximumHealth;
+
+        if(currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnCollisionEnter(Collision col)

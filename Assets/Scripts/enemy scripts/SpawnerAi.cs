@@ -16,10 +16,10 @@ public class SpawnerAi : MonoBehaviour
 
     //rutina
 
-    public int rutina;
-    public float cronometro;
-    public Quaternion angulo;
-    public float grado;
+    private int rutina;
+    private float cronometro;
+    private Quaternion angulo;
+    private float grado;
 
     //spawner
     public float rateOfSpawn = 2f;

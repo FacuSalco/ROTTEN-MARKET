@@ -10,7 +10,7 @@ public class swordScript : MonoBehaviour
     
     void Start()
     {
-        swordDamage = 10f;
+        swordDamage = 20f;
         swordSpeed = 1f;
         swordKnockback = 10f;
     }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5914136245010983}
   m_Layer: 0
   m_Name: GrapeRaider
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
   capaDelJugador:
     serializedVersion: 2
     m_Bits: 512
-  enemySpeed: 0.3
+  enemySpeed: 0.2
   rangoDeAtaque: 2
   mult: 0
   velocityMultiplier: 0
