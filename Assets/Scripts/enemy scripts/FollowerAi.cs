@@ -7,90 +7,98 @@ public class FollowerAi : MonoBehaviour
 {
 
     //variables
-    public float rangoDeAlerta, rangoDeAlerta2;
+    public float rangoDeAlerta, rangoDeAlerta2, rangoDeAtaque;
     public LayerMask capaDelJugador;
-    bool estarAlerta;
-    bool estarAlerta2;
-    private Transform Player;
-    public float enemySpeed;
-    public float enemySpeed2;
-
-
-    //attack
-    public float rangoDeAtaque;
+    bool estarAlerta, estarAlerta2;
     bool prockAttack;
-    public float time = 2;
-    public Transform sword;
-    bool attackAn = false;
+    private Transform Player;
 
     //rutina
 
-    public int rutina;
-    public float cronometro;
+    int rutina;
+    float cronometro;
     //public Animation ani;
-    public Quaternion angulo;
-    public float grado;
+    Quaternion angulo;
+    float grado;
+
+    //navMesh
+    public float walkSpeed;
+    public float runSpeed;
+    private NavMeshAgent agent;
+
+    //raycast
+    public Transform shadowBody;
+    [SerializeField] private bool playerSeen; 
+    [SerializeField] private float rayDistance;
 
 
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.FindWithTag("Player").transform;
+
+        agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //setting up checking spheres
         estarAlerta = Physics.CheckSphere(transform.position, rangoDeAlerta, capaDelJugador);
 
         estarAlerta2 = Physics.CheckSphere(transform.position, rangoDeAlerta2, capaDelJugador);
 
         prockAttack = Physics.CheckSphere(transform.position, rangoDeAtaque, capaDelJugador);
 
-        if (estarAlerta == true)
-        {
-            Vector3 playerPos = new Vector3(Player.position.x, transform.position.y, Player.position.z);
-            transform.LookAt(playerPos);
-            transform.position = Vector3.MoveTowards(transform.position, playerPos, enemySpeed * Time.deltaTime);
+        //raycast setup
+        RaycastHit hit;
 
-            //run anim
+        Physics.Raycast(shadowBody.position, shadowBody.transform.forward, out hit, rayDistance);
+
+        shadowBody.transform.LookAt(Player);
+
+        if(hit.collider.gameObject.name == "Player")
+        {
+            playerSeen = true;
         }
 
-        if(estarAlerta2 == true && estarAlerta == false)
-        {
-            Vector3 playerPos = new Vector3(Player.position.x, transform.position.y, Player.position.z);
-            transform.LookAt(playerPos);
-            transform.position = Vector3.MoveTowards(transform.position, playerPos, enemySpeed2 * Time.deltaTime);
 
-            //walk anim
+        if(playerSeen == true)
+        {
+            if (estarAlerta == true)
+            {
+
+                navWalk();
+
+                //run anim
+            }
+
+            if (estarAlerta2 == true && estarAlerta == false)
+            {
+                navWalk();
+                //walk anim
+            }
+
+            if(estarAlerta == false && estarAlerta2 == false)
+            {
+                playerSeen = false;
+            }
+
         }
 
-        if(estarAlerta == false && estarAlerta2 == false)
+
+        if (estarAlerta == false && estarAlerta2 == false)
         {
             ComportamientoEnemigo();
         }
 
-        
+       
+    }
 
-        if(prockAttack == true)
-        {
-            if(attackAn == false)
-            {
-                //atack anim
-                attackAn = true;
-            }
-            
-            if(attackAn == true)
-            {
-                time -= Time.deltaTime;
-
-                if (time <= 0)
-                {
-                    attackAn = false;
-                }
-            }
-
-        }
+    private void navWalk()
+    {
+        agent.destination = Player.position;
+        agent.speed = walkSpeed;
     }
 
     public void ComportamientoEnemigo()
@@ -133,6 +141,9 @@ public class FollowerAi : MonoBehaviour
 
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position, rangoDeAtaque);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(shadowBody.transform.position, shadowBody.transform.forward * rayDistance);
     }
 
 }
