@@ -13,6 +13,7 @@ public class tankAi : MonoBehaviour
     public float enemySpeed2;
     public float rangoDeAtaque;
     bool prockAttack;
+    bool isAttacking = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,7 @@ public class tankAi : MonoBehaviour
 
         prockAttack = Physics.CheckSphere(transform.position, rangoDeAtaque, capaDelJugador);
 
-        if (estarAlerta == true)
+        if (estarAlerta == true && isAttacking == false)
         {
             Vector3 playerPos = new Vector3(Player.position.x, transform.position.y, Player.position.z);
             transform.LookAt(playerPos);
@@ -52,9 +53,10 @@ public class tankAi : MonoBehaviour
             //sleep anim
         }
 
-        if(prockAttack == true)
+        if(prockAttack == true && isAttacking == false)
         {
             //attack anim
+            isAttacking = true;
             StartCoroutine(attack());
         }
 
@@ -62,9 +64,11 @@ public class tankAi : MonoBehaviour
 
     IEnumerator attack()
     {
+
         gameObject.GetComponent<Animator>().Play("tankAttack");
-        yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(2.8f);
         gameObject.GetComponent<Animator>().Play("New State");
+        isAttacking = false;
 
     }
 

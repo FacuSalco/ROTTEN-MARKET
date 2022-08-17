@@ -28,7 +28,7 @@ public class FollowerAi : MonoBehaviour
 
     //raycast
     public Transform shadowBody;
-    [SerializeField] private bool playerSeen; 
+    [SerializeField] private bool playerSeen = false; 
     [SerializeField] private float rayDistance;
 
 
@@ -61,7 +61,6 @@ public class FollowerAi : MonoBehaviour
         {
             playerSeen = true;
         }
-
 
         if(playerSeen == true)
         {
