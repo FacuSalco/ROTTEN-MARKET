@@ -6,13 +6,11 @@ using UnityEngine.AI;
 
 public class EnemyNavMeshController : MonoBehaviour
 {
-    public float walkSpeedSet;
-    public float runSpeedSet;
-
-    private static float walkSpeed;
-    private static float runSpeed;
-    private static NavMeshAgent agent;
-    private static Transform Player;
+   
+    public float walkSpeed;
+    public float runSpeed;
+    private NavMeshAgent agent;
+    private Transform Player;
 
 
     // Start is called before the first frame update
@@ -22,16 +20,16 @@ public class EnemyNavMeshController : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    public static void navWalk()
+    public void navWalk()
     {
-        EnemyNavMeshController.agent.destination = EnemyNavMeshController.Player.position;
-        EnemyNavMeshController.agent.speed = EnemyNavMeshController.walkSpeed; 
+        agent.destination = Player.position;
+        agent.speed = walkSpeed; 
     }
 
-    public static void navRun()
+    public void navRun()
     {
-        EnemyNavMeshController.agent.destination = EnemyNavMeshController.Player.position;
-        EnemyNavMeshController.agent.speed = EnemyNavMeshController.runSpeed;
+        agent.destination = Player.position;
+        agent.speed = runSpeed;
     }
 
 

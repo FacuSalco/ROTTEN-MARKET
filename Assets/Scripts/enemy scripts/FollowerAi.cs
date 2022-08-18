@@ -31,6 +31,10 @@ public class FollowerAi : MonoBehaviour
     [SerializeField] private bool playerSeen = false; 
     [SerializeField] private float rayDistance;
 
+    //navigation movement
+    EnemyNavMeshController enemyNav;
+    
+
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +42,10 @@ public class FollowerAi : MonoBehaviour
         Player = GameObject.FindWithTag("Player").transform;
 
         agent = GetComponent<NavMeshAgent>();
+
+        enemyNav = GetComponent<EnemyNavMeshController>();
+
+
     }
 
     // Update is called once per frame
@@ -67,14 +75,14 @@ public class FollowerAi : MonoBehaviour
             if (estarAlerta == true)
             {
 
-                navWalk();
+               enemyNav.navRun();
 
                 //run anim
             }
 
             if (estarAlerta2 == true && estarAlerta == false)
             {
-                navWalk();
+                enemyNav.navWalk();
                 //walk anim
             }
 
@@ -93,13 +101,7 @@ public class FollowerAi : MonoBehaviour
 
        
     }
-
-    private void navWalk()
-    {
-        agent.destination = Player.position;
-        agent.speed = walkSpeed;
-    }
-
+    
     public void ComportamientoEnemigo()
     {
         cronometro += 1 * Time.deltaTime;
