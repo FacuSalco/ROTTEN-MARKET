@@ -8,45 +8,50 @@ public class CoinDrop : MonoBehaviour
     private Vector3 velocity = Vector3.up;
     private Rigidbody rb;
     private Vector3 startPos;
+    
+    bool isOnGround;
+
+    [SerializeField] float speed = 5f;
+    [SerializeField] float height = 0.3f;
 
 
     // Start is called before the first frame update
     void Start()
     {
         startPos = this.transform.position;
-        velocity *= (Random.Range(4f, 6f));
+        velocity *= (Random.Range(3f, 10f));
         velocity += new Vector3(Random.Range(-1f, 1f),0 , Random.Range(-1f, 1f));
 
         rb = this.GetComponent<Rigidbody>();
-        rb.useGravity = false;
-        rb.isKinematic = true;
 
+        rb.AddForce(velocity, ForceMode.Impulse);
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.position += velocity * Time.deltaTime;
-        Quaternion deltaRotation = Quaternion.Euler(Random.Range(-150f, 150f), Random.Range(150f, 250f), Random.Range(-150f, 150f) * Time.deltaTime);
-        rb.MoveRotation(rb.rotation * deltaRotation);
+        if(isOnGround == true)
+        {
 
-        if(velocity.y < -4f)
-        {
-            velocity.y = -4f;
-        }
-        else
-        {
-            velocity += Vector3.up * 5 * Time.deltaTime;
-        }
+            rb.isKinematic = true;
+            rb.useGravity = false;
+            
 
-        if(Mathf.Abs(rb.position.y - startPos.y) < 0.25f && velocity.y < 0f)
-        {
-            rb.useGravity = true;
-            rb.isKinematic = false;
-            rb.velocity = velocity;
-            this.enabled = false;
+            float newY = Mathf.Sin(Time.time * speed) * height + startPos.y;
+            transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+
+            transform.eulerAngles += new Vector3(0.1f, 0f, 0f);
+
         }
 
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if(col.collider.gameObject == true)
+        {
+            isOnGround = true;
+        }
     }
 
 }
