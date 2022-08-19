@@ -30,7 +30,7 @@ public class FollowerAi : MonoBehaviour
     public Transform shadowBody;
     [SerializeField] private bool playerSeen = false; 
     [SerializeField] private float rayDistance;
-
+    RaycastHit hit;
     //navigation movement
     EnemyNavMeshController enemyNav;
     
@@ -59,13 +59,13 @@ public class FollowerAi : MonoBehaviour
         prockAttack = Physics.CheckSphere(transform.position, rangoDeAtaque, capaDelJugador);
 
         //raycast setup
-        RaycastHit hit;
+        
 
         Physics.Raycast(shadowBody.position, shadowBody.transform.forward, out hit, rayDistance);
 
         shadowBody.transform.LookAt(Player);
 
-        if(hit.collider.gameObject.name == "Player")
+        if(hit.collider && hit.collider.gameObject.name == "Player")
         {
             playerSeen = true;
         }

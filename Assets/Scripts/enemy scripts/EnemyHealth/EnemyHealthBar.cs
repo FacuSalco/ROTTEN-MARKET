@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyHealthBar : MonoBehaviour
@@ -11,12 +13,14 @@ public class EnemyHealthBar : MonoBehaviour
     public CoinCreate coinSpawn;
     public GameObject coinPrefab;
     private Vector3 spawnPos;
+    bool spawn = false;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maximumHealth;
         coinSpawn = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<CoinCreate>();
+        
     }
 
     // Update is called once per frame
@@ -28,8 +32,15 @@ public class EnemyHealthBar : MonoBehaviour
 
         if(currentHealth <= 0)
         {
-            
-            coinSpawn.SpawnCoin(coinPrefab, spawnPos);
+
+            spawn = true;
+
+            if(spawn == true)
+            {
+                coinSpawn.SpawnCoin(coinPrefab, spawnPos);
+                spawn = false;
+            }
+
             Destroy(gameObject);
 
         }

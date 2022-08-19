@@ -14,7 +14,6 @@ public class CoinCreate : MonoBehaviour
     {
         //spawnPos = transform.position;
         StartCoroutine(CreateCoins(GenerateRandomNum(num), coin, spawnPos));
-        Debug.Log(GenerateRandomNum(num));
     }
 
     IEnumerator CreateCoins(int number, GameObject coin, Vector3 spawnPos)
@@ -22,10 +21,9 @@ public class CoinCreate : MonoBehaviour
         //death anim
         for(int i = 0; i < number; i++)
         {
-            GameObject coins = Instantiate(coin);
-            coins.transform.position = spawnPos;
+            GameObject coins = Instantiate(coin, spawnPos, Quaternion.identity);
 
-            yield return new WaitForSeconds(0.15f);
+            yield return new WaitForSeconds(0.25f);
         }
     }
 
@@ -37,15 +35,15 @@ public class CoinCreate : MonoBehaviour
         {
             randomNum = 1;
         }
-        else if(randomNum >= 40 && randomNum <= 80)
+        else if(randomNum > 40 && randomNum <= 80)
         {
             randomNum = 2;
         }
-        else if(randomNum <= 80 && randomNum <= 100)
+        else if(randomNum > 80 && randomNum <= 100)
         {
             randomNum = 3;
         }
-
+        
         number = randomNum;
         return number;
     }

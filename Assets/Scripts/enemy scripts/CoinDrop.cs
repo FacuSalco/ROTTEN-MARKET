@@ -8,8 +8,10 @@ public class CoinDrop : MonoBehaviour
     private Vector3 velocity = Vector3.up;
     private Rigidbody rb;
     private Vector3 startPos;
-    
+    private Collider hitBox;
+
     bool isOnGround;
+    bool activateHit;
 
     [SerializeField] private float speed = 2f;
     [SerializeField] private float height = 0.4f;
@@ -20,19 +22,33 @@ public class CoinDrop : MonoBehaviour
     void Start()
     {
         startPos = this.transform.position;
+        startPos += new Vector3(Random.Range(-0.5f,1f), 0f, Random.Range(-0.5f,1f));
         velocity *= (Random.Range(6f, 12f));
         velocity += new Vector3(Random.Range(-1f, 1f),0 , Random.Range(-1f, 1f));
 
         rb = this.GetComponent<Rigidbody>();
+        hitBox = this.GetComponent<SphereCollider>();
+
+        hitBox.enabled = true;
+        rb.isKinematic = false;
+        rb.useGravity = true;
 
         rb.AddForce(velocity, ForceMode.Impulse);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isOnGround == true)
+        if (isOnGround == true)
         {
+            if (activateHit == false)
+            {
+                StartCoroutine(activateHitbox());
+                activateHit = true;
+            }
+
+            StartCoroutine(activateHitbox());
 
             rb.isKinematic = true;
             rb.useGravity = false;
@@ -45,6 +61,14 @@ public class CoinDrop : MonoBehaviour
 
         }
 
+    }
+
+    IEnumerator activateHitbox()
+    {
+
+        yield return new WaitForSeconds(3f);
+
+        hitBox.enabled = false;
     }
 
     void OnCollisionEnter(Collision col)
