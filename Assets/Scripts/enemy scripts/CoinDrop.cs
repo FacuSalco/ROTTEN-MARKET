@@ -11,15 +11,16 @@ public class CoinDrop : MonoBehaviour
     
     bool isOnGround;
 
-    [SerializeField] float speed = 5f;
-    [SerializeField] float height = 0.3f;
+    [SerializeField] private float speed = 2f;
+    [SerializeField] private float height = 0.4f;
+    [SerializeField] private float rotationSpeed = 1f;
 
 
     // Start is called before the first frame update
     void Start()
     {
         startPos = this.transform.position;
-        velocity *= (Random.Range(3f, 10f));
+        velocity *= (Random.Range(6f, 12f));
         velocity += new Vector3(Random.Range(-1f, 1f),0 , Random.Range(-1f, 1f));
 
         rb = this.GetComponent<Rigidbody>();
@@ -40,7 +41,7 @@ public class CoinDrop : MonoBehaviour
             float newY = Mathf.Sin(Time.time * speed) * height + startPos.y;
             transform.position = new Vector3(transform.position.x, newY, transform.position.z);
 
-            transform.eulerAngles += new Vector3(0.1f, 0f, 0f);
+            transform.eulerAngles += new Vector3(0f, rotationSpeed, 0f);
 
         }
 

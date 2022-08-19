@@ -4,27 +4,26 @@ using UnityEngine;
 
 public class CoinCreate : MonoBehaviour
 {
-    public GameObject coinPrefab;
     int randomNum;
-    private Vector3 spawnPos;
+    //private Vector3 spawnPos;
     int num = 0;
 
     
     
-    public void SpawnCoin()
+    public void SpawnCoin(GameObject coin, Vector3 spawnPos)
     {
-        spawnPos = transform.position;
-        StartCoroutine(CreateCoins(GenerateRandomNum(num)));
+        //spawnPos = transform.position;
+        StartCoroutine(CreateCoins(GenerateRandomNum(num), coin, spawnPos));
         Debug.Log(GenerateRandomNum(num));
     }
 
-    IEnumerator CreateCoins(int number)
+    IEnumerator CreateCoins(int number, GameObject coin, Vector3 spawnPos)
     {
         //death anim
         for(int i = 0; i < number; i++)
         {
-            GameObject coin = Instantiate(coinPrefab);
-            coin.transform.position = spawnPos;
+            GameObject coins = Instantiate(coin);
+            coins.transform.position = spawnPos;
 
             yield return new WaitForSeconds(0.15f);
         }

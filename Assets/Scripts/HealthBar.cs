@@ -9,6 +9,7 @@ public class HealthBar : MonoBehaviour
     public static float vidaActual;
     public int vidaMaxima;
     public Text vidaActualtxt;
+    static public bool immortal;
 
     // Start is called before the first frame update
     void Start()

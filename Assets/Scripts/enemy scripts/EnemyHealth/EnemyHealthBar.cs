@@ -7,16 +7,16 @@ public class EnemyHealthBar : MonoBehaviour
     public float currentHealth;
     public float maximumHealth;
 
-
-
     //coin spawn
-    CoinCreate coinSpawn;
+    public CoinCreate coinSpawn;
+    public GameObject coinPrefab;
+    private Vector3 spawnPos;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maximumHealth;
-        coinSpawn = GetComponent<CoinCreate>();
+        coinSpawn = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<CoinCreate>();
     }
 
     // Update is called once per frame
@@ -24,10 +24,12 @@ public class EnemyHealthBar : MonoBehaviour
     {
         healthBar.fillAmount = currentHealth / maximumHealth;
 
+        spawnPos = transform.position;
+
         if(currentHealth <= 0)
         {
             
-            coinSpawn.SpawnCoin();
+            coinSpawn.SpawnCoin(coinPrefab, spawnPos);
             Destroy(gameObject);
 
         }
