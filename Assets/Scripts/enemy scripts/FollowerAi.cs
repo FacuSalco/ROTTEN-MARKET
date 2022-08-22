@@ -65,6 +65,8 @@ public class FollowerAi : MonoBehaviour
 
         shadowBody.transform.LookAt(Player);
 
+        //movement
+
         if(hit.collider && hit.collider.gameObject.name == "Player")
         {
             playerSeen = true;

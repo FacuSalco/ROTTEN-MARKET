@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 6524236142561804927}
   - component: {fileID: 8673674104359974454}
   - component: {fileID: 5914136245010983}
+  - component: {fileID: 8151784936483668022}
   m_Layer: 0
   m_Name: GrapeRaider
   m_TagString: Enemy
@@ -283,6 +284,24 @@ MonoBehaviour:
   distancePE: 0
   totalDamage: 0
   explotionDelay: 1
+--- !u!114 &8151784936483668022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834247012212174232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e957513d1ea764cb463b368b5d777e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 4095176362768928513}
+  currentHealth: 0
+  maximumHealth: 30
+  coinSpawn: {fileID: 0}
+  coinPrefab: {fileID: 3165047470361269667, guid: d1f30d76def59dd439220b6449d42c7b,
+    type: 3}
 --- !u!1 &6428799422175418613
 GameObject:
   m_ObjectHideFlags: 0

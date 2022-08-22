@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 4227599412887591853}
   - component: {fileID: 4227599412887591852}
   - component: {fileID: 4227599412887591843}
+  - component: {fileID: 3783137948585398583}
   m_Layer: 0
   m_Name: Raider
   m_TagString: Untagged
@@ -240,6 +241,24 @@ MonoBehaviour:
   enemySpeed2: 2.3
   rangoDeAtaque: 2
   blockPrefab: {fileID: 1382777924113394928, guid: 32f46c8bb177c4642a88efdedab03180,
+    type: 3}
+--- !u!114 &3783137948585398583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4227599412887591842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e957513d1ea764cb463b368b5d777e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 2766843895998708432}
+  currentHealth: 0
+  maximumHealth: 30
+  coinSpawn: {fileID: 0}
+  coinPrefab: {fileID: 3165047470361269667, guid: d1f30d76def59dd439220b6449d42c7b,
     type: 3}
 --- !u!1 &4507691416613230867
 GameObject:

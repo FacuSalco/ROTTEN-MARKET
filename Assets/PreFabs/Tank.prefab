@@ -614,6 +614,8 @@ GameObject:
   - component: {fileID: 2470018894018267706}
   - component: {fileID: 2470018894018267704}
   - component: {fileID: 2470018894018267705}
+  - component: {fileID: 92188166770887670}
+  - component: {fileID: 4059574789253073748}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Enemy
@@ -635,6 +637,7 @@ Transform:
   - {fileID: 2470018893203302252}
   - {fileID: 2470018892262022917}
   - {fileID: 2470018893101637158}
+  - {fileID: 4454133751355905446}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.2470001}
@@ -732,6 +735,9 @@ MonoBehaviour:
   enemySpeed: 2.1
   enemySpeed2: 1.2
   rangoDeAtaque: 3
+  shadowBody: {fileID: 0}
+  playerSeen: 0
+  rayDistance: 0
 --- !u!95 &2470018894018267704
 Animator:
   serializedVersion: 3
@@ -764,4 +770,73 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 2470018893599202247}
+  currentHealth: 0
   maximumHealth: 100
+  coinSpawn: {fileID: 0}
+  coinPrefab: {fileID: 0}
+--- !u!114 &92188166770887670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2470018894018267649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb941d05087dc14a88ae2114f553ae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 2
+  runSpeed: 2.3
+--- !u!195 &4059574789253073748
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2470018894018267649}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!1 &7683036358245498506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4454133751355905446}
+  m_Layer: 0
+  m_Name: shadowBody
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4454133751355905446
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7683036358245498506}
+  m_LocalRotation: {x: 0, y: -0, z: -0.0108787455, w: 0.9999408}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.6072014, y: 0.6072014, z: 0.6072014}
+  m_Children: []
+  m_Father: {fileID: 2470018894018267709}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

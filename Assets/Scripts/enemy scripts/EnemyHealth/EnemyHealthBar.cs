@@ -13,7 +13,7 @@ public class EnemyHealthBar : MonoBehaviour
     public CoinCreate coinSpawn;
     public GameObject coinPrefab;
     private Vector3 spawnPos;
-    bool spawn = false;
+    bool spawn = true;
 
     // Start is called before the first frame update
     void Start()
@@ -33,15 +33,14 @@ public class EnemyHealthBar : MonoBehaviour
         if(currentHealth <= 0)
         {
 
-            spawn = true;
+         
+            Destroy(gameObject);
 
-            if(spawn == true)
+            if (spawn == true)
             {
                 coinSpawn.SpawnCoin(coinPrefab, spawnPos);
                 spawn = false;
             }
-
-            Destroy(gameObject);
 
         }
     }
