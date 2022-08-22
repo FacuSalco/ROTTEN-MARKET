@@ -15,10 +15,23 @@ public class tankAi : MonoBehaviour
     bool prockAttack;
     bool isAttacking = false;
 
+    //raycast
+    public Transform shadowBody;
+    [SerializeField] private bool playerSeen = false;
+    [SerializeField] private float rayDistance;
+    RaycastHit hit;
+
+    // navigation 
+    EnemyNavMeshController enemyNav;
+
+   
+
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.FindWithTag("Player").transform;
+
+        enemyNav = gameObject.GetComponent<EnemyNavMeshController>();
     }
 
     // Update is called once per frame
@@ -29,27 +42,37 @@ public class tankAi : MonoBehaviour
         estarAlerta2 = Physics.CheckSphere(transform.position, rangoDeAlerta2, capaDelJugador);
 
         prockAttack = Physics.CheckSphere(transform.position, rangoDeAtaque, capaDelJugador);
+        //
 
-        if (estarAlerta == true && isAttacking == false)
+
+        Physics.Raycast(shadowBody.position, shadowBody.transform.forward, out hit, rayDistance);
+
+        shadowBody.transform.LookAt(Player);
+
+        if (hit.collider && hit.collider.gameObject.name == "Player")
         {
-            Vector3 playerPos = new Vector3(Player.position.x, transform.position.y, Player.position.z);
-            transform.LookAt(playerPos);
-            transform.position = Vector3.MoveTowards(transform.position, playerPos, enemySpeed * Time.deltaTime);
-
-            //run anim
+            playerSeen = true;
         }
 
-        if (estarAlerta2 == true && estarAlerta == false)
+        if (playerSeen == true)
         {
-            Vector3 playerPos = new Vector3(Player.position.x, transform.position.y, Player.position.z);
-            transform.LookAt(playerPos);
-            transform.position = Vector3.MoveTowards(transform.position, playerPos, enemySpeed2 * Time.deltaTime);
+            if (estarAlerta == true && isAttacking == false)
+            {
+                enemyNav.navRun();
+                //run anim
+            }
 
-            //walk anim
+            if (estarAlerta2 == true && estarAlerta == false)
+            {
+                enemyNav.navWalk();
+
+                //walk anim
+            }
         }
 
         if (estarAlerta == false && estarAlerta2 == false)
         {
+            playerSeen = false;
             //sleep anim
         }
 
@@ -82,6 +105,9 @@ public class tankAi : MonoBehaviour
 
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position, rangoDeAtaque);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(shadowBody.transform.position, shadowBody.transform.forward * rayDistance);
     }
 
 }
