@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseBehaviour : MonoBehaviour
 {
-    public Canvas menuPausa;
-    bool paused;
+    public GameObject pauseMenuUI;
+    public static bool gameIsPaused = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,35 +17,46 @@ public class PauseBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Pause();
-        }
+            if (gameIsPaused) //Si esta en pausa
+            {
+                Resume();
+            }
 
-        if (paused == true)
-        {
-            menuPausa.enabled = true;
-        }
-
-        else
-        {
-            menuPausa.enabled = false;
+            else //Si no esta en pausa
+            {
+                Pause();
+            }
         }
     }
 
-    public void Pause()
+    public void Resume() // CUANDO SACO PAUSA
     {
-        Time.timeScale = 0;
-        
-        if (paused == false)
-        {
-            paused = true;
-        }
-        if (paused == true)
-        {
-            paused = false;
-        }
+        pauseMenuUI.SetActive (false);
+        Time.timeScale = 1f;
+        gameIsPaused = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
-}
 
-//Revisar que no estaria andando sacar pausa
+    //DECIRLE A CIRO QUE PONGA QUE CUANDO EL PLAYER TOCA MOUSE.IZQ PARA PEGAR QUE VERIFIQUE QUE EL JUEGO NO ESTE PAUSADO. PORQUE SI NO EL CHABON PEGA CUANDO CLICKEO PARA SACAR PAUSA
+    
+    public void Pause() // CUANDO PONGO PAUSA
+    {
+        pauseMenuUI.SetActive (true);
+        Time.timeScale = 0f;
+        gameIsPaused = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void Quit()
+    {
+        Application.Quit(); //SOLO ANDA CUANDO EL JUEGO ESTA BILDEADO, PERO SI ANDA
+    }
+
+    public void Menu()
+    {
+
+    }
+
+}

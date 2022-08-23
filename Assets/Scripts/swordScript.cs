@@ -17,7 +17,7 @@ public class swordScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && PauseBehaviour.gameIsPaused == false)
         {
             StartCoroutine(SwordSwing());
         }
