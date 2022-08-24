@@ -54,4 +54,9 @@ public class EnemyHealthBar : MonoBehaviour
         }
     }
 
+    public void dealDamage(float damage)
+    {
+        currentHealth -= damage;
+    }
+
 }

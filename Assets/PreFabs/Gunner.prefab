@@ -572,8 +572,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 3278613048912364592}
-  currentHealth: 40
-  maximumHealth: 0
+  currentHealth: 0
+  maximumHealth: 40
   coinSpawn: {fileID: 0}
   coinPrefab: {fileID: 3165047470361269667, guid: d1f30d76def59dd439220b6449d42c7b,
     type: 3}

@@ -47,8 +47,7 @@ public class CoinDrop : MonoBehaviour
                 StartCoroutine(activateHitbox());
                 activateHit = true;
             }
-
-            StartCoroutine(activateHitbox());
+            
 
             rb.isKinematic = true;
             rb.useGravity = false;
