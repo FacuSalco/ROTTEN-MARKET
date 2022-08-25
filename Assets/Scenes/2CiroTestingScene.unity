@@ -1868,7 +1868,7 @@ GameObject:
   - component: {fileID: 609412546}
   - component: {fileID: 609412545}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1892,6 +1892,13 @@ MonoBehaviour:
   outerLongRange: 0
   innerLongRange: 0
   meeleRange: 0
+  shootingPivot: {fileID: 0}
+  bulletPrefab: {fileID: 0}
+  granadePrefab: {fileID: 0}
+  shootingRateOfAttack: 0
+  granadeRateOfAttack: 0
+  childPrefab: {fileID: 0}
+  spawningRate: 0
 --- !u!54 &609412546
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5222,17 +5229,17 @@ PrefabInstance:
     - target: {fileID: 4034326188311363733, guid: aa367b696197420498727a1d0e24f276,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.20157412
+      value: 0.2015741
       objectReference: {fileID: 0}
     - target: {fileID: 4034326188311363733, guid: aa367b696197420498727a1d0e24f276,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.32346213
+      value: 0.3234621
       objectReference: {fileID: 0}
     - target: {fileID: 4034326188311363733, guid: aa367b696197420498727a1d0e24f276,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.070731975
+      value: -0.07073196
       objectReference: {fileID: 0}
     - target: {fileID: 4034326188311363733, guid: aa367b696197420498727a1d0e24f276,
         type: 3}

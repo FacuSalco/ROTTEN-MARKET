@@ -40,13 +40,14 @@ public class FirstBossBehaviourAI : MonoBehaviour
     public float spawningRate;
     private float spawningRateDelta;
 
+    //telepor
+    public float tpAreaX, tpAreaZ;
+
     //rutina
     private int rutina;
     private float cronometro;
     private Quaternion angulo;
     private float grado;
-
-    //escape
 
     //Vida
 
@@ -56,6 +57,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Player = GameObject.FindWithTag("Player").transform;
         healthBarController = GetComponent<EnemyHealthBar>();
 
         StartCoroutine(spawnRoutine());
@@ -68,6 +70,8 @@ public class FirstBossBehaviourAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.LookAt(Player);
+
         //seteo de los rangos
         outerRangeBool = Physics.CheckSphere(transform.position, outerLongRange, capaDelJugador);
         innerRangeBool = Physics.CheckSphere(transform.position, innerLongRange, capaDelJugador);
@@ -142,13 +146,30 @@ public class FirstBossBehaviourAI : MonoBehaviour
 
             } else if (innerRangeBool)
             {
+                if (!isAnimating)
+                {
+                    bossFaseOneBehaviour();
+                }
 
-
+                //spawningChildren
+                spawningRateDelta -= Time.deltaTime + 1;
+                if (spawningRateDelta < 0)
+                {
+                    StartCoroutine(spawningAttack());
+                    spawningRateDelta = spawningRate;
+                }
+                //granade-spawner
+                granadeRateOfAttackDelta -= Time.timeScale;
+                if (granadeRateOfAttack < 0)
+                {
+                    StartCoroutine(granadeShootAttack());
+                    granadeRateOfAttackDelta = granadeRateOfAttack;
+                }
 
             }
             else
             {
-                isIdling = true;
+                StartCoroutine(isIdle());
             }
 
 
@@ -193,21 +214,43 @@ public class FirstBossBehaviourAI : MonoBehaviour
 
     IEnumerator spawningAttack()
     {
-
-        float spawningRangeX = Random.Range(-innerLongRange, innerLongRange);
-        float spawningPosY = transform.position.y - 1;
-        float spawningRangeZ = Random.Range(-innerLongRange, innerLongRange);
-        Vector3 spawningArea = new Vector3(spawningRangeX, spawningPosY, spawningRangeZ);
-
+        isAtacking = true;
         gameObject.GetComponent<Animator>().Play("New State");
-        GameObject children;
-        children = Instantiate(childPrefab, spawningArea, Quaternion.identity);
+ 
+        int childAmount = randomNum();
+        for(int i = 0; i <= childAmount; i++)
+        {
+            float spawningRangeX = Random.Range(-innerLongRange, innerLongRange);
+            float spawningPosY = transform.position.y + 2;
+            float spawningRangeZ = Random.Range(-innerLongRange, innerLongRange);
+            Vector3 spawningArea = new Vector3(spawningRangeX, spawningPosY, spawningRangeZ);
 
-        yield return new WaitForSeconds(1f);
+            GameObject children;
+            children = Instantiate(childPrefab, spawningArea, Quaternion.identity);
+        }
 
+        yield return new WaitForSeconds(4f);
+        isAtacking = false;
+        gameObject.GetComponent<Animator>().Play("New State");
+    }
+
+    IEnumerator teleportBoss()
+    {
+        isAtacking = true;
+        float tpRangeX = Random.Range(-tpAreaX, tpAreaX);
+        float tpPosY = transform.position.y;
+        float tpRangeZ = Random.Range(-tpAreaZ, tpAreaZ);
+        Vector3 spawningPos = new Vector3(tpRangeX, tpPosY, tpRangeZ);
+
+        transform.position = spawningPos;
+
+        
         gameObject.GetComponent<Animator>().Play("New State");
 
+        yield return new WaitForSeconds(3f);
 
+        isAtacking = false;
+        gameObject.GetComponent<Animation>().Play("New State");
     }
 
     //animaciones
@@ -224,22 +267,13 @@ public class FirstBossBehaviourAI : MonoBehaviour
 
     IEnumerator isIdle()
     {
+        isIdling = true;
         gameObject.GetComponent<Animator>().Play("New State");
 
         yield return new WaitForSeconds(0.5f);
 
         gameObject.GetComponent<Animator>().Play("New State");
         isIdling = false;
-    }
-
-    IEnumerator isAtack()
-    {
-        gameObject.GetComponent<Animator>().Play("New State");
-
-        yield return new WaitForSeconds(3f);
-
-        gameObject.GetComponent<Animator>().Play("New State");
-        isAtacking = false;
     }
 
     //funciones
@@ -273,11 +307,64 @@ public class FirstBossBehaviourAI : MonoBehaviour
         }
     }
 
-    private void randomNum(int result)
+    private void bossFaseTwoBehaviour()
+    {
+        cronometro += 1 * Time.deltaTime;
+        if (cronometro >= 4)
+        {
+            rutina = Random.Range(0, 3);
+            cronometro = Random.Range(-2, 0);
+        }
+
+        switch (rutina)
+        {
+            case 0:
+                break;
+
+            case 1:
+                grado = Random.Range(0, 360);
+                angulo = Quaternion.Euler(0, grado, 0);
+                rutina++;
+
+                break;
+
+            case 2:
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, angulo, 0.5f);
+                transform.Translate(Vector3.forward * 1 * Time.deltaTime);
+                break;
+
+            case 3:
+
+                bool teleport = true;
+
+                if (teleport)
+                {
+                    StartCoroutine(teleportBoss());
+
+                    teleport = false;
+                }
+
+
+                break;
+
+        }
+    }
+
+    int randomNum()
     {
         int ram = Random.Range(0, 100);
+        int result = 0;
 
+        if(ram < 80)
+        {
+            result = 1;
+        }
+        else
+        {
+            result = 2;
+        }
 
+        return result;
     }
 
 
