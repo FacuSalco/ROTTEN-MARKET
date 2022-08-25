@@ -70,7 +70,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(Player);
+        //transform.LookAt(Player);
 
         //seteo de los rangos
         outerRangeBool = Physics.CheckSphere(transform.position, outerLongRange, capaDelJugador);
