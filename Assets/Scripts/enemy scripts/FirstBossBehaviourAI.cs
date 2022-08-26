@@ -62,6 +62,10 @@ public class FirstBossBehaviourAI : MonoBehaviour
     private Quaternion angulo;
     private float grado;
 
+    //behaviour
+    [Header("Behaviour")]
+    private bool canLookToPlayer = true;
+
     //Vida
 
     private EnemyHealthBar healthBarController;
@@ -74,9 +78,6 @@ public class FirstBossBehaviourAI : MonoBehaviour
         healthBarController = GetComponent<EnemyHealthBar>();
 
         StartCoroutine(spawnRoutine());
-
-        shootingRateOfAttackDelta = shootingRateOfAttack;
-        granadeRateOfAttackDelta = granadeRateOfAttack;
 
        
     }
@@ -138,7 +139,11 @@ public class FirstBossBehaviourAI : MonoBehaviour
             {
                 if (!isAnimating)
                 {
-                    bossFaseOneBehaviour();
+
+                    if (canLookToPlayer)
+                    {
+                        transform.LookAt(Player);
+                    }
 
                     //spawningChildren
                     spawningRateDelta -= Time.deltaTime;
@@ -149,12 +154,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
                     }
 
                     //bullet-shooting
-                    shootingRateOfAttackDelta -= Time.timeScale;
-                    if (shootingRateOfAttack < 0)
-                    {
-                        StartCoroutine(bulletShootAttack());
-                        shootingRateOfAttackDelta = shootingRateOfAttack;
-                    }
+                    shoot();
                     //granade-spawner
                     granadeRateOfAttackDelta -= Time.timeScale;
                     if (granadeRateOfAttack < 0)
@@ -168,7 +168,6 @@ public class FirstBossBehaviourAI : MonoBehaviour
             {
                 if (!isAnimating)
                 {
-                    bossFaseOneBehaviour();
 
                     //spawningChildren
                     spawningRateDelta -= Time.deltaTime;
@@ -254,22 +253,35 @@ public class FirstBossBehaviourAI : MonoBehaviour
 
     }
 
-    //ataques
+    //bullet-shoot
+
+    private void shoot()
+    {
+        StartCoroutine(bulletShootAttack());
+
+        GameObject bulletClon;
+        bulletClon = Instantiate(bulletPrefab, shootingPivot.transform.position, transform.rotation);
+        Destroy(bulletClon, 6);
+    }
 
     IEnumerator bulletShootAttack()
     {
-        
-        gameObject.GetComponent<Animator>().Play("New State");
-
-        GameObject bulletClon;
-        bulletClon = Instantiate(bulletPrefab, shootingPivot.transform.position, Quaternion.identity);
-        Destroy(bulletClon, 6);
-
         isAtacking = true;
-
-        yield return new WaitForSeconds(3f);
+        gameObject.GetComponent<Animator>().Play("New State");
+        
+        yield return new WaitForSeconds(1f);
         isAtacking = false;
         gameObject.GetComponent<Animator>().Play("New State");
+    }
+
+    //granade-instantiate
+
+    private void granadeShoot()
+    {
+        StartCoroutine(granadeShootAttack());
+
+        GameObject granadeClon;
+        granadeClon = Instantiate(granadePrefab, shootingPivot.transform.position, transform.rotation);
     }
 
     IEnumerator granadeShootAttack()
@@ -277,10 +289,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
         isAtacking = true;
         gameObject.GetComponent<Animator>().Play("New State");
 
-        GameObject granadeClon;
-        granadeClon = Instantiate(granadePrefab, shootingPivot.transform.position, Quaternion.identity);
-
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(6.3f);
         isAtacking = false;
         gameObject.GetComponent<Animator>().Play("New State");
     }
@@ -302,7 +311,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
             children = Instantiate(childPrefab, spawningArea, Quaternion.identity);
         }
 
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2f);
         isAtacking = false;
         gameObject.GetComponent<Animator>().Play("New State");
     }
@@ -367,9 +376,9 @@ public class FirstBossBehaviourAI : MonoBehaviour
     private void bossFaseOneBehaviour()
     {
         cronometro += 1 * Time.deltaTime;
-        if (cronometro >= 6)
+        if (cronometro >= 3)
         {
-            rutina = Random.Range(0, 2);
+            rutina = Random.Range(0, 9);
             cronometro = Random.Range(-2, 0);
         }
 
@@ -379,16 +388,34 @@ public class FirstBossBehaviourAI : MonoBehaviour
                 break;
 
             case 1:
+                canLookToPlayer = true;
+                StartCoroutine(spawningAttack());
+
+                break;
+
+            case 2:
+                canLookToPlayer = true;
+                StartCoroutine(spawningAttack());
+
+                break;
+
+            case 8:
+                canLookToPlayer = false;
                 grado = Random.Range(0, 360);
                 angulo = Quaternion.Euler(0, grado, 0);
                 rutina++;
 
                 break;
 
-            case 2:
+            case 9:
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, angulo, 0.5f);
                 transform.Translate(Vector3.forward * 1 * Time.deltaTime);
+
+
                 break;
+
+            
+            
 
         }
     }
