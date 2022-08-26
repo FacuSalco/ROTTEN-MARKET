@@ -6,11 +6,19 @@ using UnityEngine.AI;
 public class FirstBossBehaviourAI : MonoBehaviour
 {
     //setUp
+    [Header("Player Reference")]
     private Transform Player;
     public LayerMask capaDelJugador;
 
+    [Header("Ghost body")]
+    public GameObject ghostChildren;
+    private Transform ghostChildrenTransform;
+
     //rangos
-    public float outerLongRange, innerLongRange, meeleRange;
+    [Header("Ranges")]
+    public float outerLongRange;
+    public float innerLongRange;
+    public float meeleRange;
     private bool outerRangeBool, innerRangeBool, meeleRangeBool;
 
     //fases del enemigo
@@ -24,8 +32,11 @@ public class FirstBossBehaviourAI : MonoBehaviour
     private bool isAnimating = false;
     private bool isIdling = false;
     private bool isAtacking = false;
+    private bool idleOnce = true;
+
 
     //Turret
+    [Header("Shooting")]
     public Transform shootingPivot;
     public GameObject bulletPrefab;
     public GameObject granadePrefab;
@@ -35,13 +46,15 @@ public class FirstBossBehaviourAI : MonoBehaviour
     private float granadeRateOfAttackDelta;
 
     //spawner
-    [SerializeField]HeaderAttribute SpawnerSett;
+    [Header("Spawning")]
     public GameObject childPrefab;
     public float spawningRate;
     private float spawningRateDelta;
 
-    //telepor
-    public float tpAreaX, tpAreaZ;
+    //teleport
+    [Header("Teleport")]
+    public float tpAreaX;
+    public float tpAreaZ;
 
     //rutina
     private int rutina;
@@ -62,15 +75,17 @@ public class FirstBossBehaviourAI : MonoBehaviour
 
         StartCoroutine(spawnRoutine());
 
-
         shootingRateOfAttackDelta = shootingRateOfAttack;
         granadeRateOfAttackDelta = granadeRateOfAttack;
+
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        //transform.LookAt(Player);
+
+        ghostChildren.transform.LookAt(Player);   
 
         //seteo de los rangos
         outerRangeBool = Physics.CheckSphere(transform.position, outerLongRange, capaDelJugador);
@@ -78,7 +93,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
         meeleRangeBool = Physics.CheckSphere(transform.position, meeleRange, capaDelJugador);
 
         //chequeo de vida para otorgar una fase
-        health = healthBarController.currentHealth;
+      //  health = healthBarController.currentHealth;
 
         if(isSpawning == false)
         {
@@ -99,10 +114,15 @@ public class FirstBossBehaviourAI : MonoBehaviour
                 isDying = true;
             }
 
+            if (isDying)
+            {
+                StartCoroutine(isDie());
+            }
+
         }
 
         //crequea si esta haciendo alguna animacion
-        if(isSpawning || isIdling || isAtacking)
+        if(isSpawning || isIdling || isAtacking || isDying)
         {
             isAnimating = true;
         }
@@ -119,29 +139,29 @@ public class FirstBossBehaviourAI : MonoBehaviour
                 if (!isAnimating)
                 {
                     bossFaseOneBehaviour();
-                }
 
-                //spawningChildren
-                spawningRateDelta -= Time.deltaTime;
-                if (spawningRateDelta < 0)
-                {
-                    StartCoroutine(spawningAttack());
-                    spawningRateDelta = spawningRate;
-                }
+                    //spawningChildren
+                    spawningRateDelta -= Time.deltaTime;
+                    if (spawningRateDelta < 0)
+                    {
+                        StartCoroutine(spawningAttack());
+                        spawningRateDelta = spawningRate;
+                    }
 
-                //bullet-shooting
-                shootingRateOfAttackDelta -= Time.timeScale;
-                if(shootingRateOfAttack < 0)
-                {
-                    StartCoroutine(bulletShootAttack());
-                    shootingRateOfAttackDelta = shootingRateOfAttack;
-                }
-                //granade-spawner
-                granadeRateOfAttackDelta -= Time.timeScale;
-                if (granadeRateOfAttack < 0)
-                {
-                    StartCoroutine(granadeShootAttack());
-                    granadeRateOfAttackDelta = granadeRateOfAttack; 
+                    //bullet-shooting
+                    shootingRateOfAttackDelta -= Time.timeScale;
+                    if (shootingRateOfAttack < 0)
+                    {
+                        StartCoroutine(bulletShootAttack());
+                        shootingRateOfAttackDelta = shootingRateOfAttack;
+                    }
+                    //granade-spawner
+                    granadeRateOfAttackDelta -= Time.timeScale;
+                    if (granadeRateOfAttack < 0)
+                    {
+                        StartCoroutine(granadeShootAttack());
+                        granadeRateOfAttackDelta = granadeRateOfAttack;
+                    }
                 }
 
             } else if (innerRangeBool)
@@ -149,35 +169,86 @@ public class FirstBossBehaviourAI : MonoBehaviour
                 if (!isAnimating)
                 {
                     bossFaseOneBehaviour();
-                }
 
-                //spawningChildren
-                spawningRateDelta -= Time.deltaTime + 1;
-                if (spawningRateDelta < 0)
-                {
-                    StartCoroutine(spawningAttack());
-                    spawningRateDelta = spawningRate;
-                }
-                //granade-spawner
-                granadeRateOfAttackDelta -= Time.timeScale;
-                if (granadeRateOfAttack < 0)
-                {
-                    StartCoroutine(granadeShootAttack());
-                    granadeRateOfAttackDelta = granadeRateOfAttack;
+                    //spawningChildren
+                    spawningRateDelta -= Time.deltaTime;
+                    if (spawningRateDelta < 2)
+                    {
+                        StartCoroutine(spawningAttack());
+                        spawningRateDelta = spawningRate;
+                    }
+
+                    //bullet-shooting
+                    shootingRateOfAttackDelta -= Time.timeScale;
+                    if (shootingRateOfAttack < 0)
+                    {
+                        StartCoroutine(bulletShootAttack());
+                        shootingRateOfAttackDelta = shootingRateOfAttack;
+                    }
                 }
 
             }
-            else
+
+            if(!outerRangeBool && !innerRangeBool)
             {
-                StartCoroutine(isIdle());
+                if (idleOnce)
+                {
+                    StartCoroutine(isIdle());
+                }
             }
-
-
+           
         }
 
         if (secondFase)
         {
+            if (outerRangeBool && !innerRangeBool)
+            {
 
+                if (!isAnimating)
+                {
+                    bossFaseTwoBehaviour();
+
+                    //spawningChildren
+                    spawningRateDelta -= Time.deltaTime;
+                    spawningRateDelta -= Time.deltaTime;
+                    if (spawningRateDelta < 0)
+                    {
+                        StartCoroutine(spawningAttack());
+                        spawningRateDelta = spawningRate;
+                    }
+
+                    //bullet-shooting
+                    shootingRateOfAttackDelta -= Time.timeScale;
+                    shootingRateOfAttackDelta -= Time.timeScale;
+                    if (shootingRateOfAttack < 0)
+                    {
+                        StartCoroutine(bulletShootAttack());
+                        shootingRateOfAttackDelta = shootingRateOfAttack;
+                    }
+                    //granade-spawner
+                    granadeRateOfAttackDelta -= Time.timeScale;
+                    granadeRateOfAttackDelta -= Time.timeScale;
+                    if (granadeRateOfAttack < 0)
+                    {
+                        StartCoroutine(granadeShootAttack());
+                        granadeRateOfAttackDelta = granadeRateOfAttack;
+                    }
+
+
+                }
+
+            }
+            else if (innerRangeBool)
+            {
+
+            }
+            else
+            {
+                if (idleOnce)
+                {
+                    StartCoroutine(isIdle());
+                }
+            }
         }
         
 
@@ -187,12 +258,14 @@ public class FirstBossBehaviourAI : MonoBehaviour
 
     IEnumerator bulletShootAttack()
     {
-        isAtacking = true;
+        
         gameObject.GetComponent<Animator>().Play("New State");
 
         GameObject bulletClon;
         bulletClon = Instantiate(bulletPrefab, shootingPivot.transform.position, Quaternion.identity);
         Destroy(bulletClon, 6);
+
+        isAtacking = true;
 
         yield return new WaitForSeconds(3f);
         isAtacking = false;
@@ -267,13 +340,26 @@ public class FirstBossBehaviourAI : MonoBehaviour
 
     IEnumerator isIdle()
     {
+        idleOnce = false;
         isIdling = true;
-        gameObject.GetComponent<Animator>().Play("New State");
+        gameObject.GetComponent<Animator>().Play("idle");
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.3f);
 
         gameObject.GetComponent<Animator>().Play("New State");
         isIdling = false;
+        idleOnce = true;
+    }
+
+    IEnumerator isDie()
+    {
+        isDying = true;
+        gameObject.GetComponent<Animator>().Play("New State");
+
+        yield return new WaitForSeconds(3f);
+
+        gameObject.GetComponent<Animator>().Play("New State");
+        isDying = false;
     }
 
     //funciones
@@ -281,7 +367,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
     private void bossFaseOneBehaviour()
     {
         cronometro += 1 * Time.deltaTime;
-        if (cronometro >= 4)
+        if (cronometro >= 6)
         {
             rutina = Random.Range(0, 2);
             cronometro = Random.Range(-2, 0);
@@ -357,11 +443,11 @@ public class FirstBossBehaviourAI : MonoBehaviour
 
         if(ram < 80)
         {
-            result = 1;
+            result = 0;
         }
         else
         {
-            result = 2;
+            result = 1;
         }
 
         return result;
@@ -370,7 +456,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
 
     //GizmozDraw
 
-    void OnDrawGizmoz()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, outerLongRange);
