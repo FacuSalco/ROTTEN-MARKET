@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseBehaviour : MonoBehaviour
 {
-    public GameObject pauseMenuUI;
+    public GameObject pauseMenuUI, optionsMenuUI;
     public static bool gameIsPaused = false;
     // Start is called before the first frame update
     void Start()
@@ -33,9 +33,10 @@ public class PauseBehaviour : MonoBehaviour
 
     public void Resume() // CUANDO SACO PAUSA
     {
-        pauseMenuUI.SetActive (false);
-        Time.timeScale = 1f;
         gameIsPaused = false;
+        pauseMenuUI.SetActive (false);
+        optionsMenuUI.SetActive(false);
+        Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -56,7 +57,19 @@ public class PauseBehaviour : MonoBehaviour
 
     public void Menu()
     {
+        //QUE TE MANDE A LA ESCENA DEL INICIO
+    }
 
+    public void Options() //PARA EDITAR LAS OPCIONES DEL JUEGO
+    {
+        pauseMenuUI.SetActive(false);
+        optionsMenuUI.SetActive(true);
+    }
+
+    public void ReturnToPauseMenu()
+    {
+        pauseMenuUI.SetActive(true);
+        optionsMenuUI.SetActive(false);
     }
 
 }
