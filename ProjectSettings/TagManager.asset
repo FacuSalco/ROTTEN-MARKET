@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - GameHandler
   - CameraIgnore
+  - Coin
   layers:
   - Default
   - TransparentFX
