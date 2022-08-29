@@ -137,7 +137,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
         //primera fase
         if (firstFase)
         {
-            if (outerRangeBool && !innerRangeBool)
+            if (outerRangeBool)
             {
                 if (!isAnimating)
                 {
@@ -156,9 +156,23 @@ public class FirstBossBehaviourAI : MonoBehaviour
                     }
 
                     //bullet-shooting
-                    shoot();
+                    shootingRateOfAttackDelta -= Time.deltaTime;
+                    if(shootingRateOfAttackDelta < 0)
+                    {
+                        shoot();
+                        shootingRateOfAttackDelta = shootingRateOfAttack;
+                    }
+                    
+                    
                     //granade-spawner
-                    granadeShoot(); 
+                    granadeRateOfAttackDelta -= Time.deltaTime;
+                    if(granadeRateOfAttackDelta < 0)
+                    {
+                        granadeShoot();
+                        granadeRateOfAttackDelta = granadeRateOfAttack;
+
+                    }
+
                 }
 
             } else if (innerRangeBool)
@@ -202,33 +216,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
 
                 if (!isAnimating)
                 {
-                    bossFaseTwoBehaviour();
-
-                    //spawningChildren
-                    spawningRateDelta -= Time.deltaTime;
-                    spawningRateDelta -= Time.deltaTime;
-                    if (spawningRateDelta < 0)
-                    {
-                        StartCoroutine(spawningAttack());
-                        spawningRateDelta = spawningRate;
-                    }
-
-                    //bullet-shooting
-                    shootingRateOfAttackDelta -= Time.timeScale;
-                    shootingRateOfAttackDelta -= Time.timeScale;
-                    if (shootingRateOfAttack < 0)
-                    {
-                        StartCoroutine(bulletShootAttack());
-                        shootingRateOfAttackDelta = shootingRateOfAttack;
-                    }
-                    //granade-spawner
-                    granadeRateOfAttackDelta -= Time.timeScale;
-                    granadeRateOfAttackDelta -= Time.timeScale;
-                    if (granadeRateOfAttack < 0)
-                    {
-                        StartCoroutine(granadeShootAttack());
-                        granadeRateOfAttackDelta = granadeRateOfAttack;
-                    }
+                   
 
 
                 }
@@ -278,7 +266,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
         StartCoroutine(granadeShootAttack());
 
         GameObject granadeClon;
-        granadeClon = Instantiate(granadePrefab, shootingPivot.transform.position, transform.rotation);
+        granadeClon = Instantiate(granadePrefab, shootingPivot.transform.position, Quaternion.identity);
     }
 
     IEnumerator granadeShootAttack()
@@ -286,7 +274,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
         isAtacking = true;
         gameObject.GetComponent<Animator>().Play("New State");
 
-        yield return new WaitForSeconds(6.3f);
+        yield return new WaitForSeconds(1f);
         isAtacking = false;
         gameObject.GetComponent<Animator>().Play("New State");
     }

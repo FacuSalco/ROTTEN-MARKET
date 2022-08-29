@@ -1988,10 +1988,10 @@ MonoBehaviour:
   shootingPivot: {fileID: 832337868}
   bulletPrefab: {fileID: 2445224675721479119, guid: 579f4ee5f80fb20479ef0666cf38f623,
     type: 3}
-  granadePrefab: {fileID: 2445224675721479119, guid: 579f4ee5f80fb20479ef0666cf38f623,
+  granadePrefab: {fileID: 2801529522375113303, guid: dede2e5db2e9d6b4da4845bbc7fb4095,
     type: 3}
-  shootingRateOfAttack: 10
-  granadeRateOfAttack: 15
+  shootingRateOfAttack: 0.5
+  granadeRateOfAttack: 5
   childPrefab: {fileID: 5834247012212174232, guid: 74a0839780db68d45a2d35c8b5d54c90,
     type: 3}
   spawningRate: 9
@@ -5594,17 +5594,17 @@ PrefabInstance:
     - target: {fileID: 4034326188311363733, guid: aa367b696197420498727a1d0e24f276,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.16203396
+      value: 0.16203398
       objectReference: {fileID: 0}
     - target: {fileID: 4034326188311363733, guid: aa367b696197420498727a1d0e24f276,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.63662803
+      value: -0.6366281
       objectReference: {fileID: 0}
     - target: {fileID: 4034326188311363733, guid: aa367b696197420498727a1d0e24f276,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.13921255
+      value: 0.13921258
       objectReference: {fileID: 0}
     - target: {fileID: 4034326188311363733, guid: aa367b696197420498727a1d0e24f276,
         type: 3}
@@ -5619,7 +5619,7 @@ PrefabInstance:
     - target: {fileID: 4034326188311363733, guid: aa367b696197420498727a1d0e24f276,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7409923
+      value: 0.74099225
       objectReference: {fileID: 0}
     - target: {fileID: 4034326188433493892, guid: aa367b696197420498727a1d0e24f276,
         type: 3}
