@@ -86,6 +86,8 @@ public class FirstBossBehaviourAI : MonoBehaviour
     void Update()
     {
 
+
+
         ghostChildren.transform.LookAt(Player);   
 
         //seteo de los rangos
@@ -156,12 +158,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
                     //bullet-shooting
                     shoot();
                     //granade-spawner
-                    granadeRateOfAttackDelta -= Time.timeScale;
-                    if (granadeRateOfAttack < 0)
-                    {
-                        StartCoroutine(granadeShootAttack());
-                        granadeRateOfAttackDelta = granadeRateOfAttack;
-                    }
+                    granadeShoot(); 
                 }
 
             } else if (innerRangeBool)

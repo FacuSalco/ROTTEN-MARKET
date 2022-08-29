@@ -12,7 +12,7 @@ public class grapeRaiderAi : MonoBehaviour
     public float mult = 0;
     public float velocityMultiplier = 0;
 
-    public GameObject blockPrefab;
+    public GameObject particleExplotion;
 
     public float distancePE;
     public int totalDamage;
@@ -97,20 +97,11 @@ public class grapeRaiderAi : MonoBehaviour
                 HealthBar.vidaActual -= 0;
             }
 
-            int counter = 0;
-            while (counter <= 4)
-            {
-                GameObject clon = Instantiate(blockPrefab, transform.position, Quaternion.identity);
 
-                Destroy(clon, 4);
+            GameObject clon = Instantiate(particleExplotion, transform.position, transform.rotation);
+            Destroy(clon, 0.9f);
 
-                counter++;
-
-                if (counter <= 3)
-                {
-                    Destroy(gameObject);
-                }
-            }
+            Destroy(gameObject);
         }
     }
 
