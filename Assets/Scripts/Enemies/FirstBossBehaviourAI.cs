@@ -28,12 +28,18 @@ public class FirstBossBehaviourAI : MonoBehaviour
     private bool secondFase = false;
     private bool isDying = false;
 
+    //boss-rest
+    private float attackingTime;
+    private float restingTime;
+    private bool isResting = false;
+
     //anim
     private bool isAnimating = false;
     private bool isIdling = false;
     private bool isAtacking = false;
     private bool idleOnce = true;
-
+    private bool isShootingGranade = false;
+    private bool isReadyToShoot = false;
 
     //Turret
     [Header("Shooting")]
@@ -44,6 +50,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
     private float shootingRateOfAttackDelta;
     public float granadeRateOfAttack;
     private float granadeRateOfAttackDelta;
+    private float shootingCount;
 
     //spawner
     [Header("Spawning")]
@@ -52,7 +59,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
     private float spawningRateDelta;
 
     //teleport
-    [Header("Teleport")]
+    [Header("Teleport Area")]
     public float tpAreaX;
     public float tpAreaZ;
 
@@ -79,15 +86,12 @@ public class FirstBossBehaviourAI : MonoBehaviour
 
         StartCoroutine(spawnRoutine());
 
-       
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
-
         ghostChildren.transform.LookAt(Player);   
 
         //seteo de los rangos
@@ -96,7 +100,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
         meeleRangeBool = Physics.CheckSphere(transform.position, meeleRange, capaDelJugador);
 
         //chequeo de vida para otorgar una fase
-      //  health = healthBarController.currentHealth;
+        health = healthBarController.currentHealth;
 
         if(isSpawning == false)
         {
@@ -155,24 +159,32 @@ public class FirstBossBehaviourAI : MonoBehaviour
                         spawningRateDelta = spawningRate;
                     }
 
+
                     //bullet-shooting
-                    shootingRateOfAttackDelta -= Time.deltaTime;
-                    if(shootingRateOfAttackDelta < 0)
+                    if (!isShootingGranade)
                     {
-                        shoot();
-                        shootingRateOfAttackDelta = shootingRateOfAttack;
+
+                        shootingRateOfAttackDelta -= Time.deltaTime;
+                        if (shootingRateOfAttackDelta < 0)
+                        {
+                            if (shootingCount < 6)
+                            {
+                                shoot();
+                                shootingRateOfAttackDelta = shootingRateOfAttack;
+                                shootingCount++;
+                            }
+                            else
+                            {
+                                isShootingGranade = true;
+
+                            }
+                        }
                     }
-                    
-                    
                     //granade-spawner
-                    granadeRateOfAttackDelta -= Time.deltaTime;
-                    if(granadeRateOfAttackDelta < 0)
+                    if (isShootingGranade)
                     {
-                        granadeShoot();
-                        granadeRateOfAttackDelta = granadeRateOfAttack;
-
+                        StartCoroutine(chargingGranade());
                     }
-
                 }
 
             } else if (innerRangeBool)
@@ -267,6 +279,26 @@ public class FirstBossBehaviourAI : MonoBehaviour
 
         GameObject granadeClon;
         granadeClon = Instantiate(granadePrefab, shootingPivot.transform.position, Quaternion.identity);
+        float propulsionForce = Random.Range(7f, 15f);
+        granadeClon.GetComponent<Rigidbody>().AddForce(shootingPivot.transform.forward * propulsionForce, ForceMode.Impulse);
+    }
+
+    IEnumerator chargingGranade()
+    {
+        isAtacking = true;
+        float timer = 0.7f;
+        float deltaTime = timer;
+        deltaTime -= Time.deltaTime;
+
+        if(deltaTime > 0)
+        {
+            transform.LookAt(Player);
+        }
+        gameObject.GetComponent<Animator>().Play("New State");
+
+        yield return new WaitForSeconds(1f);
+
+        granadeShoot();
     }
 
     IEnumerator granadeShootAttack()
@@ -274,8 +306,11 @@ public class FirstBossBehaviourAI : MonoBehaviour
         isAtacking = true;
         gameObject.GetComponent<Animator>().Play("New State");
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
+
+        shootingCount = 0;
         isAtacking = false;
+        isShootingGranade = false;
         gameObject.GetComponent<Animator>().Play("New State");
     }
 
@@ -398,9 +433,6 @@ public class FirstBossBehaviourAI : MonoBehaviour
 
 
                 break;
-
-            
-            
 
         }
     }

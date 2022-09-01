@@ -30,7 +30,6 @@ public class grapeRaiderAi : MonoBehaviour
         prockAttack = Physics.CheckSphere(transform.position, rangoDeAtaque, capaDelJugador);
 
         //chasing player
-        Debug.Log(distancePE);
         
         velocityMultiplier += Time.deltaTime;
 
