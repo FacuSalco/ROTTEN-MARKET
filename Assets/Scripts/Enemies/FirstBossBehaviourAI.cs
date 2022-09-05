@@ -30,7 +30,9 @@ public class FirstBossBehaviourAI : MonoBehaviour
 
     //boss-rest
     private float attackingTime;
+    private float attackingTimeDelta;
     private float restingTime;
+    private float restingTimeDelta;
     private bool isResting = false;
 
     //anim
@@ -86,7 +88,8 @@ public class FirstBossBehaviourAI : MonoBehaviour
 
         StartCoroutine(spawnRoutine());
 
-
+        attackingTime = attackingTimeDelta;
+        restingTime = restingTimeDelta;
     }
 
     // Update is called once per frame
@@ -129,13 +132,32 @@ public class FirstBossBehaviourAI : MonoBehaviour
         }
 
         //crequea si esta haciendo alguna animacion
-        if(isSpawning || isIdling || isAtacking || isDying)
+        if(isSpawning || isIdling || isAtacking || isDying || isResting)
         {
             isAnimating = true;
         }
         else
         {
             isAnimating = false;
+        }
+
+        //tiempo de ataque y tiempo de descanso
+        attackingTime -= Time.deltaTime;
+        if(attackingTime < 0)
+        {
+
+            isResting = true;
+
+            if (isResting)
+            {
+                restingTime -= Time.deltaTime;
+                if(restingTime < 0)
+                {
+                    isResting = false;
+                    attackingTime = attackingTimeDelta;
+                    restingTime = restingTimeDelta;
+                }
+            }
         }
 
         //primera fase
@@ -314,6 +336,8 @@ public class FirstBossBehaviourAI : MonoBehaviour
         gameObject.GetComponent<Animator>().Play("New State");
     }
 
+    //spawning
+
     IEnumerator spawningAttack()
     {
         isAtacking = true;
@@ -323,7 +347,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
         for(int i = 0; i <= childAmount; i++)
         {
             float spawningRangeX = Random.Range(-innerLongRange, innerLongRange);
-            float spawningPosY = transform.position.y + 2;
+            float spawningPosY = transform.position.y;
             float spawningRangeZ = Random.Range(-innerLongRange, innerLongRange);
             Vector3 spawningArea = new Vector3(spawningRangeX, spawningPosY, spawningRangeZ);
 
@@ -392,93 +416,6 @@ public class FirstBossBehaviourAI : MonoBehaviour
     }
 
     //funciones
-
-    private void bossFaseOneBehaviour()
-    {
-        cronometro += 1 * Time.deltaTime;
-        if (cronometro >= 3)
-        {
-            rutina = Random.Range(0, 9);
-            cronometro = Random.Range(-2, 0);
-        }
-
-        switch (rutina)
-        {
-            case 0:
-                break;
-
-            case 1:
-                canLookToPlayer = true;
-                StartCoroutine(spawningAttack());
-
-                break;
-
-            case 2:
-                canLookToPlayer = true;
-                StartCoroutine(spawningAttack());
-
-                break;
-
-            case 8:
-                canLookToPlayer = false;
-                grado = Random.Range(0, 360);
-                angulo = Quaternion.Euler(0, grado, 0);
-                rutina++;
-
-                break;
-
-            case 9:
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, angulo, 0.5f);
-                transform.Translate(Vector3.forward * 1 * Time.deltaTime);
-
-
-                break;
-
-        }
-    }
-
-    private void bossFaseTwoBehaviour()
-    {
-        cronometro += 1 * Time.deltaTime;
-        if (cronometro >= 4)
-        {
-            rutina = Random.Range(0, 3);
-            cronometro = Random.Range(-2, 0);
-        }
-
-        switch (rutina)
-        {
-            case 0:
-                break;
-
-            case 1:
-                grado = Random.Range(0, 360);
-                angulo = Quaternion.Euler(0, grado, 0);
-                rutina++;
-
-                break;
-
-            case 2:
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, angulo, 0.5f);
-                transform.Translate(Vector3.forward * 1 * Time.deltaTime);
-                break;
-
-            case 3:
-
-                bool teleport = true;
-
-                if (teleport)
-                {
-                    StartCoroutine(teleportBoss());
-
-                    teleport = false;
-                }
-
-
-                break;
-
-        }
-    }
 
     int randomNum()
     {

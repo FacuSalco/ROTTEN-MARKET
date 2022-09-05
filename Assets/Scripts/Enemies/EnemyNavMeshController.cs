@@ -32,5 +32,11 @@ public class EnemyNavMeshController : MonoBehaviour
         agent.speed = runSpeed;
     }
 
+    public void navRunAccesible(float speed)
+    {
+        agent.destination = Player.position;
+        agent.speed = speed;
+    }
+
 
 }
