@@ -29,11 +29,13 @@ public class FirstBossBehaviourAI : MonoBehaviour
     private bool isDying = false;
 
     //boss-rest
+    [Header("RestingTimes")]
     private float attackingTime;
-    private float attackingTimeDelta;
-    private float restingTime;
-    private float restingTimeDelta;
+    public float attackingTimeDelta;
     private bool isResting = false;
+    private bool restOnce = false;
+    private bool fase2Resting = false;
+    private bool doknockBack = false;
 
     //anim
     private bool isAnimating = false;
@@ -89,7 +91,6 @@ public class FirstBossBehaviourAI : MonoBehaviour
         StartCoroutine(spawnRoutine());
 
         attackingTime = attackingTimeDelta;
-        restingTime = restingTimeDelta;
     }
 
     // Update is called once per frame
@@ -112,7 +113,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
             {
                 firstFase = true;
             }
-            else if (health <= health / 2)
+            else if (health < health / 2)
             {
                 firstFase = false;
                 secondFase = true;
@@ -121,6 +122,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
             {
                 firstFase = false;
                 secondFase = false;
+                fase2Resting = true;
                 isDying = true;
             }
 
@@ -145,19 +147,11 @@ public class FirstBossBehaviourAI : MonoBehaviour
         attackingTime -= Time.deltaTime;
         if(attackingTime < 0)
         {
-
-            isResting = true;
-
-            if (isResting)
-            {
-                restingTime -= Time.deltaTime;
-                if(restingTime < 0)
-                {
-                    isResting = false;
-                    attackingTime = attackingTimeDelta;
-                    restingTime = restingTimeDelta;
-                }
+            if(!restOnce){
+                StartCoroutine(isRest());
+                restOnce = true;
             }
+            
         }
 
         //primera fase
@@ -209,29 +203,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
                     }
                 }
 
-            } else if (innerRangeBool)
-            {
-                if (!isAnimating)
-                {
-
-                    //spawningChildren
-                    spawningRateDelta -= Time.deltaTime;
-                    if (spawningRateDelta < 2)
-                    {
-                        StartCoroutine(spawningAttack());
-                        spawningRateDelta = spawningRate;
-                    }
-
-                    //bullet-shooting
-                    shootingRateOfAttackDelta -= Time.timeScale;
-                    if (shootingRateOfAttack < 0)
-                    {
-                        StartCoroutine(bulletShootAttack());
-                        shootingRateOfAttackDelta = shootingRateOfAttack;
-                    }
-                }
-
-            }
+            } 
 
             if(!outerRangeBool && !innerRangeBool)
             {
@@ -245,19 +217,50 @@ public class FirstBossBehaviourAI : MonoBehaviour
 
         if (secondFase)
         {
-            if (outerRangeBool && !innerRangeBool)
+            if (outerRangeBool)
             {
-
+        
                 if (!isAnimating)
                 {
-                   
+                    if (canLookToPlayer)
+                    {
+                        transform.LookAt(Player);
+                    }
+
+                    spawningRateDelta -= Time.deltaTime;
+                    if (spawningRateDelta < 2)
+                    {
+                        StartCoroutine(spawningAttack());
+                        spawningRateDelta = spawningRate;
+                    }
+
+
+                    if (!isShootingGranade)
+                    {
+
+                        shootingRateOfAttackDelta -= Time.deltaTime;
+                        if (shootingRateOfAttackDelta < 0.3f)
+                        {
+                            if (shootingCount < 10)
+                            {
+                                shoot();
+                                shootingRateOfAttackDelta = shootingRateOfAttack;
+                                shootingCount++;
+                            }
+                            else
+                            {
+                                isShootingGranade = true;
+
+                            }
+                        }
+                    }
+                    if (isShootingGranade)
+                    {
+                        StartCoroutine(chargingGranade());
+                    }
 
 
                 }
-
-            }
-            else if (innerRangeBool)
-            {
 
             }
             else
@@ -353,6 +356,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
 
             GameObject children;
             children = Instantiate(childPrefab, spawningArea, Quaternion.identity);
+
         }
 
         yield return new WaitForSeconds(2f);
@@ -402,6 +406,50 @@ public class FirstBossBehaviourAI : MonoBehaviour
         gameObject.GetComponent<Animator>().Play("New State");
         isIdling = false;
         idleOnce = true;
+    }
+
+    IEnumerator isRest()
+    {
+        isResting = true;
+        gameObject.GetComponent<Animator>().Play("New State");
+
+        yield return new WaitForSeconds(5f);
+
+        if(fase2Resting){
+            knockBackPlayer();
+        }
+
+        gameObject.GetComponent<Animator>().Play("New State");
+        isResting = false;
+        restOnce = false;
+        attackingTime = Random.Range(attackingTimeDelta, attackingTimeDelta + 6);
+    }
+
+    private void knockBackPlayer()
+    {
+        Rigidbody PlayerRB = Player.GetComponent<Rigidbody>();
+
+        PlayerRB.AddForce(PlayerRB.velocity * -1, ForceMode.Impulse);
+
+        StartCoroutine(knockBackAnim);
+    }
+
+    private void fireProyectiles()
+    {
+
+    }
+
+    IEnumerator knockBackAnim()
+    {
+        isAtacking = true;
+        gameObject.GetComponent<Animator>().Play("New State");
+
+        yield return new WaitForSeconds(1f);
+
+        fireProyectiles();
+
+        gameObject.GetComponent<Animator>().Play("New State");
+        isAtacking = false;
     }
 
     IEnumerator isDie()

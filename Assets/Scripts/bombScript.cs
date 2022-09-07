@@ -7,7 +7,6 @@ public class bombScript : MonoBehaviour
     private Transform Player;
     private Rigidbody rb;
     private Vector3 velocity = new Vector3(0,0,1);
-    float throwForce = 10f;
 
     private float lifetime = 3;
 

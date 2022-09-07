@@ -35,27 +35,57 @@ public class grapeRaiderAi : MonoBehaviour
 
         if(velocityMultiplier <= 1)
         {
-            mult += 0.01f;
+            bool giveOnce = false;
+            if (!giveOnce)
+            {
+                enemySpeed += 0.5f;
+                giveOnce = true;
+            }
+
         }else if(velocityMultiplier >= 1 && velocityMultiplier <= 2)
         {
-            mult += 0.0004f;
-        }else if(velocityMultiplier >= 2 && velocityMultiplier <= 3)
+            bool giveOnce = false;
+            if (!giveOnce)
+            {
+                enemySpeed += 0.5f;
+                giveOnce = true;
+            }
+        }
+        else if(velocityMultiplier >= 2 && velocityMultiplier <= 3)
         {
-            mult += .0007f;
-        }else if(velocityMultiplier >= 3 && velocityMultiplier <= 4)
+            bool giveOnce = false;
+            if (!giveOnce)
+            {
+                enemySpeed += 0.5f;
+                giveOnce = true;
+            }
+        }
+        else if(velocityMultiplier >= 3 && velocityMultiplier <= 4)
         {
-            mult += 0.0009f;
-        }else if(velocityMultiplier >= 4 && velocityMultiplier <= 5)
+            bool giveOnce = false;
+            if (!giveOnce)
+            {
+                enemySpeed += 0.5f;
+                giveOnce = true;
+            }
+        }
+        else if(velocityMultiplier >= 4 && velocityMultiplier <= 5)
         {
-            mult += 0.001f;
-        }else if(velocityMultiplier >= 5 && velocityMultiplier <= 6)
+            bool giveOnce = false;
+            if (!giveOnce)
+            {
+                enemySpeed += 0.5f;
+                giveOnce = true;
+            }
+        }
+        else if(velocityMultiplier >= 5 && velocityMultiplier <= 6)
         {
             explotion();
         }
 
         Vector3 playerPos = new Vector3(Player.position.x, transform.position.y, Player.position.z);
         transform.LookAt(playerPos);
-        transform.position = Vector3.MoveTowards(transform.position, playerPos, mult + enemySpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, playerPos, enemySpeed * Time.deltaTime);
 
         //atack
         if (prockAttack == true)
