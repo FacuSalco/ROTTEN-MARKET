@@ -33,11 +33,14 @@ public class PlayerController1 : MonoBehaviour
     public float slideVelocity;
     public float slopeForceDown;
 
+    //Variables anim
+    private Animator playerAnimatorControler;
 
     // Cargamos el componente CharacterController en la variable player al iniciar el script
     void Start()
     {
         player = GetComponent<CharacterController>();
+        playerAnimatorControler = GetComponent<Animator>();
 
         Cursor.lockState = CursorLockMode.Locked; //Para que no aparezca el mouse en la pantalla
     }
@@ -51,6 +54,8 @@ public class PlayerController1 : MonoBehaviour
 
         playerInput = new Vector3(horizontalMove, 0, verticalMove); //los almacenamos en un Vector3
         playerInput = Vector3.ClampMagnitude(playerInput, 1); //Y limitamos su magnitud a 1 para evitar aceleraciones en movimientos diagonales
+
+        playerAnimatorControler.SetFloat("PlayerWalkVelocity", playerInput.magnitude * playerSpeed);
 
         CamDirection(); //Llamamos a la funcion CamDirection()
 
@@ -94,6 +99,7 @@ public class PlayerController1 : MonoBehaviour
         {
             fallVelocity = jumpForce; //La velocidad de caida pasa a ser igual a la velocidad de salto
             movePlayer.y = fallVelocity; //Y pasamos el valor a movePlayer.y
+            playerAnimatorControler.SetTrigger("PlayerJump");
         }
     }
 
@@ -109,11 +115,12 @@ public class PlayerController1 : MonoBehaviour
         }
         else //Si no...
         {
+            playerAnimatorControler.SetFloat("PlayerVerticalVelocity", player.velocity.y);
             //aceleramos la caida cada frame restando el valor de la gravedad * Time.deltaTime.
             fallVelocity -= gravity * Time.deltaTime;
             movePlayer.y = fallVelocity;
         }
-
+        playerAnimatorControler.SetBool("IsGrounded", player.isGrounded);
         SlideDown(); //Llamamos a la funcion SlideDown() para comprobar si estamos en una pendiente
     }
 
@@ -152,5 +159,12 @@ public class PlayerController1 : MonoBehaviour
             StartCoroutine(waitForCooldown()); //Que espere un segundo
         }
     }
+
+    private void OnAnimatorMove()
+    {
+
+    }
 }
+
+
 

@@ -431,7 +431,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
 
         PlayerRB.AddForce(PlayerRB.velocity * -1, ForceMode.Impulse);
 
-        StartCoroutine(knockBackAnim);
+        StartCoroutine(knockBackAnim());
     }
 
     private void fireProyectiles()
