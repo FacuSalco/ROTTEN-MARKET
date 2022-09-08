@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseBehaviour : MonoBehaviour
 {
-    public GameObject pauseMenuUI, optionsMenuUI;
+    public GameObject pauseMenuUI, optionsMenuUI, menuMenuUI, canvases;
     public static bool gameIsPaused = false;
     // Start is called before the first frame update
     void Start()
@@ -19,12 +19,23 @@ public class PauseBehaviour : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (canvases.activeInHierarchy)
+            {
+                Time.timeScale = 0f;
+                gameIsPaused = true;
+            }
+            else if (!canvases.activeInHierarchy)
+            {
+                Time.timeScale = 1f;
+                gameIsPaused = false;
+            }
+            
+
             if (gameIsPaused) //Si esta en pausa
             {
                 Resume();
             }
-
-            else //Si no esta en pausa
+            else if (!gameIsPaused) //Si no esta en pausa
             {
                 Pause();
             }
@@ -33,10 +44,7 @@ public class PauseBehaviour : MonoBehaviour
 
     public void Resume() // CUANDO SACO PAUSA
     {
-        gameIsPaused = false;
-        pauseMenuUI.SetActive (false);
-        optionsMenuUI.SetActive(false);
-        Time.timeScale = 1f;
+        canvases.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -45,8 +53,6 @@ public class PauseBehaviour : MonoBehaviour
     public void Pause() // CUANDO PONGO PAUSA
     {
         pauseMenuUI.SetActive (true);
-        Time.timeScale = 0f;
-        gameIsPaused = true;
         Cursor.lockState = CursorLockMode.None;
     }
 
@@ -57,12 +63,13 @@ public class PauseBehaviour : MonoBehaviour
 
     public void Menu()
     {
-        //QUE TE MANDE A LA ESCENA DEL INICIO
+        canvases.SetActive(false);
+        menuMenuUI.SetActive(true);
     }
 
     public void Options() //PARA EDITAR LAS OPCIONES DEL JUEGO
     {
-        pauseMenuUI.SetActive(false);
+        canvases.SetActive(false);
         optionsMenuUI.SetActive(true);
     }
 
@@ -70,6 +77,13 @@ public class PauseBehaviour : MonoBehaviour
     {
         pauseMenuUI.SetActive(true);
         optionsMenuUI.SetActive(false);
+    }
+
+    public void StartGame()
+    {
+        canvases.SetActive(false);
+        //ASIGNARLO AL BOTON DE START EN EL CANVAS DEL MENU
+        //ASIGNAR LOS GAMEOBJECTS QUE FALTAN (menuMenuUI, canvases)
     }
 
 }
