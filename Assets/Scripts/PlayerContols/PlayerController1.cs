@@ -21,6 +21,9 @@ public class PlayerController1 : MonoBehaviour
     public float fallVelocity;
     public float jumpForce;
 
+    private float punchSelect;
+    private bool canPunch = true;
+
     //Varaibles movimiento relativo a camara
     public Camera mainCamera;
     private Vector3 camForward;
@@ -101,6 +104,32 @@ public class PlayerController1 : MonoBehaviour
             movePlayer.y = fallVelocity; //Y pasamos el valor a movePlayer.y
             playerAnimatorControler.SetTrigger("PlayerJump");
         }
+
+        if (player.isGrounded && Input.GetMouseButtonDown(0))
+        {
+            if (canPunch)
+            {
+                StartCoroutine(playerPunchCoroutine());
+            }
+        }
+    }
+
+    IEnumerator playerPunchCoroutine()
+    {
+        canPunch = false;
+        playerAnimatorControler.SetBool("PlayerPunchFinished", false);
+
+        punchSelect = Random.Range(0, 3);
+
+        playerAnimatorControler.SetFloat("PlayerPunchSelect", punchSelect);
+
+        playerAnimatorControler.SetTrigger("PlayerPunch");
+
+        yield return new WaitForSeconds(1f);
+
+        playerAnimatorControler.SetBool("PlayerPunchFinished", true);
+        canPunch = true;
+
     }
 
     //Funcion para la gravedad.

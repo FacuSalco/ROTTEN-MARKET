@@ -110,16 +110,6 @@ public class GunnerAi : MonoBehaviour
         clon = Instantiate(bulletPrefab, turretPivot.transform.position, transform.rotation);
         Destroy(clon, 6);
     }
-    //Start Corutine
-    //corrutina
-    IEnumerator DemoraUnsegundo()
-    {
-
-        Debug.Log("antes");
-        yield return new WaitForSeconds(3f);
-        Debug.Log("Despues de la espera");
-    }
-
     //stop all coroutines
 
     private void OnDrawGizmos()

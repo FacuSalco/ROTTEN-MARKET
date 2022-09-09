@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 2451248136726961229}
   - component: {fileID: 6319949023338144906}
   - component: {fileID: 6299500806171023050}
+  - component: {fileID: 6113110549315619235}
   m_Layer: 0
   m_Name: NormalEgg
   m_TagString: Untagged
@@ -330,7 +331,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 493537301748533982}
+  currentHealth: 0
   maximumHealth: 100
+  coinSpawn: {fileID: 0}
+  coinPrefab: {fileID: 0}
 --- !u!195 &6319949023338144906
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -365,8 +369,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 613c3a231cb4217499017dc058f26028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinPrefab: {fileID: 3165047470361269667, guid: d1f30d76def59dd439220b6449d42c7b,
-    type: 3}
+--- !u!114 &6113110549315619235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2758081191331384184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb941d05087dc14a88ae2114f553ae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 2
+  runSpeed: 3
 --- !u!1 &6464226933396171895
 GameObject:
   m_ObjectHideFlags: 0

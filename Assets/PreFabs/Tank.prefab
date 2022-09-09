@@ -735,9 +735,9 @@ MonoBehaviour:
   enemySpeed: 2.1
   enemySpeed2: 1.2
   rangoDeAtaque: 3
-  shadowBody: {fileID: 0}
+  shadowBody: {fileID: 4454133751355905446}
   playerSeen: 0
-  rayDistance: 0
+  rayDistance: 15
 --- !u!95 &2470018894018267704
 Animator:
   serializedVersion: 3
@@ -773,7 +773,8 @@ MonoBehaviour:
   currentHealth: 0
   maximumHealth: 100
   coinSpawn: {fileID: 0}
-  coinPrefab: {fileID: 0}
+  coinPrefab: {fileID: 3165047470361269667, guid: d1f30d76def59dd439220b6449d42c7b,
+    type: 3}
 --- !u!114 &92188166770887670
 MonoBehaviour:
   m_ObjectHideFlags: 0

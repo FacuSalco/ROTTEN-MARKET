@@ -176,6 +176,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
                     }
 
 
+
                     //bullet-shooting
                     if (!isShootingGranade)
                     {
@@ -185,9 +186,11 @@ public class FirstBossBehaviourAI : MonoBehaviour
                         {
                             if (shootingCount < 6)
                             {
-                                shoot();
+                                //shoot();
                                 shootingRateOfAttackDelta = shootingRateOfAttack;
                                 shootingCount++;
+
+                                fireProyectiles();
                             }
                             else
                             {
@@ -436,6 +439,14 @@ public class FirstBossBehaviourAI : MonoBehaviour
 
     private void fireProyectiles()
     {
+        int proyectiles = Random.Range(1, 6);
+        for(int i = -proyectiles; i < proyectiles; i++)
+        {
+            if (proyectiles < 0)
+            {
+                GameObject bullets = Instantiate(bulletPrefab, shootingPivot.position + new Vector3(i, 0, i), Quaternion.LookRotation(Vector3.forward + new Vector3(0,i,0), Vector3.up));
+            }
+        }
 
     }
 
@@ -453,7 +464,7 @@ public class FirstBossBehaviourAI : MonoBehaviour
     }
 
     IEnumerator isDie()
-    {
+    { 
         isDying = true;
         gameObject.GetComponent<Animator>().Play("New State");
 
