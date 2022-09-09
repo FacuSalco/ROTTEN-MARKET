@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class PauseBehaviour : MonoBehaviour
 {
-    public GameObject pauseMenuUI, optionsMenuUI, menuMenuUI, canvases;
+    public GameObject pauseMenuUI, optionsMenuUI, menuMenuUI;
     public static bool gameIsPaused = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -19,23 +19,12 @@ public class PauseBehaviour : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (canvases.activeInHierarchy)
-            {
-                Time.timeScale = 0f;
-                gameIsPaused = true;
-            }
-            else if (!canvases.activeInHierarchy)
-            {
-                Time.timeScale = 1f;
-                gameIsPaused = false;
-            }
-            
-
             if (gameIsPaused) //Si esta en pausa
             {
                 Resume();
             }
-            else if (!gameIsPaused) //Si no esta en pausa
+
+            else //Si no esta en pausa
             {
                 Pause();
             }
@@ -44,15 +33,20 @@ public class PauseBehaviour : MonoBehaviour
 
     public void Resume() // CUANDO SACO PAUSA
     {
-        canvases.SetActive(false);
+        gameIsPaused = false;
+        pauseMenuUI.SetActive(false);
+        optionsMenuUI.SetActive(false);
+        Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     //DECIRLE A CIRO QUE PONGA QUE CUANDO EL PLAYER TOCA MOUSE.IZQ PARA PEGAR QUE VERIFIQUE QUE EL JUEGO NO ESTE PAUSADO. PORQUE SI NO EL CHABON PEGA CUANDO CLICKEO PARA SACAR PAUSA
-    
+
     public void Pause() // CUANDO PONGO PAUSA
     {
-        pauseMenuUI.SetActive (true);
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        gameIsPaused = true;
         Cursor.lockState = CursorLockMode.None;
     }
 
@@ -63,27 +57,38 @@ public class PauseBehaviour : MonoBehaviour
 
     public void Menu()
     {
-        canvases.SetActive(false);
         menuMenuUI.SetActive(true);
+        pauseMenuUI.SetActive(false);
+
     }
 
     public void Options() //PARA EDITAR LAS OPCIONES DEL JUEGO
     {
-        canvases.SetActive(false);
+        pauseMenuUI.SetActive(false);
         optionsMenuUI.SetActive(true);
     }
 
     public void ReturnToPauseMenu()
     {
-        pauseMenuUI.SetActive(true);
+        if (menuMenuUI.activeInHierarchy)
+        {
+            menuMenuUI.SetActive(true);
+        }
+
+        else
+        {
+            pauseMenuUI.SetActive(true);
+        }
+
         optionsMenuUI.SetActive(false);
     }
 
     public void StartGame()
     {
-        canvases.SetActive(false);
-        //ASIGNARLO AL BOTON DE START EN EL CANVAS DEL MENU
-        //ASIGNAR LOS GAMEOBJECTS QUE FALTAN (menuMenuUI, canvases)
+        menuMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        gameIsPaused = false;
     }
 
 }
