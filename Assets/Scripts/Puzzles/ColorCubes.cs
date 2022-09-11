@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ColorCubes : MonoBehaviour
 {
+    bool redOk, yellowOk, blueOk, allOk;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,16 +15,47 @@ public class ColorCubes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        VerifyOk();
+
+        AllOk();
+
+        Debug.Log("Azul: " + blueOk);
+    }
+    
+    void OnCollisionStay(Collision col) //No se porque no lo detecta siempre.
+    {
+            if (col.gameObject.name == "CuboAzul" && gameObject.name == "PlatAzul")
+            {
+                blueOk = true;
+                Debug.Log("Azul " + blueOk);
+            }
+
+            if (col.gameObject.name == "CuboRojo" && gameObject.name == "PlatRoja")
+            {
+                redOk = true;
+                Debug.Log("Rojo " + redOk);
+            }
+
+            if (col.gameObject.name == "CuboAmarillo" && gameObject.name == "PlatAmarilla")
+            {
+                yellowOk = true;
+                Debug.Log("Amarillo " + yellowOk);
+            }
+    }
+    
+    void VerifyOk()
+    {
+        if (redOk && yellowOk && blueOk)
+        {
+            allOk = true;
+        }
     }
 
-    //Si colisiona con un objeto que se llama "CuboPuzzle" y tienen el mismo material este se destruye
-
-    void OnCollisionEnter(Collision col)
+    void AllOk()
     {
-        if (col.gameObject.name == "CuboPuzzle" && col.gameObject.GetComponent<Renderer>().material == GetComponent<Renderer>().material)
+        if (allOk)
         {
-            Debug.Log("Colisiono"); //No se porque pero no anda
+            Debug.Log("Lograste pasar el puzzle");
         }
     }
 
