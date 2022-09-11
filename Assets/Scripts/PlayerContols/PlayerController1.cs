@@ -11,6 +11,7 @@ public class PlayerController1 : MonoBehaviour
     //Variables movimiento
     float horizontalMove;
     float verticalMove;
+    bool isRunning;
 
     private Vector3 playerInput;
 
@@ -77,6 +78,17 @@ public class PlayerController1 : MonoBehaviour
                                                   //Debug.Log("Tocando el suelo: " + player.isGrounded); //Descomenta esta linea si quieres monitorizar si estas tocando el suelo en la consola de depuracion
 
         currentSpeed = player.velocity.magnitude;
+
+        if (Input.GetKey(KeyCode.LeftShift)) //Para que el personaje corra, tener en cuenta que esto es para cuando la playerSpeed es 5, si no es 5 hay que modificar
+        {
+            isRunning = true;
+            playerSpeed = 10;
+        }
+        else
+        {
+            isRunning = false;
+            playerSpeed = 5;
+        }
     }
 
     //Funcion para determinar la direccion a la que mira la camara. 

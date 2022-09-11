@@ -12,6 +12,7 @@ TagManager:
   - CameraIgnore
   - Coin
   - Canvases
+  - CubeColorPuzzle
   layers:
   - Default
   - TransparentFX
