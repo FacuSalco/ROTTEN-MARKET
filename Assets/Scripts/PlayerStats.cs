@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     public PlayerData Data;
+    public WeaponData PunchData;
+    public WeaponData SwordData;
+
     // Start is called before the first frame update
     void Start()
     {

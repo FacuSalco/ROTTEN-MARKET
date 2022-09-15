@@ -205,6 +205,20 @@ public class PlayerController1 : MonoBehaviour
     {
 
     }
+
+    public void ActivatePunchHitbox()
+    {
+        GameObject Hand = GameObject.FindGameObjectWithTag("handHitbox");
+
+        Hand.SetActive(true);
+    }
+
+    public void DesactivatePunchHitbox()
+    {
+        GameObject Hand = GameObject.FindGameObjectWithTag("handHitbox");
+
+        Hand.SetActive(false);
+    }
 }
 
 

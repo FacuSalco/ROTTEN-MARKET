@@ -13,6 +13,7 @@ TagManager:
   - Coin
   - Canvases
   - CubeColorPuzzle
+  - handHitbox
   layers:
   - Default
   - TransparentFX

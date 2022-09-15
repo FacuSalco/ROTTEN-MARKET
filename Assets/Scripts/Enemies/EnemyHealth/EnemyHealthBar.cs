@@ -9,6 +9,8 @@ public class EnemyHealthBar : MonoBehaviour
     public float currentHealth;
     public float maximumHealth;
 
+    private PlayerStats PlayerData;
+
     //coin spawn
     public CoinCreate coinSpawn;
     public GameObject coinPrefab;
@@ -18,6 +20,8 @@ public class EnemyHealthBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerData = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+
         currentHealth = maximumHealth;
         coinSpawn = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<CoinCreate>();
         
@@ -49,8 +53,16 @@ public class EnemyHealthBar : MonoBehaviour
     {
         if (col.gameObject.name == "espadapersonaje")
         {
-            currentHealth -= swordScript.swordDamage;
-            currentHealth -= swordScript.swordDamage;
+            float damage = PlayerData.SwordData.weaponDamage;
+
+            dealDamage(damage);
+        }
+
+        if (col.gameObject.tag == "handHitbox")
+        {
+            float damage = PlayerData.PunchData.weaponDamage;
+
+            dealDamage(damage);
         }
     }
 
