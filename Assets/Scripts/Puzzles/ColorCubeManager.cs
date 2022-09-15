@@ -28,14 +28,8 @@ public class ColorCubeManager : MonoBehaviour
                 }
             }
 
-            Debug.Log("todos apretaos");//poner logica cuando esten todos
+            Debug.Log("Todos apretaDos");//poner logica cuando esten todos
             cuboGanador.SetActive(true);
         }
-
-        //else
-        //{
-        //    Debug.Log("todos apretaos");//poner logica cuando esten todos
-        //    cuboGanador.SetActive(true);
-        //}
     }
 }
