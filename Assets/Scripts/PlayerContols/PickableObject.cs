@@ -6,6 +6,12 @@ public class PickableObject : MonoBehaviour
 {
 
     public bool isPickable = true;
+    public bool isPicked;
+
+    void Update()
+    {
+
+    }
 
     private void OnTriggerEnter(Collider other) //Detecta que el objeto entro en un trigger
     {

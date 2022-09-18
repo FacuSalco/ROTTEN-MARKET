@@ -8,6 +8,7 @@ public class PickUpObject : MonoBehaviour
     public GameObject ObjectToPickUp;
     public GameObject PickedObject;
     public Transform interactionZone; //Ubicacion donde quiero que quede agarrado el objeto
+    
 
     // Update is called once per frame
     void Update()
@@ -22,6 +23,7 @@ public class PickUpObject : MonoBehaviour
                 PickedObject.transform.position = interactionZone.position;//Lo ponemos en la posicion de la zona de interaccion o donde queramos
                 PickedObject.GetComponent<Rigidbody>().useGravity = false; //Para que lo agarremos y no se nos caiga
                 PickedObject.GetComponent<Rigidbody>().isKinematic = true; //Para que no le afecte la fisica
+                ObjectToPickUp.GetComponent<PickableObject>().isPicked = true;
             }
         }
 
@@ -35,6 +37,7 @@ public class PickUpObject : MonoBehaviour
                 PickedObject.GetComponent<Rigidbody>().useGravity = true;
                 PickedObject.GetComponent<Rigidbody>().isKinematic = false;
                 PickedObject = null;
+                ObjectToPickUp.GetComponent<PickableObject>().isPicked = false;
             }
         }
     }
