@@ -116,7 +116,7 @@ ModelImporter:
     4300006: L.Revolver
     4300008: Hat
     4300010: Egg
-    7400000: Armature|ArmatureAction
+    7400000: RangeEnemyStareAnim
     7400002: Armature|RevolverCylinderAction.001
     7400004: RangeEnemyWalkingAnim
     7400006: RangeEnemyShootAnim
@@ -158,17 +158,17 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|ArmatureAction
+      name: RangeEnemyStareAnim
       takeName: Armature|ArmatureAction
-      firstFrame: 0
-      lastFrame: 340
+      firstFrame: 126
+      lastFrame: 127
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
