@@ -162,7 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectToPickUp: {fileID: 0}
   PickedObject: {fileID: 0}
-  interactionZone: {fileID: 0}
+  interactionZone: {fileID: 3802250536792954440}
 --- !u!114 &3802250537385810142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1095,8 +1095,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3802250536792787560}
   m_LocalRotation: {x: -0.0775351, y: -0.0005615712, z: -0.0069387187, w: 0.99696535}
-  m_LocalPosition: {x: -5.820766e-13, y: 0.010081289, z: 5.9656485e-10}
-  m_LocalScale: {x: 1, y: 0.99999994, z: 0.9999999}
+  m_LocalPosition: {x: 0, y: 0.010081289, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3802250536654051120}
   - {fileID: 3802250536792954446}
