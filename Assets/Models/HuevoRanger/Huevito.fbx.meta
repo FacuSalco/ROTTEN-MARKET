@@ -1,0 +1,329 @@
+fileFormatVersion: 2
+guid: 4b82fedab46c47b48bdf816619ddd485
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Cigar
+    100004: Cigar 1
+    100006: Cigar_end
+    100008: Egg
+    100010: Eyebrows
+    100012: Hat
+    100014: Hat 1
+    100016: Hat_end
+    100018: //RootNode
+    100020: L.Antebrazo
+    100022: L.BaseIndice
+    100024: L.BaseMedio
+    100026: L.Brazo
+    100028: L.Eyebrow
+    100030: L.Eyebrow_end
+    100032: L.Hombro
+    100034: L.Mano
+    100036: "L.Me\xF1ique"
+    100038: "L.Me\xF1ique_end"
+    100040: L.Pulgar
+    100042: L.Pulgar_end
+    100044: L.PuntaIndice
+    100046: L.PuntaIndice_end
+    100048: L.PuntaMedio
+    100050: L.PuntaMedio_end
+    100052: L.Revolver
+    100054: L.Revolver 1
+    100056: L.Revolver_end
+    100058: R.Antebrazo
+    100060: R.BaseIndice
+    100062: R.BaseMedio
+    100064: R.Brazo
+    100066: R.Eyebrow
+    100068: R.Eyebrow_end
+    100070: R.Hombro
+    100072: R.Mano
+    100074: "R.Me\xF1ique"
+    100076: "R.Me\xF1ique_end"
+    100078: R.Pulgar
+    100080: R.Pulgar_end
+    100082: R.PuntaIndice
+    100084: R.PuntaIndice_end
+    100086: R.PuntaMedio
+    100088: R.PuntaMedio_end
+    100090: R.Revolver
+    100092: R.Revolver 1
+    100094: R.Revolver_end
+    100096: Root
+    400000: Armature
+    400002: Cigar
+    400004: Cigar 1
+    400006: Cigar_end
+    400008: Egg
+    400010: Eyebrows
+    400012: Hat
+    400014: Hat 1
+    400016: Hat_end
+    400018: //RootNode
+    400020: L.Antebrazo
+    400022: L.BaseIndice
+    400024: L.BaseMedio
+    400026: L.Brazo
+    400028: L.Eyebrow
+    400030: L.Eyebrow_end
+    400032: L.Hombro
+    400034: L.Mano
+    400036: "L.Me\xF1ique"
+    400038: "L.Me\xF1ique_end"
+    400040: L.Pulgar
+    400042: L.Pulgar_end
+    400044: L.PuntaIndice
+    400046: L.PuntaIndice_end
+    400048: L.PuntaMedio
+    400050: L.PuntaMedio_end
+    400052: L.Revolver
+    400054: L.Revolver 1
+    400056: L.Revolver_end
+    400058: R.Antebrazo
+    400060: R.BaseIndice
+    400062: R.BaseMedio
+    400064: R.Brazo
+    400066: R.Eyebrow
+    400068: R.Eyebrow_end
+    400070: R.Hombro
+    400072: R.Mano
+    400074: "R.Me\xF1ique"
+    400076: "R.Me\xF1ique_end"
+    400078: R.Pulgar
+    400080: R.Pulgar_end
+    400082: R.PuntaIndice
+    400084: R.PuntaIndice_end
+    400086: R.PuntaMedio
+    400088: R.PuntaMedio_end
+    400090: R.Revolver
+    400092: R.Revolver 1
+    400094: R.Revolver_end
+    400096: Root
+    2100000: eyebrow
+    2100002: Material.003
+    2100004: Material.001
+    2100006: Material.007
+    2100008: huevo.001
+    2100010: Material.008
+    2100012: Material.006
+    2100014: Material.005
+    2100016: Material.004
+    4300000: Eyebrows
+    4300002: Cigar
+    4300004: R.Revolver
+    4300006: L.Revolver
+    4300008: Hat
+    4300010: Egg
+    7400000: Armature|ArmatureAction
+    7400002: Armature|RevolverCylinderAction.001
+    7400004: RangeEnemyWalkingAnim
+    7400006: RangeEnemyShootAnim
+    7400008: RangeEnemyIdleAnim
+    9500000: //RootNode
+    13700000: Cigar
+    13700002: Egg
+    13700004: Eyebrows
+    13700006: Hat
+    13700008: L.Revolver
+    13700010: R.Revolver
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|ArmatureAction
+      takeName: Armature|ArmatureAction
+      firstFrame: 0
+      lastFrame: 340
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: RangeEnemyWalkingAnim
+      takeName: Armature|ArmatureAction
+      firstFrame: 37
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: RangeEnemyShootAnim
+      takeName: Armature|ArmatureAction
+      firstFrame: 126
+      lastFrame: 156
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: RangeEnemyIdleAnim
+      takeName: Armature|ArmatureAction
+      firstFrame: 180
+      lastFrame: 340
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

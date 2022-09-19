@@ -151,7 +151,7 @@ BlendTree:
     m_DirectBlendParameter: PlayerWalkVelocity
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400016, guid: 6b8f00a999474a1498c072c063e1751d, type: 3}
+    m_Motion: {fileID: 7400000, guid: 21d86a303c265144b82ff122fe03bbf7, type: 2}
     m_Threshold: 1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1

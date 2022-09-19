@@ -36,8 +36,6 @@ public class EnemyHealthBar : MonoBehaviour
 
         if(currentHealth <= 0)
         {
-
-         
             Destroy(gameObject);
 
             if (spawn == true)
@@ -58,7 +56,7 @@ public class EnemyHealthBar : MonoBehaviour
             dealDamage(damage);
         }
 
-        if (col.gameObject.tag == "handHitbox")
+        if (col.gameObject.tag == "handHitbox" || col.gameObject.tag == "rightHandHitbox")
         {
             float damage = PlayerData.PunchData.weaponDamage;
 

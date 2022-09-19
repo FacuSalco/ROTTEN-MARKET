@@ -25,6 +25,8 @@ public class PlayerController1 : MonoBehaviour
     private float punchSelect;
     private bool canPunch = true;
 
+    public GameObject leftHand, rightHand;
+
     //Varaibles movimiento relativo a camara
     public Camera mainCamera;
     private Vector3 camForward;
@@ -208,16 +210,22 @@ public class PlayerController1 : MonoBehaviour
 
     public void ActivatePunchHitbox()
     {
-        GameObject Hand = GameObject.FindGameObjectWithTag("handHitbox");
-
-        Hand.SetActive(true);
+        leftHand.SetActive(true);
     }
 
     public void DesactivatePunchHitbox()
     {
-        GameObject Hand = GameObject.FindGameObjectWithTag("handHitbox");
+        leftHand.SetActive(false);
+    }
 
-        Hand.SetActive(false);
+    public void ActivateRightPunchHitbox()
+    {
+        rightHand.SetActive(true);
+    }
+
+    public void DesactivateRightPunchHitbox()
+    {
+        rightHand.SetActive(false);
     }
 }
 
