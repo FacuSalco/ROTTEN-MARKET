@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
+using TMPro;
 
 public class ChangeConfigs : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class ChangeConfigs : MonoBehaviour
     public float sensitivityX, sensitivityY;
     public Slider volumeSlider, sensXSlider, sensYSlider;
     public Image VolOnImg, VolOffImg;
+    public TMP_Text VolNumber, XSensNumber, YSensNumber;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,10 @@ public class ChangeConfigs : MonoBehaviour
 
         AudioListener.volume = volumeSlider.value;
         RevisarSiEstaMute();
+        //Mostrar sin decimales
+        VolNumber.text = (volumeSlider.value * 100).ToString("0") + "%";
+        XSensNumber.text = (sensitivityX * 10).ToString("F0");
+        YSensNumber.text = (sensitivityY * 10).ToString("F0");
     }
 
     void RevisarSiEstaMute()

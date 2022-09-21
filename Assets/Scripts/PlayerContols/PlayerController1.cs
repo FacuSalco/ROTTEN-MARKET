@@ -16,7 +16,8 @@ public class PlayerController1 : MonoBehaviour
     private Vector3 playerInput;
 
     public CharacterController player;
-    public float playerSpeed;
+    public float inputPlayerSpeed;
+    private float playerSpeed;
     public float currentSpeed;
     public float gravity;
     public float fallVelocity;
@@ -49,6 +50,9 @@ public class PlayerController1 : MonoBehaviour
         playerAnimatorControler = GetComponent<Animator>();
 
         Cursor.lockState = CursorLockMode.Locked; //Para que no aparezca el mouse en la pantalla
+
+        playerSpeed = inputPlayerSpeed;
+
     }
 
     // Bucle de juego que se ejecuta en cada frame
@@ -84,12 +88,12 @@ public class PlayerController1 : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift)) //Para que el personaje corra, tener en cuenta que esto es para cuando la playerSpeed es 5, si no es 5 hay que modificar
         {
             isRunning = true;
-            playerSpeed = 10;
+            playerSpeed = inputPlayerSpeed * 2;
         }
         else
         {
             isRunning = false;
-            playerSpeed = 5;
+            playerSpeed = inputPlayerSpeed;
         }
     }
 

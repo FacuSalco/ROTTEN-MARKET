@@ -32,6 +32,7 @@ public class NPCShopList : MonoBehaviour
             shopListFull = true;
             Debug.Log("Me trajiste todos los objetos! Gracias");
         }
+                
     }
     
     void OnTriggerEnter(Collider col)
@@ -44,13 +45,10 @@ public class NPCShopList : MonoBehaviour
 
         for (int i = 0; i < shopList.Length; i++)
         {
-            if (col.gameObject.name == shopList[i].name && col.transform.root.CompareTag("Player")) //Entra con objeto de la lista en mano
+            if (col.gameObject.name == shopList[i].name && col.transform.root.CompareTag("Player")) //Entra con objeto de la lista que el tag del padre es "Player", osea si lo tiene en la mano
             {
                 trajoObjeto = true;
                 objetoTraido = shopList[i];
-                //shopList[i].SetActive(false);//No se puede poner destruir porque si no no anda el FOR
-                //Debug.Log("Entro con " + col.gameObject.name);
-                //cantObjetosEntregados++;
             }
             
         }
