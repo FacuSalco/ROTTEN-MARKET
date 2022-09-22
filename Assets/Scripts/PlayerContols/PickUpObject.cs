@@ -20,10 +20,19 @@ public class PickUpObject : MonoBehaviour
         if (ObjectToPickUp != null && ObjectToPickUp.GetComponent<PickableObject>().isPickable == true && PickedObject == null)
         {
             if (Input.GetKeyDown(KeyCode.F))//Si toco la F suceda lo de abajo
-            {   
-                int i = Random.Range(0, 2);
-                hand = i;
+            {
                 PickedObject = ObjectToPickUp;
+                float distanceRight = Vector3.Distance(interactionZone[0].position, PickedObject.transform.position); //Distancia entre la mano derecha y el objeto
+                float distanceLeft = Vector3.Distance(interactionZone[1].position, PickedObject.transform.position); //Distancia entre la mano izquierda y el objeto
+                if (distanceRight < distanceLeft) 
+                {
+                    //Si esta mas cerca la mano derecha, agarra con la mano derecha
+                    hand = 0;
+                }
+                else
+                {
+                    hand = 1;
+                }
                 PickedObject.GetComponent<PickableObject>().isPickable = false; //Le avisamos que ya agarramos el objeto
                 PickedObject.transform.SetParent(interactionZone[hand]); //Lo parenteamos
                 PickedObject.transform.position = interactionZone[hand].position;//Lo ponemos en la posicion de la zona de interaccion o donde queramos
