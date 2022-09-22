@@ -10,10 +10,8 @@ public class GunnerAi : MonoBehaviour
     public float rangoDeAlerta, rangoDeAlerta2, correrDelJugador, fireRange;
     public LayerMask capaDelJugador;
     bool estarAlerta, estarAlerta2, jugadorCerca, notWalk;
-    public Transform runDir;
     private Transform Player;
     public float enemySpeed, enemySpeed2;
-    bool runAway = false;
     EnemyNavMeshController enemyNav;
     private Animator enemyAnimator;
 
@@ -65,14 +63,18 @@ public class GunnerAi : MonoBehaviour
         if (hit.collider && hit.collider.gameObject.name == "Player")
         {
             playerSeen = true;
-            enemyAnimator.SetBool("playerSeen", true);
+
+            if (isReadyToShoot)
+            {
+                enemyAnimator.SetBool("playerSeen", true);
+            }
         }
 
         if(playerSeen == true)
         {
-            if (estarAlerta2 == true && estarAlerta == false && jugadorCerca == false && runAway == false && notWalk == false)
+            if (estarAlerta2 == true && estarAlerta == false && jugadorCerca == false && notWalk == false)
             {
-
+                enemyAnimator.SetFloat("motion", 1f);
                 Vector3 playerPos = new Vector3(Player.position.x, transform.position.y, Player.position.z);
                 transform.LookAt(playerPos);
                 transform.position = Vector3.MoveTowards(transform.position, playerPos, enemySpeed2 * Time.deltaTime);
@@ -90,6 +92,16 @@ public class GunnerAi : MonoBehaviour
 
                     transform.LookAt(playerPos);
 
+                    if (isReadyToShoot)
+                    {
+                        isReadyToShoot = false;
+                        enemyAnimator.SetBool("canShoot", true);
+
+
+
+
+                    }
+
                 }
                 if (notWalk == false)
                 {
@@ -97,20 +109,13 @@ public class GunnerAi : MonoBehaviour
                 }
                 //turret shot
 
-                if (isReadyToShoot)
-                {
-
-                    ShootStart();
-
-                }
-
 
 
             }
             else
             {
                 playerSeen = false;
-                enemyAnimator.SetBool("playerSeen", false);
+                enemyAnimator.SetFloat("motion", 0f);
             }
         }
 
@@ -122,7 +127,7 @@ public class GunnerAi : MonoBehaviour
     {
         GameObject clon;
 
-        clon = Instantiate(bulletPrefab, turretPivotRight.transform.position, transform.rotation);
+        clon = Instantiate(bulletPrefab, turretPivotRight.transform.position, gameObject.transform.rotation);
         Destroy(clon, 6);
     }
 
@@ -130,18 +135,31 @@ public class GunnerAi : MonoBehaviour
     {
         GameObject clon;
 
-        clon = Instantiate(bulletPrefab, turretPivotLeft.transform.position, transform.rotation);
+        clon = Instantiate(bulletPrefab, turretPivotLeft.transform.position, gameObject.transform.rotation);
         Destroy(clon, 6);
     }
 
     IEnumerator ShootStart()
     {
-        isReadyToShoot = false;
-        enemyAnimator.SetBool("canShoot", true);
+        attackAnimSet();
 
         yield return new WaitForSeconds(4f);
 
+        attackAnimSet2();
+    }
+
+    public void attackAnimSet()
+    {
+        isReadyToShoot = false;
+        enemyAnimator.SetBool("canShoot", true);
+        enemyAnimator.SetBool("playerSeen", false);
+
+    }
+
+    public void attackAnimSet2()
+    {
         enemyAnimator.SetBool("canShoot", false);
+        enemyAnimator.SetBool("playerSeen", true);
         isReadyToShoot = true;
     }
 

@@ -123,6 +123,7 @@ public class PlayerController1 : MonoBehaviour
             playerAnimatorControler.SetTrigger("PlayerJump");
         }
 
+        //piña
         if (player.isGrounded && Input.GetMouseButtonDown(0))
         {
             if (canPunch)
