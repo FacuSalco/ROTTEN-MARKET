@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     //NO SOLO TIENE LA HEALTH-BAR. TAMBIEN TIENE LAS MONEDAS PARA MOSTRAR
+    public GameObject playerCanvas;
     public Image barraVida;
     public static float vidaActual;
     public int vidaMaxima;
@@ -17,10 +18,11 @@ public class HealthBar : MonoBehaviour
     void Start()
     {
         vidaActual = vidaMaxima;
+        playerCanvas.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+// Update is called once per frame
+void Update()
     {
         int iVidaActual = (int)System.Math.Floor(vidaActual); //Convertir el float a int
         barraVida.fillAmount = vidaActual / vidaMaxima;
