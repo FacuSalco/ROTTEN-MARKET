@@ -15,6 +15,7 @@ public class NPCShopList : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        shopList = GameObject.FindGameObjectsWithTag("ObjectNPCList"); //El tag va en el objeto, no el empty
     }
 
     // Update is called once per frame
@@ -31,6 +32,7 @@ public class NPCShopList : MonoBehaviour
         {
             shopListFull = true;
             Debug.Log("Me trajiste todos los objetos! Gracias");
+
         }
                 
     }
