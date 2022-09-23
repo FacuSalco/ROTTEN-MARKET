@@ -28,7 +28,7 @@ void Update()
         barraVida.fillAmount = vidaActual / vidaMaxima;
 
         cantMonedas = GetComponent<PlayerStats>().Data.cantMonedas;
-        cantMonedasTxt.text = cantMonedas.ToString();
+        //cantMonedasTxt.text = cantMonedas.ToString();
 
     }
 
