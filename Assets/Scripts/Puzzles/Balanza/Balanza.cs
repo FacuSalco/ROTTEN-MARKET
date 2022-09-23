@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Balanza : MonoBehaviour
 {
-    public GameObject[] wheightThings;
-    public int pesoOk, pesoActual;
+    public float pesoOk, pesoActual;
 
     // Start is called before the first frame update
     void Start()
     {
-        wheightThings = GameObject.FindGameObjectsWithTag("ThingKG");
+
     }
 
     // Update is called once per frame
@@ -22,17 +21,21 @@ public class Balanza : MonoBehaviour
         }
     }
 
-    void OnColliderEnter(Collider col)
+    void OnCollisionEnter(Collision col)
     {
-        for (int i = 0; i < wheightThings.Length; i++)
-        {
-            if (col.gameObject.name == wheightThings[i].name) //Si es un objeto de los que tienen peso...
-            {
-                pesoActual += int.Parse(wheightThings[i].name);
-                Debug.Log("Agrego " + wheightThings[i].name + "kg" + ", ahora el peso esta en " + pesoActual);
-            }
+        Rigidbody rb = col.gameObject.GetComponent<Rigidbody>();
+        float colMasa = rb.mass;
+        pesoActual += colMasa;
 
-        }
     }
+
+    void OnCollisionExit(Collision col)
+    {
+        Rigidbody rb = col.gameObject.GetComponent<Rigidbody>();
+        float colMasa = rb.mass;
+        pesoActual -= colMasa;
+    }
+
+
 
 }
