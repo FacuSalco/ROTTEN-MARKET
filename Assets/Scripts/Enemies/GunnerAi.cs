@@ -7,28 +7,23 @@ public class GunnerAi : MonoBehaviour
 {
    
     //player detect
-    public float rangoDeAlerta, rangoDeAlerta2, correrDelJugador, fireRange;
+    public float attackingRange, walkingRange, correrDelJugador, fireRange;
     public LayerMask capaDelJugador;
-    bool estarAlerta, estarAlerta2, jugadorCerca, notWalk;
+    private bool attackingRangeBool, walkingRangeBool, jugadorCerca, notWalk;
     private Transform Player;
     public float enemySpeed, enemySpeed2;
     EnemyNavMeshController enemyNav;
     private Animator enemyAnimator;
 
-    //attack
-    public float time = 2;
-
     //turret
     public GameObject bulletPrefab;
-    public float rateOfFire = 1f;
-    float fireRateDelta;
     public Transform turretPivotRight, turretPivotLeft;
     private bool isReadyToShoot = true;
     
     //raycast
     public Transform shadowBody;
-    [SerializeField] private bool playerSeen = false;
-    [SerializeField] private float rayDistance;
+    private bool playerSeen = false;
+    private float rayDistance;
     RaycastHit hit;
     //navigation movement
     //EnemyNavMeshController enemyNav;
@@ -38,89 +33,81 @@ public class GunnerAi : MonoBehaviour
         enemyAnimator = GetComponent<Animator>();
         Player = GameObject.FindWithTag("Player").transform;
         enemyNav = gameObject.GetComponent<EnemyNavMeshController>();
+
+        rayDistance = walkingRange;
     }
 
     // Update is called once per frame
     void Update()
     {
         //seteando las esferas
-
-        estarAlerta = Physics.CheckSphere(transform.position, rangoDeAlerta, capaDelJugador);
-
-        estarAlerta2 = Physics.CheckSphere(transform.position, rangoDeAlerta2, capaDelJugador);
-
+        attackingRangeBool = Physics.CheckSphere(transform.position, attackingRange, capaDelJugador);
+        walkingRangeBool = Physics.CheckSphere(transform.position, walkingRange, capaDelJugador);
         jugadorCerca = Physics.CheckSphere(transform.position, correrDelJugador, capaDelJugador);
-
         notWalk = Physics.CheckSphere(transform.position, fireRange, capaDelJugador);
 
-        //camina hacia el jugador sin disparar
-
-
+        //Se fija si el jugador esta en el rango y devuelve true/false
         Physics.Raycast(shadowBody.position, shadowBody.transform.forward, out hit, rayDistance);
-
         shadowBody.transform.LookAt(Player);
 
         if (hit.collider && hit.collider.gameObject.name == "Player")
         {
             playerSeen = true;
-
-            if (isReadyToShoot)
-            {
-                enemyAnimator.SetBool("playerSeen", true);
-            }
+            enemyAnimator.SetBool("PlayerSeen", true);
+        }
+        else
+        {
+            playerSeen = false;
+            enemyAnimator.SetBool("PlayerSeen", false);
         }
 
+        //activa al enemigo
         if(playerSeen == true)
         {
-            if (estarAlerta2 == true && estarAlerta == false && jugadorCerca == false && notWalk == false)
+            if (walkingRangeBool && !attackingRangeBool)
             {
-                enemyAnimator.SetFloat("motion", 1f);
                 Vector3 playerPos = new Vector3(Player.position.x, transform.position.y, Player.position.z);
                 transform.LookAt(playerPos);
                 transform.position = Vector3.MoveTowards(transform.position, playerPos, enemySpeed2 * Time.deltaTime);
-
             }
 
-            if (estarAlerta == true)
+            if (attackingRangeBool)
             {
-
+                //definimos la posición del jugador con el eje y en 0
                 Vector3 playerPos = new Vector3(Player.position.x, transform.position.y, Player.position.z);
 
                 //Mira al jugador si esta en el área
-                if (jugadorCerca == false)
+                if (!jugadorCerca)
                 {
-
                     transform.LookAt(playerPos);
 
                     if (isReadyToShoot)
                     {
                         isReadyToShoot = false;
-                        enemyAnimator.SetBool("canShoot", true);
 
-
-
+                        StartCoroutine(ShootAnim());
 
                     }
 
                 }
-                if (notWalk == false)
+                if (!notWalk)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, playerPos, enemySpeed2 * Time.deltaTime);
                 }
                 //turret shot
-
-
-
             }
-            else
-            {
-                playerSeen = false;
-                enemyAnimator.SetFloat("motion", 0f);
-            }
-        }
-
- 
    
+        }  
+    }
+
+    IEnumerator ShootAnim()
+    {
+        enemyAnimator.SetBool("CanShoot", true);
+
+        yield return new WaitForSeconds(3f);
+
+        isReadyToShoot = true;
+        enemyAnimator.SetBool("CanShoot", false);
     }
 
     public void FireRight()
@@ -139,39 +126,16 @@ public class GunnerAi : MonoBehaviour
         Destroy(clon, 6);
     }
 
-    IEnumerator ShootStart()
-    {
-        attackAnimSet();
-
-        yield return new WaitForSeconds(4f);
-
-        attackAnimSet2();
-    }
-
-    public void attackAnimSet()
-    {
-        isReadyToShoot = false;
-        enemyAnimator.SetBool("canShoot", true);
-        enemyAnimator.SetBool("playerSeen", false);
-
-    }
-
-    public void attackAnimSet2()
-    {
-        enemyAnimator.SetBool("canShoot", false);
-        enemyAnimator.SetBool("playerSeen", true);
-        isReadyToShoot = true;
-    }
 
     //stop all coroutines
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, rangoDeAlerta);
+        Gizmos.DrawWireSphere(transform.position, attackingRange);
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, rangoDeAlerta2);
+        Gizmos.DrawWireSphere(transform.position, walkingRange);
 
         Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(transform.position, correrDelJugador);
