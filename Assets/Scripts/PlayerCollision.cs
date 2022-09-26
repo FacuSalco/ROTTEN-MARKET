@@ -7,7 +7,7 @@ public class PlayerCollision : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -16,11 +16,11 @@ public class PlayerCollision : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Coin"))
+    void OnTriggerEnter(Collider col)
+    {    
+        if (col.gameObject.tag == "Coin")
         {
-            Destroy(other.gameObject);
+            Destroy(col.gameObject);
             Debug.Log("Agarro moneda");
             GetComponent<PlayerStats>().Data.cantMonedas++;
         }
