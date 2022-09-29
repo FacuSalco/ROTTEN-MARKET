@@ -18,7 +18,7 @@ public class HealthBar : MonoBehaviour
     void Start()
     {
         vidaActual = vidaMaxima;
-        playerCanvas.SetActive(true);
+        //playerCanvas.SetActive(true);
     }
 
 // Update is called once per frame
@@ -28,7 +28,7 @@ void Update()
         barraVida.fillAmount = vidaActual / vidaMaxima;
 
         cantMonedas = GetComponent<PlayerStats>().Data.cantMonedas;
-        cantMonedasTxt.text = cantMonedas.ToString();
+        //cantMonedasTxt.text = cantMonedas.ToString();
 
     }
 

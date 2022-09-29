@@ -114,7 +114,7 @@ public class GunnerAi : MonoBehaviour
     {
         GameObject clon;
 
-        clon = Instantiate(bulletPrefab, turretPivotRight.transform.position, gameObject.transform.rotation);
+        clon = Instantiate(bulletPrefab, turretPivotRight.transform.position, turretPivotRight.transform.rotation);
         Destroy(clon, 6);
     }
 
