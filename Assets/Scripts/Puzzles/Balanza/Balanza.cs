@@ -11,7 +11,10 @@ public class Balanza : MonoBehaviour
 {
     public float pesoOk, pesoActual, pesoApple;
     public GameObject objetoEnMano;
+    bool playerOn;
     GameObject player;
+
+    List<Rigidbody> currentRigidbodies = new List<Rigidbody>();
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +23,7 @@ public class Balanza : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (pesoOk == pesoActual)
         {
@@ -32,38 +35,48 @@ public class Balanza : MonoBehaviour
             pesoActual = 0;
         }
 
-        if (player.gameObject.GetComponentInChildren<PickableObject>())
+        if (player.gameObject.GetComponentInChildren<PickableObject>()) //Si tiene algo en la mano
         {
             pesoApple = 200 + player.gameObject.GetComponentInChildren<PickableObject>().GetComponent<Rigidbody>().mass;
         }
-        else if (!player.gameObject.GetComponentInChildren<PickableObject>())
+        else //Si no tiene algo en la mano
         {
             pesoApple = 200;
         }
-        
 
+        ActualizarPeso();
     }
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject == objetoEnMano)
-        {
-            Debug.Log("El objeto es el mismo que tenia en la mano");
-            return;
-        }
+        //if (col.gameObject == objetoEnMano)
+        //{
+        //    Debug.Log("El objeto es el mismo que tenia en la mano");
+        //    return;
+        //}
 
-        Rigidbody rb = col.gameObject.GetComponent<Rigidbody>();
-        float colMasa = rb.mass;
-        pesoActual += colMasa;
+        //Rigidbody rb = col.gameObject.GetComponent<Rigidbody>();
+        //float colMasa = rb.mass;
+        //pesoActual += colMasa;
+
+        //LISTA
+
+
+        currentRigidbodies.Add(col.rigidbody);
+ 
 
     }
 
     void OnCollisionExit(Collision col)
     {
-        Rigidbody rb = col.gameObject.GetComponent<Rigidbody>();
-        float colMasa = rb.mass;
-        pesoActual -= colMasa;
-        
+        //Rigidbody rb = col.gameObject.GetComponent<Rigidbody>();
+        //float colMasa = rb.mass;
+        //pesoActual -= colMasa;
+
+        //LISTA  
+
+        currentRigidbodies.Remove(col.rigidbody);
+     
     }
 
     void OnTriggerEnter (Collider col)
@@ -71,7 +84,9 @@ public class Balanza : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             pesoActual += pesoApple;
-            
+            playerOn = true;
+
+
             //if (col.gameObject.GetComponentInChildren<PickableObject>()) //Se fija si tiene un hijo con el script PickableObject, osea si tiene algo en la mano
             //{
             //    objetoEnMano = col.gameObject.GetComponentInChildren<PickableObject>().gameObject; //Guarda el objeto que tiene en la mano
@@ -88,6 +103,7 @@ public class Balanza : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             pesoActual -= pesoApple;
+            playerOn = false;
 
             //if (col.gameObject.GetComponentInChildren<PickableObject>())
             //{
@@ -98,5 +114,24 @@ public class Balanza : MonoBehaviour
             //objetoEnMano = null;
 
         }
+    }
+
+    void ActualizarPeso()
+    {
+        if (playerOn)
+        {
+            pesoActual = pesoApple;
+        }
+
+        else
+        {
+            pesoActual = 0;
+        }
+        
+        foreach (Rigidbody rigidbody in currentRigidbodies)
+        {
+            pesoActual += rigidbody.mass;
+        }
+
     }
 }
