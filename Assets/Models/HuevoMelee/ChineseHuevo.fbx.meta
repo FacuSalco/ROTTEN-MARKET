@@ -1,0 +1,199 @@
+fileFormatVersion: 2
+guid: 153d29d82c30ee74eb388b87480226ee
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature
+    100002: //RootNode
+    100004: Egg
+    100006: Eyebrows
+    100008: Hat
+    100010: Hat 1
+    100012: Hat_end
+    100014: L.Antebrazo
+    100016: L.BaseIndice
+    100018: L.BaseMedio
+    100020: L.Brazo
+    100022: L.Espada
+    100024: L.Espada_end
+    100026: L.Eyebrow
+    100028: L.Eyebrow_end
+    100030: L.Hombro
+    100032: L.Katana
+    100034: L.Mano
+    100036: "L.Me\xF1ique"
+    100038: "L.Me\xF1ique_end"
+    100040: L.Pulgar
+    100042: L.Pulgar_end
+    100044: L.PuntaIndice
+    100046: L.PuntaIndice_end
+    100048: L.PuntaMedio
+    100050: L.PuntaMedio_end
+    100052: R.Antebrazo
+    100054: R.BaseIndice
+    100056: R.BaseMedio
+    100058: R.Brazo
+    100060: R.Espada
+    100062: R.Espada_end
+    100064: R.Eyebrow
+    100066: R.Eyebrow_end
+    100068: R.Hombro
+    100070: R.Katana
+    100072: R.Mano
+    100074: "R.Me\xF1ique"
+    100076: "R.Me\xF1ique_end"
+    100078: R.Pulgar
+    100080: R.Pulgar_end
+    100082: R.PuntaIndice
+    100084: R.PuntaIndice_end
+    100086: R.PuntaMedio
+    100088: R.PuntaMedio_end
+    100090: Root
+    400000: Armature
+    400002: //RootNode
+    400004: Egg
+    400006: Eyebrows
+    400008: Hat
+    400010: Hat 1
+    400012: Hat_end
+    400014: L.Antebrazo
+    400016: L.BaseIndice
+    400018: L.BaseMedio
+    400020: L.Brazo
+    400022: L.Espada
+    400024: L.Espada_end
+    400026: L.Eyebrow
+    400028: L.Eyebrow_end
+    400030: L.Hombro
+    400032: L.Katana
+    400034: L.Mano
+    400036: "L.Me\xF1ique"
+    400038: "L.Me\xF1ique_end"
+    400040: L.Pulgar
+    400042: L.Pulgar_end
+    400044: L.PuntaIndice
+    400046: L.PuntaIndice_end
+    400048: L.PuntaMedio
+    400050: L.PuntaMedio_end
+    400052: R.Antebrazo
+    400054: R.BaseIndice
+    400056: R.BaseMedio
+    400058: R.Brazo
+    400060: R.Espada
+    400062: R.Espada_end
+    400064: R.Eyebrow
+    400066: R.Eyebrow_end
+    400068: R.Hombro
+    400070: R.Katana
+    400072: R.Mano
+    400074: "R.Me\xF1ique"
+    400076: "R.Me\xF1ique_end"
+    400078: R.Pulgar
+    400080: R.Pulgar_end
+    400082: R.PuntaIndice
+    400084: R.PuntaIndice_end
+    400086: R.PuntaMedio
+    400088: R.PuntaMedio_end
+    400090: Root
+    2100000: MaterialHuevo
+    2100002: Material
+    2100004: MaterialJingasa
+    4300000: Eyebrows
+    4300002: Egg
+    4300004: Hat
+    4300006: R.Katana
+    4300008: L.Katana
+    7400000: Armature|ArmatureAction
+    9500000: //RootNode
+    13700000: Egg
+    13700002: Eyebrows
+    13700004: Hat
+    13700006: L.Katana
+    13700008: R.Katana
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

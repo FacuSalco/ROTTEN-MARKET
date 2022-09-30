@@ -13,8 +13,6 @@ public class bulletBehaviour : MonoBehaviour
 
     private void Start()
     {
-        //Player = GameObject.FindGameObjectWithTag("Player").transform;
-        //transform.LookAt(Player);
     }
 
     private void Awake()
@@ -25,7 +23,7 @@ public class bulletBehaviour : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(transform.up * projectileSpeed * Time.deltaTime);
+        transform.Translate(transform.forward * projectileSpeed * Time.deltaTime);
     }
 
     private void ConfigureTrail()
