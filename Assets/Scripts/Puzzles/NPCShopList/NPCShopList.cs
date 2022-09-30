@@ -28,7 +28,7 @@ public class NPCShopList : MonoBehaviour
             trajoObjeto = false;
         }
 
-        if (cantObjetosEntregados == shopList.Length)
+        if (cantObjetosEntregados == shopList.Length && !shopListFull)
         {
             shopListFull = true;
             Debug.Log("Me trajiste todos los objetos! Gracias");

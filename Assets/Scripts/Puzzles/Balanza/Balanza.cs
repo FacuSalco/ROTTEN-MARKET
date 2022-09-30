@@ -4,13 +4,8 @@ using System.Numerics;
 using UnityEngine;
 
 public class Balanza : MonoBehaviour
-    //NO ANDA, CUANDO TENGO UN OBJETO EN LA MANO Y LO SUELTO ES COMO SI EL PESO
-    //DEL OBJETO SE DUPLICA. NO SE LE SACA EL PESO DE QUE LO SOLTO Y SE AGREGA
-    //EL PESO DEL OBJETO. EJ: ENTRO CON OBJETO EN LA MANO Y PESA 201, SUELTO EL
-    //OBJETO Y PESA 202.
 {
     public float pesoOk, pesoActual, pesoApple;
-    public GameObject objetoEnMano;
     bool playerOn;
     GameObject player;
 
@@ -49,34 +44,12 @@ public class Balanza : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        //if (col.gameObject == objetoEnMano)
-        //{
-        //    Debug.Log("El objeto es el mismo que tenia en la mano");
-        //    return;
-        //}
-
-        //Rigidbody rb = col.gameObject.GetComponent<Rigidbody>();
-        //float colMasa = rb.mass;
-        //pesoActual += colMasa;
-
-        //LISTA
-
-
         currentRigidbodies.Add(col.rigidbody);
- 
-
     }
 
     void OnCollisionExit(Collision col)
     {
-        //Rigidbody rb = col.gameObject.GetComponent<Rigidbody>();
-        //float colMasa = rb.mass;
-        //pesoActual -= colMasa;
-
-        //LISTA  
-
         currentRigidbodies.Remove(col.rigidbody);
-     
     }
 
     void OnTriggerEnter (Collider col)
@@ -85,16 +58,6 @@ public class Balanza : MonoBehaviour
         {
             pesoActual += pesoApple;
             playerOn = true;
-
-
-            //if (col.gameObject.GetComponentInChildren<PickableObject>()) //Se fija si tiene un hijo con el script PickableObject, osea si tiene algo en la mano
-            //{
-            //    objetoEnMano = col.gameObject.GetComponentInChildren<PickableObject>().gameObject; //Guarda el objeto que tiene en la mano
-            //    Rigidbody rb = col.gameObject.GetComponentInChildren<PickableObject>().GetComponent<Rigidbody>(); //Agarra el rigidbody
-            //    float colMasa = rb.mass; //Agarra la masa del rigidbody
-            //    pesoActual += colMasa;
-            //}
-
         }
     }
 
@@ -104,15 +67,6 @@ public class Balanza : MonoBehaviour
         {
             pesoActual -= pesoApple;
             playerOn = false;
-
-            //if (col.gameObject.GetComponentInChildren<PickableObject>())
-            //{
-            //    Rigidbody rb = col.gameObject.GetComponentInChildren<PickableObject>().GetComponent<Rigidbody>();
-            //    float colMasa = rb.mass;
-            //    pesoActual -= colMasa;
-            //}
-            //objetoEnMano = null;
-
         }
     }
 
