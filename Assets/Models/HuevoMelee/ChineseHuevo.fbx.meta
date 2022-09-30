@@ -1,0 +1,426 @@
+fileFormatVersion: 2
+guid: 153d29d82c30ee74eb388b87480226ee
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature
+    100002: //RootNode
+    100004: Egg
+    100006: Eyebrows
+    100008: Hat
+    100010: Hat 1
+    100012: Hat_end
+    100014: L.Antebrazo
+    100016: L.BaseIndice
+    100018: L.BaseMedio
+    100020: L.Brazo
+    100022: L.Espada
+    100024: L.Espada_end
+    100026: L.Eyebrow
+    100028: L.Eyebrow_end
+    100030: L.Hombro
+    100032: L.Katana
+    100034: L.Mano
+    100036: "L.Me\xF1ique"
+    100038: "L.Me\xF1ique_end"
+    100040: L.Pulgar
+    100042: L.Pulgar_end
+    100044: L.PuntaIndice
+    100046: L.PuntaIndice_end
+    100048: L.PuntaMedio
+    100050: L.PuntaMedio_end
+    100052: R.Antebrazo
+    100054: R.BaseIndice
+    100056: R.BaseMedio
+    100058: R.Brazo
+    100060: R.Espada
+    100062: R.Espada_end
+    100064: R.Eyebrow
+    100066: R.Eyebrow_end
+    100068: R.Hombro
+    100070: R.Katana
+    100072: R.Mano
+    100074: "R.Me\xF1ique"
+    100076: "R.Me\xF1ique_end"
+    100078: R.Pulgar
+    100080: R.Pulgar_end
+    100082: R.PuntaIndice
+    100084: R.PuntaIndice_end
+    100086: R.PuntaMedio
+    100088: R.PuntaMedio_end
+    100090: Root
+    400000: Armature
+    400002: //RootNode
+    400004: Egg
+    400006: Eyebrows
+    400008: Hat
+    400010: Hat 1
+    400012: Hat_end
+    400014: L.Antebrazo
+    400016: L.BaseIndice
+    400018: L.BaseMedio
+    400020: L.Brazo
+    400022: L.Espada
+    400024: L.Espada_end
+    400026: L.Eyebrow
+    400028: L.Eyebrow_end
+    400030: L.Hombro
+    400032: L.Katana
+    400034: L.Mano
+    400036: "L.Me\xF1ique"
+    400038: "L.Me\xF1ique_end"
+    400040: L.Pulgar
+    400042: L.Pulgar_end
+    400044: L.PuntaIndice
+    400046: L.PuntaIndice_end
+    400048: L.PuntaMedio
+    400050: L.PuntaMedio_end
+    400052: R.Antebrazo
+    400054: R.BaseIndice
+    400056: R.BaseMedio
+    400058: R.Brazo
+    400060: R.Espada
+    400062: R.Espada_end
+    400064: R.Eyebrow
+    400066: R.Eyebrow_end
+    400068: R.Hombro
+    400070: R.Katana
+    400072: R.Mano
+    400074: "R.Me\xF1ique"
+    400076: "R.Me\xF1ique_end"
+    400078: R.Pulgar
+    400080: R.Pulgar_end
+    400082: R.PuntaIndice
+    400084: R.PuntaIndice_end
+    400086: R.PuntaMedio
+    400088: R.PuntaMedio_end
+    400090: Root
+    2100000: MaterialHuevo
+    2100002: Material
+    2100004: MaterialJingasa
+    4300000: Eyebrows
+    4300002: Egg
+    4300004: Hat
+    4300006: R.Katana
+    4300008: L.Katana
+    7400000: MeleeEggIdleAnim
+    7400002: MeleeEggAwakingAnim
+    7400004: MeleeEggWalkingAnim
+    7400006: MeleeEggDamagedAnim
+    7400008: MeleeEggSecondAttackAnim
+    7400010: MeleeEggFirstAttackAnim
+    7400012: MeleeEggThirdAttackAnim
+    9500000: //RootNode
+    13700000: Egg
+    13700002: Eyebrows
+    13700004: Hat
+    13700006: L.Katana
+    13700008: R.Katana
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: e37094fc02c22104b809fb084ab7654c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MaterialHuevo
+    second: {fileID: 2100000, guid: 0123dbb2488658443ba0eed8c128dd5c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MaterialJingasa
+    second: {fileID: 2100000, guid: 50b2f39c6033f52418737df130c3bce3, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: ChineseHuevoTexture
+    second: {fileID: 2800000, guid: 532a0edffc007394598f829c52dc06b3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: lH8yTHvm
+    second: {fileID: 2800000, guid: bf7d9c1113ab1484c9cf05fbcef57108, type: 3}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: MeleeEggIdleAnim
+      takeName: Armature|ArmatureAction
+      firstFrame: 60
+      lastFrame: 180
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: MeleeEggAwakingAnim
+      takeName: Armature|ArmatureAction
+      firstFrame: 190
+      lastFrame: 300
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: MeleeEggWalkingAnim
+      takeName: Armature|ArmatureAction
+      firstFrame: 350
+      lastFrame: 390
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: MeleeEggDamagedAnim
+      takeName: Armature|ArmatureAction
+      firstFrame: 450
+      lastFrame: 470
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: MeleeEggSecondAttackAnim
+      takeName: Armature|ArmatureAction
+      firstFrame: 500
+      lastFrame: 530
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: MeleeEggFirstAttackAnim
+      takeName: Armature|ArmatureAction
+      firstFrame: 540
+      lastFrame: 570
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: MeleeEggThirdAttackAnim
+      takeName: Armature|ArmatureAction
+      firstFrame: 580
+      lastFrame: 610
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

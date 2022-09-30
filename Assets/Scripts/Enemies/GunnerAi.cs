@@ -48,8 +48,7 @@ public class GunnerAi : MonoBehaviour
 
         //Se fija si el jugador esta en el rango y devuelve true/false
         Physics.Raycast(shadowBody.position, shadowBody.transform.forward, out hit, rayDistance);
-        shadowBody.transform.LookAt(Player);
-
+        shadowBody.LookAt(Player);
         if (hit.collider && hit.collider.gameObject.name == "Player")
         {
             playerSeen = true;
@@ -122,7 +121,7 @@ public class GunnerAi : MonoBehaviour
     {
         GameObject clon;
 
-        clon = Instantiate(bulletPrefab, turretPivotLeft.transform.position, gameObject.transform.rotation);
+        clon = Instantiate(bulletPrefab, turretPivotLeft.transform.position, turretPivotRight.transform.rotation);
         Destroy(clon, 6);
     }
 
