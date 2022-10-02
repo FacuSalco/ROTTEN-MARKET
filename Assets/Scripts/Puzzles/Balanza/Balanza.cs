@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
+using TMPro;
 
 public class Balanza : MonoBehaviour
 {
     public float pesoOk, pesoActual, pesoApple;
     bool playerOn;
     GameObject player;
+    public TextMeshPro txtPeso;
 
     List<Rigidbody> currentRigidbodies = new List<Rigidbody>();
 
@@ -32,7 +34,7 @@ public class Balanza : MonoBehaviour
 
         if (player.gameObject.GetComponentInChildren<PickableObject>()) //Si tiene algo en la mano
         {
-            pesoApple = 200 + player.gameObject.GetComponentInChildren<PickableObject>().GetComponent<Rigidbody>().mass;
+            pesoApple = 200 + player.gameObject.GetComponentInChildren<PickableObject>().GetComponent<Rigidbody>().mass*10;
         }
         else //Si no tiene algo en la mano
         {
@@ -40,6 +42,9 @@ public class Balanza : MonoBehaviour
         }
 
         ActualizarPeso();
+
+        txtPeso.text = pesoActual.ToString() + "kg";
+
     }
 
     void OnCollisionEnter(Collision col)
@@ -84,7 +89,7 @@ public class Balanza : MonoBehaviour
         
         foreach (Rigidbody rigidbody in currentRigidbodies)
         {
-            pesoActual += rigidbody.mass;
+            pesoActual += rigidbody.mass *10;
         }
 
     }
