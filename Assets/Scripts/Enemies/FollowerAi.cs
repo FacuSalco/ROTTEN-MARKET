@@ -22,8 +22,6 @@ public class FollowerAi : MonoBehaviour
     float grado;
 
     //navMesh
-    public float walkSpeed;
-    public float runSpeed;
     private NavMeshAgent agent;
 
     //raycast
@@ -131,6 +129,11 @@ public class FollowerAi : MonoBehaviour
                 break;
         }
 
+
+    }
+
+    public void ActivateLeftSword()
+    {
 
     }
 
