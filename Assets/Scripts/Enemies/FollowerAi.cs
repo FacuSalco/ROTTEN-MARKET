@@ -136,6 +136,21 @@ public class FollowerAi : MonoBehaviour
     {
 
     }
+    public void DeactivateLeftSword()
+    {
+
+    }
+
+
+    public void ActivateRightSword()
+    {
+
+    }
+
+    public void DesactivateRightSword()
+    {
+
+    }
 
     private void OnDrawGizmos()
     {
