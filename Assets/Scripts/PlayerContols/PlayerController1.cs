@@ -52,6 +52,13 @@ public class PlayerController1 : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked; //Para que no aparezca el mouse en la pantalla
 
         playerSpeed = inputPlayerSpeed;
+        
+        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+
+        if (inputPlayerSpeed == 0)
+        {
+            inputPlayerSpeed = 5;
+        }
 
     }
 
@@ -85,7 +92,7 @@ public class PlayerController1 : MonoBehaviour
 
         currentSpeed = player.velocity.magnitude;
 
-        if (Input.GetKey(KeyCode.LeftShift)) //Para que el personaje corra, tener en cuenta que esto es para cuando la playerSpeed es 5, si no es 5 hay que modificar
+        if (Input.GetKey(KeyCode.LeftShift)) //Para que el personaje corra
         {
             isRunning = true;
             playerSpeed = inputPlayerSpeed * 2;

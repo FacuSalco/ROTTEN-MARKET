@@ -114,13 +114,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
+  m_Height: 4.43
+  m_Radius: 1.71
   m_SlopeLimit: 45.1
   m_StepOffset: 0.31
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1.26, z: 0}
 --- !u!114 &3802250537385810139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectToPickUp: {fileID: 0}
   PickedObject: {fileID: 0}
-  interactionZone: {fileID: 3802250536792954440}
+  interactionZone: []
 --- !u!114 &3802250537385810142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94f21d1bf55e9304cb29366347511126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCanvas: {fileID: 0}
   barraVida: {fileID: 0}
   vidaMaxima: 100
   cantMonedas: 0
@@ -205,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  playerSpeed: 5
+  inputPlayerSpeed: 0
   currentSpeed: 0
   gravity: 25
   fallVelocity: 0
