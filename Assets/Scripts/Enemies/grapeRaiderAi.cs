@@ -103,35 +103,11 @@ public class grapeRaiderAi : MonoBehaviour
 
         explotionDelay -= Time.deltaTime;
 
-        if(explotionDelay < 0)
-        {
-            if (distancePE >= 0 && distancePE < 1.2)
-            {
-                HealthBar.vidaActual -= 50;
-            }
-            else if (distancePE >= 1.2 && distancePE < 1.8)
-            {
-                HealthBar.vidaActual -= 30;
-            }
-            else if (distancePE >= 1.8 && distancePE < 2.4)
-            {
-                HealthBar.vidaActual -= 20;
-            }
-            else if (distancePE >= 2.4 && distancePE < 3)
-            {
-                HealthBar.vidaActual -= 10;
-            }
-            else
-            {
-                HealthBar.vidaActual -= 0;
-            }
-
-
             GameObject clon = Instantiate(particleExplotion, transform.position, transform.rotation);
             Destroy(clon, 0.9f);
 
             Destroy(gameObject);
-        }
+        
     }
 
 

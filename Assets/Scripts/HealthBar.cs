@@ -8,7 +8,7 @@ public class HealthBar : MonoBehaviour
     //NO SOLO TIENE LA HEALTH-BAR. TAMBIEN TIENE LAS MONEDAS PARA MOSTRAR
     public GameObject playerCanvas;
     public Image barraVida;
-    public static float vidaActual;
+    public float vidaActual;
     public int vidaMaxima;
     static public bool immortal;
     public int cantMonedas;
@@ -30,6 +30,17 @@ void Update()
         cantMonedas = GetComponent<PlayerStats>().Data.cantMonedas;
         //cantMonedasTxt.text = cantMonedas.ToString();
 
+        if(vidaActual < 0)
+        {
+            //morir
+        }
+
+    }
+
+    public void makeDamage(int damage)
+    {
+
+        vidaActual -= damage;
     }
 
 }
