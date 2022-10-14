@@ -12,6 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6f09cffe0d4b94da6d3229a90bed2e, type: 3}
   m_Name: IntroNPC
   m_EditorClassIdentifier: 
-  dialogues: []
-  hasTalked: 0
+  dialoguesBeforeMission:
+  - Hola?
+  - Quien sos vos?
+  - sos nuevo no?
+  mission: La mision es matar 3 huevos
+  dialoguesAfterMission:
+  - Gracias por ayudarme
+  - Aca tenes tu recompensa
+  hasAcceptedMission: 1
+  hasDoneMission: 1
+  hasTalked: 1
   coinReward: 0
