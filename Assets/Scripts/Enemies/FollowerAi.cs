@@ -50,7 +50,6 @@ public class FollowerAi : MonoBehaviour
 
         enemyAnimator = GetComponent<Animator>();
 
-
     }
 
     // Update is called once per frame
@@ -94,7 +93,7 @@ public class FollowerAi : MonoBehaviour
             if (estarAlerta == true && !prockAttack)
             {
 
-               enemyNav.navRun();
+                enemyNav.navRun();
                 enemyAnimator.SetBool("isWalking", true);
 
                 //run anim
