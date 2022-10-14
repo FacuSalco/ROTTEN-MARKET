@@ -34,7 +34,7 @@ void Update()
 
         //MONEDAS
         cantMonedas = GetComponent<PlayerStats>().Data.cantMonedas;
-        cantMonedasTxt.text = cantMonedas.ToString();
+        //cantMonedasTxt.text = cantMonedas.ToString();
 
 
         //MUERTE

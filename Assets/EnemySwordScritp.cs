@@ -6,18 +6,6 @@ public class EnemySwordScritp : MonoBehaviour
 {
     private bool DoOnEnter = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnTriggerEnter()
     {
         if (DoOnEnter)
