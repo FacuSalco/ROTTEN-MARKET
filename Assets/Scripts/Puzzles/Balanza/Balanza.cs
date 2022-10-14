@@ -43,7 +43,7 @@ public class Balanza : MonoBehaviour
 
         ActualizarPeso();
 
-        txtPeso.text = pesoActual.ToString() + "kg";
+        txtPeso.text = pesoActual.ToString() + "g";
 
     }
 

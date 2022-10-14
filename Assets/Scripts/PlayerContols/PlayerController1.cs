@@ -61,6 +61,8 @@ public class PlayerController1 : MonoBehaviour
     // Bucle de juego que se ejecuta en cada frame
     void Update()
     {
+        jumpForce = Data.playerJumpForce;
+
         relativeSpeed = Data.playerSpeed;
 
         //Guardamos el valor de entrada horizontal y vertical para el movimiento

@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - 5-Damage
   - Ground
   - PlayerInteractionZone
   - Enemy
@@ -17,6 +16,7 @@ TagManager:
   - rightHandHitbox
   - ObjectNPCList
   - ThingKG
+  - Heal
   layers:
   - Default
   - TransparentFX

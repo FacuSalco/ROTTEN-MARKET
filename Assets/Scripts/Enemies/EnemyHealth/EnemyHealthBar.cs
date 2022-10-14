@@ -58,7 +58,7 @@ public class EnemyHealthBar : MonoBehaviour
 
         if (col.gameObject.tag == "handHitbox" || col.gameObject.tag == "rightHandHitbox")
         {
-            float damage = PlayerData.PunchData.weaponDamage;
+            float damage = PlayerData.PunchData.weaponDamage; //pasar a igualarlo al data de las upgrades
 
             dealDamage(damage);
         }

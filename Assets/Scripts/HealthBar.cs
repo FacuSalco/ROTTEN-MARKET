@@ -48,19 +48,7 @@ void Update()
     //HACER DAÑO AL PLAYER
     public void makeDamage(int damage)
     {
-
-        vidaActual -= damage;
-    }
-
-    //DETECTAR SI TOCO MONEDA
-    void OnTriggerEnter(Collider col)
-    {
-        if (col.gameObject.tag == "Coin")
-        {
-            Destroy(col.gameObject);
-            Debug.Log("Agarro moneda");
-            GetComponent<PlayerStats>().Data.cantMonedas++;
-        }
+        GetComponent<PlayerStats>().Data.playerHealth -= damage;
     }
 
 }

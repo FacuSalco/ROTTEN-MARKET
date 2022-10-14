@@ -11,4 +11,6 @@ public class PlayerData : ScriptableObject
     public float playerSpeed;
     public float playerJumpForce;
     public bool hasSword;
+    public int[] timesUpgraded = new int[5];
+
 }
