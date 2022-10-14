@@ -5,4 +5,10 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
     public int cantMonedas;
+    public float playerHealth;
+    public float playerMaxHealth;
+    public float playerDamage;
+    public float playerSpeed;
+    public float playerJumpForce;
+    public bool hasSword;
 }

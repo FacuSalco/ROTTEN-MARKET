@@ -9,7 +9,7 @@ public class HealthBar : MonoBehaviour
     public GameObject playerCanvas;
     public Image barraVida;
     public float vidaActual;
-    public int vidaMaxima;
+    public float vidaMaxima;
     static public bool immortal;
     public int cantMonedas;
     public Text cantMonedasTxt;
@@ -24,23 +24,43 @@ public class HealthBar : MonoBehaviour
 // Update is called once per frame
 void Update()
     {
+        //VIDA MAXIMA
+        vidaMaxima = GetComponent<PlayerStats>().Data.playerMaxHealth;
+
+        //VIDA ACTUAL
         int iVidaActual = (int)System.Math.Floor(vidaActual); //Convertir el float a int
         barraVida.fillAmount = vidaActual / vidaMaxima;
+        vidaActual = GetComponent<PlayerStats>().Data.playerHealth;
 
+        //MONEDAS
         cantMonedas = GetComponent<PlayerStats>().Data.cantMonedas;
-        //cantMonedasTxt.text = cantMonedas.ToString();
+        cantMonedasTxt.text = cantMonedas.ToString();
 
-        if(vidaActual < 0)
+
+        //MUERTE
+        if (vidaActual <= 0)
         {
             //morir
         }
 
     }
 
+    //HACER DAÑO AL PLAYER
     public void makeDamage(int damage)
     {
 
         vidaActual -= damage;
+    }
+
+    //DETECTAR SI TOCO MONEDA
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "Coin")
+        {
+            Destroy(col.gameObject);
+            Debug.Log("Agarro moneda");
+            GetComponent<PlayerStats>().Data.cantMonedas++;
+        }
     }
 
 }

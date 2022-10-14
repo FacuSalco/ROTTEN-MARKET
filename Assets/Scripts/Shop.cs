@@ -7,7 +7,8 @@ public class Shop : MonoBehaviour
     public float range;
     public LayerMask player;
     [SerializeField] bool isNear;
-    
+    public GameObject shopCanvas;
+
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,14 @@ public class Shop : MonoBehaviour
     void Update()
     {
         isNear = Physics.CheckSphere(transform.position, range, player);
+        
+        if (Input.GetKeyDown(KeyCode.E) && isNear)
+        {
+            PauseBehaviour.gameIsPaused = true;
+            shopCanvas.SetActive(true);
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     private void OnDrawGizmos()

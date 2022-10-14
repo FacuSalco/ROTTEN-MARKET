@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseBehaviour : MonoBehaviour
 {
-    public GameObject pauseMenuUI, optionsMenuUI, menuMenuUI;
+    public GameObject pauseMenuUI, optionsMenuUI, menuMenuUI, shopCanvasUI, canvases;
     public static bool gameIsPaused = false;
     // Start is called before the first frame update
     void Start()
@@ -22,11 +22,13 @@ public class PauseBehaviour : MonoBehaviour
             if (gameIsPaused) //Si esta en pausa
             {
                 Resume();
+                //canvases.SetActive(false);
             }
 
             else //Si no esta en pausa
             {
                 Pause();
+                //canvases.SetActive(true);
             }
         }
     }
@@ -36,6 +38,8 @@ public class PauseBehaviour : MonoBehaviour
         gameIsPaused = false;
         pauseMenuUI.SetActive(false);
         optionsMenuUI.SetActive(false);
+        menuMenuUI.SetActive(false);
+        shopCanvasUI.SetActive(false);
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
     }

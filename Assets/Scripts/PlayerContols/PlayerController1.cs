@@ -7,6 +7,7 @@ public class PlayerController1 : MonoBehaviour
 
     //Variables extras
     bool cooldown = false;
+    public PlayerData Data;
 
     //Variables movimiento
     float horizontalMove;
@@ -16,7 +17,7 @@ public class PlayerController1 : MonoBehaviour
     private Vector3 playerInput;
 
     public CharacterController player;
-    public float inputPlayerSpeed;
+    public float relativeSpeed;
     private float playerSpeed;
     public float currentSpeed;
     public float gravity;
@@ -51,20 +52,17 @@ public class PlayerController1 : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked; //Para que no aparezca el mouse en la pantalla
 
-        playerSpeed = inputPlayerSpeed;
+        playerSpeed = relativeSpeed;
         
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-
-        if (inputPlayerSpeed == 0)
-        {
-            inputPlayerSpeed = 5;
-        }
 
     }
 
     // Bucle de juego que se ejecuta en cada frame
     void Update()
     {
+        relativeSpeed = Data.playerSpeed;
+
         //Guardamos el valor de entrada horizontal y vertical para el movimiento
         horizontalMove = Input.GetAxis("Horizontal");
         verticalMove = Input.GetAxis("Vertical");
@@ -95,12 +93,12 @@ public class PlayerController1 : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift)) //Para que el personaje corra
         {
             isRunning = true;
-            playerSpeed = inputPlayerSpeed * 2;
+            playerSpeed = relativeSpeed * 2;
         }
         else
         {
             isRunning = false;
-            playerSpeed = inputPlayerSpeed;
+            playerSpeed = relativeSpeed;
         }
     }
 
@@ -128,6 +126,7 @@ public class PlayerController1 : MonoBehaviour
             fallVelocity = jumpForce; //La velocidad de caida pasa a ser igual a la velocidad de salto
             movePlayer.y = fallVelocity; //Y pasamos el valor a movePlayer.y
             playerAnimatorControler.SetTrigger("PlayerJump");
+            //PONER SONIDO DE SALTO
         }
 
         //piña
@@ -210,7 +209,8 @@ public class PlayerController1 : MonoBehaviour
         
         if (hit.collider.gameObject.tag == "5-Damage" && cooldown == false) //Para sacar vida
         {
-            HealthBar.vidaActual -= 5;
+            //Buscar la variable vidaActual en el script llamada "HealthBar"
+            GetComponent<HealthBar>().vidaActual -= 5;
             StartCoroutine(waitForCooldown()); //Que espere un segundo
         }
     }
