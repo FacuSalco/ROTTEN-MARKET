@@ -7,7 +7,7 @@ public class Shop : MonoBehaviour
     public float range;
     public LayerMask player;
     [SerializeField] bool isNear;
-    public GameObject shopCanvas;
+    public GameObject shopCanvas, playerCanvas;
 
 
     // Start is called before the first frame update
@@ -25,6 +25,7 @@ public class Shop : MonoBehaviour
         {
             PauseBehaviour.gameIsPaused = true;
             shopCanvas.SetActive(true);
+            playerCanvas.SetActive(false);
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
         }

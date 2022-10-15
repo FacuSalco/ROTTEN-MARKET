@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseBehaviour : MonoBehaviour
 {
-    public GameObject pauseMenuUI, optionsMenuUI, menuMenuUI, shopCanvasUI, canvases;
+    public GameObject pauseMenuUI, optionsMenuUI, menuMenuUI, shopCanvasUI, playerCanvas;
     public static bool gameIsPaused = false;
     // Start is called before the first frame update
     void Start()
@@ -40,6 +40,7 @@ public class PauseBehaviour : MonoBehaviour
         optionsMenuUI.SetActive(false);
         menuMenuUI.SetActive(false);
         shopCanvasUI.SetActive(false);
+        playerCanvas.SetActive(true);
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
     }

@@ -17,6 +17,7 @@ TagManager:
   - ObjectNPCList
   - ThingKG
   - Heal
+  - DamageObject
   layers:
   - Default
   - TransparentFX

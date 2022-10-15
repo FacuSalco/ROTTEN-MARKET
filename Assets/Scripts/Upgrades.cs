@@ -6,22 +6,36 @@ using UnityEngine.UI;
 
 public class Upgrades : MonoBehaviour
 {
+    public int precioMejora = 3;
+    public Text txtCoins;
+    int myCoins;
+    public Image swordUpgrade;
     public PlayerData Data;
     public int[] timesPressed = new int[5];
     public TMP_Text[] precios = new TMP_Text[5];
-    public Text txtCoins;
-    int myCoins;
-    public GameObject canvas;
     public Image[] healthUpgrade = new Image[3];
     public Image[] speedUpgrade = new Image[3];
-    public Image swordUpgrade;
     public Image[] jumpForceUpgrade = new Image[3];
     public Image[] damageUpgrade = new Image[3];
+
 
     // Start is called before the first frame update
     void Start()
     {
         timesPressed = Data.timesUpgraded;
+        
+        for (int i = 0; i < precios.Length; i++)
+        {
+            precios[i].text = precioMejora.ToString();
+
+            if (i == 4)
+            {
+                precios[i].text = (precioMejora*3).ToString();
+            }
+        }
+
+        
+
     }
 
     // Update is called once per frame
@@ -40,8 +54,31 @@ public class Upgrades : MonoBehaviour
             if (timesPressed[0] == 3)
             {
                 precios[0].text = "MAX";
+                healthUpgrade[i].GetComponent<Image>().color = Color.green;
+            }
+            else
+            {
+                precios[0].text = (precioMejora * (timesPressed[0] + 1)).ToString();
+            }
+
+        }
+
+        //UPDATE DEL DAMAGE
+        for (int i = 0; i < timesPressed[1]; i++)
+        {
+            damageUpgrade[i].GetComponent<Image>().color = Color.white;
+
+            if (timesPressed[1] == 3)
+            {
+                precios[1].text = "MAX";
+                damageUpgrade[i].GetComponent<Image>().color = Color.green;
+            }
+            else
+            {
+                precios[1].text = (precioMejora * (timesPressed[1] + 1)).ToString();
             }
         }
+
 
         //UPDATE DEL SPEED
         for (int i = 0; i < timesPressed[2]; i++)
@@ -51,6 +88,11 @@ public class Upgrades : MonoBehaviour
             if (timesPressed[2] == 3)
             {
                 precios[2].text = "MAX";
+                speedUpgrade[i].GetComponent<Image>().color = Color.green;
+            }
+            else
+            {
+                precios[2].text = (precioMejora * (timesPressed[2] + 1)).ToString();
             }
         }
 
@@ -62,55 +104,59 @@ public class Upgrades : MonoBehaviour
             if (timesPressed[3] == 3)
             {
                 precios[3].text = "MAX";
+                jumpForceUpgrade[i].GetComponent<Image>().color = Color.green;
             }
+            else
+            {
+                precios[3].text = (precioMejora * (timesPressed[3] + 1)).ToString();
+            }
+
         }
+        
+        //UPDATE DE LA SWORD
+        if (Data.hasSword == true)
+        {
+            swordUpgrade.GetComponent<Image>().color = Color.green;
+            precios[4].text = "MAX";
+        }
+
     }
 
     public void UpgradeHealth ()
     {
         int precio = int.Parse(precios[0].text);
-        //Debug.Log(precio);
 
-        if (timesPressed[0] <=3 && myCoins >= precio)
+        if (timesPressed[0] < 3 && myCoins >= precio)
         {
             timesPressed[0]++;
             Data.playerMaxHealth += 25;
             Data.playerHealth += 10;
             Data.cantMonedas -= precio;
-
-            if (timesPressed[0] != 3)
-            {
-                precios[0].text = (precio * 2).ToString();
-            }
         }
 
     }
 
     public void UpgradeDamage()
     {
+        int precio = int.Parse(precios[1].text);
 
-        if (timesPressed[1] <= 3)
+        if (timesPressed[1] < 3 && myCoins >= precio)
         {
             timesPressed[1]++;
-            Data.playerDamage += 20;            
+            Data.playerDamage += 20;
+            Data.cantMonedas -= precio;
         }
     }
 
     public void UpgradeSpeed()
     {
-        int precio = int.Parse(precios[2].text);
-        
+        int precio = int.Parse(precios[2].text);       
 
-        if (timesPressed[2] <= 3 && myCoins >= precio)
+        if (timesPressed[2] < 3 && myCoins >= precio)
         {
             timesPressed[2]++;
             Data.playerSpeed += 1.5f;
             Data.cantMonedas -= precio;
-
-            if (timesPressed[2] != 3)
-            {
-                precios[2].text = (precio * 2).ToString();
-            }
         }
     }
 
@@ -118,25 +164,22 @@ public class Upgrades : MonoBehaviour
     {
         int precio = int.Parse(precios[3].text);
 
-        if (timesPressed[3] <= 3 && myCoins >= precio)
+        if (timesPressed[3] < 3 && myCoins >= precio)
         {
             timesPressed[3]++;
             Data.playerJumpForce += 2;
             Data.cantMonedas -= precio;
-
-            if (timesPressed[3] != 3)
-            {
-                precios[3].text = (precio * 2).ToString();
-            }
         }
     }
 
     public void UpgradeSword()
     {
-        if (timesPressed[4] <= 1)
+        int precio = int.Parse(precios[4].text);
+
+        if (Data.hasSword == false && myCoins >= precio)
         {
-            timesPressed[4]++;
             Data.hasSword = true;
+            Data.cantMonedas -= precio;
         }
     }
 

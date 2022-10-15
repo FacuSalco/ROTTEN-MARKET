@@ -48,7 +48,10 @@ void Update()
     //HACER DAÑO AL PLAYER
     public void makeDamage(int damage)
     {
-        GetComponent<PlayerStats>().Data.playerHealth -= damage;
+        if (GetComponent<PlayerStats>().Data.immortal == false)
+        {
+            GetComponent<PlayerStats>().Data.playerHealth -= damage;
+        }
     }
 
 }

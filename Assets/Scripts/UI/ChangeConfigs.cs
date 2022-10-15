@@ -8,7 +8,7 @@ using TMPro;
 public class ChangeConfigs : MonoBehaviour
 {
     public CinemachineFreeLook cineCam;
-    public float sensitivityX, sensitivityY;
+    public float sensitivityX, sensitivityY, volume;
     public Slider volumeSlider, sensXSlider, sensYSlider;
     public Image VolOnImg, VolOffImg;
     public TMP_Text VolNumber, XSensNumber, YSensNumber;
@@ -16,7 +16,7 @@ public class ChangeConfigs : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AudioListener.volume = volumeSlider.value;
+        
     }
 
     // Update is called once per frame
@@ -28,16 +28,19 @@ public class ChangeConfigs : MonoBehaviour
         cineCam.m_YAxis.m_MaxSpeed = sensitivityY / 3.3f;
 
         AudioListener.volume = volumeSlider.value;
+
+        volume = volumeSlider.value;
+
         RevisarSiEstaMute();
         //Mostrar sin decimales
-        VolNumber.text = (volumeSlider.value * 100).ToString("0") + "%";
+        VolNumber.text = (volume * 100).ToString("0") + "%";
         XSensNumber.text = (sensitivityX * 10).ToString("F0");
         YSensNumber.text = (sensitivityY * 10).ToString("F0");
     }
 
     void RevisarSiEstaMute()
     { //Para cambiar la imagen del volumen
-        if (volumeSlider.value == 0)
+        if (VolNumber.text == "0%")
         {
             VolOffImg.enabled = true;
             VolOnImg.enabled = false;
