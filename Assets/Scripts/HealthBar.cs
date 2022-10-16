@@ -13,16 +13,21 @@ public class HealthBar : MonoBehaviour
     static public bool immortal;
     public int cantMonedas;
     public Text cantMonedasTxt;
+    public GameObject thirdPersonCamera;
+    SFXManager SFX;
+    static bool isDead;
 
     // Start is called before the first frame update
     void Start()
     {
         vidaActual = vidaMaxima;
+        SFX = GameObject.Find("[SFX-MANAGER]").GetComponent<SFXManager>();
+        isDead = false;
         //playerCanvas.SetActive(true);
     }
 
-// Update is called once per frame
-void Update()
+    // Update is called once per frame
+    void Update()
     {
         //VIDA MAXIMA
         vidaMaxima = GetComponent<PlayerStats>().Data.playerMaxHealth;
@@ -38,9 +43,12 @@ void Update()
 
 
         //MUERTE
-        if (vidaActual <= 0)
+        if (vidaActual <= 0 && !isDead)
         {
-            //morir
+            isDead = true;
+            SFX.PlayDeathSound();
+            thirdPersonCamera.SetActive(false);
+            //ANIMACION DE LA CAMARA CUANDO MUERE EL PLAYER
         }
 
     }
@@ -51,6 +59,7 @@ void Update()
         if (GetComponent<PlayerStats>().Data.immortal == false)
         {
             GetComponent<PlayerStats>().Data.playerHealth -= damage;
+            SFX.PlayHitSound();
         }
     }
 

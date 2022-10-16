@@ -8,6 +8,7 @@ public class PlayerController1 : MonoBehaviour
     //Variables extras
     bool cooldown = false;
     public PlayerData Data;
+    SFXManager SFX;
 
     //Variables movimiento
     float horizontalMove;
@@ -55,6 +56,8 @@ public class PlayerController1 : MonoBehaviour
         playerSpeed = relativeSpeed;
         
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+
+        SFX = GameObject.Find("[SFX-MANAGER]").GetComponent<SFXManager>();
 
     }
 
@@ -128,7 +131,7 @@ public class PlayerController1 : MonoBehaviour
             fallVelocity = jumpForce; //La velocidad de caida pasa a ser igual a la velocidad de salto
             movePlayer.y = fallVelocity; //Y pasamos el valor a movePlayer.y
             playerAnimatorControler.SetTrigger("PlayerJump");
-            //PONER SONIDO DE SALTO
+            SFX.PlayJumpSound();
         }
 
         //piña

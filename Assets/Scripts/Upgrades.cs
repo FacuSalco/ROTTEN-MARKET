@@ -13,10 +13,12 @@ public class Upgrades : MonoBehaviour
     public PlayerData Data;
     public int[] timesPressed = new int[5];
     public TMP_Text[] precios = new TMP_Text[5];
+    int[] precio = new int[5];
     public Image[] healthUpgrade = new Image[3];
     public Image[] speedUpgrade = new Image[3];
     public Image[] jumpForceUpgrade = new Image[3];
     public Image[] damageUpgrade = new Image[3];
+    SFXManager SFX;
 
 
     // Start is called before the first frame update
@@ -27,14 +29,16 @@ public class Upgrades : MonoBehaviour
         for (int i = 0; i < precios.Length; i++)
         {
             precios[i].text = precioMejora.ToString();
+            precio[i] = int.Parse(precios[i].text);
 
             if (i == 4)
             {
                 precios[i].text = (precioMejora*3).ToString();
+                precio[i] = int.Parse(precios[i].text);
             }
         }
 
-        
+        SFX = GameObject.Find("[SFX-MANAGER]").GetComponent<SFXManager>();
 
     }
 
@@ -122,64 +126,91 @@ public class Upgrades : MonoBehaviour
 
     }
 
-    public void UpgradeHealth ()
+    public void UpgradeHealth()
     {
-        int precio = int.Parse(precios[0].text);
-
-        if (timesPressed[0] < 3 && myCoins >= precio)
+        
+        if (myCoins < precio[0] || timesPressed[0] >= 3)
         {
+            SFX.PlayClickErrorSound();
+            return;
+        }
+        
+        if (timesPressed[0] < 3 && myCoins >= precio[0])
+        {
+            SFX.PlayCoinSound();
             timesPressed[0]++;
             Data.playerMaxHealth += 25;
             Data.playerHealth += 10;
-            Data.cantMonedas -= precio;
+            Data.cantMonedas -= precio[0];
         }
-
+        
     }
 
     public void UpgradeDamage()
     {
-        int precio = int.Parse(precios[1].text);
-
-        if (timesPressed[1] < 3 && myCoins >= precio)
+        if (myCoins < precio[1] || timesPressed[1] >= 3)
         {
+            SFX.PlayClickErrorSound();
+            return;
+        }
+
+        if (timesPressed[1] < 3 && myCoins >= precio[1])
+        {
+            SFX.PlayCoinSound();
             timesPressed[1]++;
             Data.playerDamage += 20;
-            Data.cantMonedas -= precio;
+            Data.cantMonedas -= precio[1];
         }
+
     }
 
     public void UpgradeSpeed()
     {
-        int precio = int.Parse(precios[2].text);       
-
-        if (timesPressed[2] < 3 && myCoins >= precio)
+        if (myCoins < precio[2] || timesPressed[2] >= 3)
         {
+            SFX.PlayClickErrorSound();
+            return;
+        }
+
+        if (timesPressed[2] < 3 && myCoins >= precio[2])
+        {
+            SFX.PlayCoinSound();
             timesPressed[2]++;
-            Data.playerSpeed += 1.5f;
-            Data.cantMonedas -= precio;
+            Data.playerSpeed += 2;
+            Data.cantMonedas -= precio[2];
         }
     }
 
     public void UpgradeJumpForce()
     {
-        int precio = int.Parse(precios[3].text);
-
-        if (timesPressed[3] < 3 && myCoins >= precio)
+        if (myCoins < precio[3] || timesPressed[3] >= 3)
         {
+            SFX.PlayClickErrorSound();
+            return;
+        }
+
+        if (timesPressed[3] < 3 && myCoins >= precio[3])
+        {
+            SFX.PlayCoinSound();
             timesPressed[3]++;
-            Data.playerJumpForce += 2;
-            Data.cantMonedas -= precio;
+            Data.playerJumpForce += 2.5f;
+            Data.cantMonedas -= precio[3];
         }
     }
 
     public void UpgradeSword()
     {
-        int precio = int.Parse(precios[4].text);
-
-        if (Data.hasSword == false && myCoins >= precio)
+        if (myCoins < precio[4] || Data.hasSword == true)
         {
+            SFX.PlayClickErrorSound();
+            return;
+        }
+
+        if (Data.hasSword == false && myCoins >= precio[4])
+        {
+            SFX.PlayCoinSound();
             Data.hasSword = true;
-            Data.cantMonedas -= precio;
+            Data.cantMonedas -= precio[4];
         }
     }
 

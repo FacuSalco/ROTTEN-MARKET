@@ -8,10 +8,11 @@ public class PauseBehaviour : MonoBehaviour
 {
     public GameObject pauseMenuUI, optionsMenuUI, menuMenuUI, shopCanvasUI, playerCanvas;
     public static bool gameIsPaused = false;
+    SFXManager SFX;
     // Start is called before the first frame update
     void Start()
     {
-
+        SFX = GameObject.Find("[SFX-MANAGER]").GetComponent<SFXManager>();
     }
 
     // Update is called once per frame
@@ -35,6 +36,7 @@ public class PauseBehaviour : MonoBehaviour
 
     public void Resume() // CUANDO SACO PAUSA
     {
+        SFX.PlayClickSound();
         gameIsPaused = false;
         pauseMenuUI.SetActive(false);
         optionsMenuUI.SetActive(false);
@@ -49,6 +51,7 @@ public class PauseBehaviour : MonoBehaviour
 
     public void Pause() // CUANDO PONGO PAUSA
     {
+        SFX.PlayClickSound();
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         gameIsPaused = true;
@@ -57,11 +60,13 @@ public class PauseBehaviour : MonoBehaviour
 
     public void Quit()
     {
+        SFX.PlayClickSound();
         Application.Quit(); //SOLO ANDA CUANDO EL JUEGO ESTA BILDEADO, PERO SI ANDA
     }
 
     public void Menu()
     {
+        SFX.PlayClickSound();
         menuMenuUI.SetActive(true);
         pauseMenuUI.SetActive(false);
 
@@ -69,12 +74,15 @@ public class PauseBehaviour : MonoBehaviour
 
     public void Options() //PARA EDITAR LAS OPCIONES DEL JUEGO
     {
+        SFX.PlayClickSound();
         pauseMenuUI.SetActive(false);
         optionsMenuUI.SetActive(true);
     }
 
     public void ReturnToPauseMenu()
     {
+        SFX.PlayClickSound();
+
         if (menuMenuUI.activeInHierarchy)
         {
             menuMenuUI.SetActive(true);
@@ -90,6 +98,7 @@ public class PauseBehaviour : MonoBehaviour
 
     public void StartGame()
     {
+        SFX.PlayClickSound();
         menuMenuUI.SetActive(false);
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;

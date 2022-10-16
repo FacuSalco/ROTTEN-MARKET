@@ -10,9 +10,12 @@ public class bulletBehaviour : MonoBehaviour
     protected TrailRenderer Trail;
     protected Transform Target;
     private Transform Player;
+    HealthBar Health;
+    
 
     private void Start()
     {
+        Health = GetComponent<HealthBar>();
     }
 
     private void Awake()
@@ -33,17 +36,19 @@ public class bulletBehaviour : MonoBehaviour
             TrailConfig.SetupTrail(Trail);
         }
     }
-
+    
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.name == "wall")
-        {
+            Health.makeDamage(Damage);
             Destroy(gameObject);
-        }
     }
 
-    private void OnTriggerEnter()
+    void OnTriggerEnter(Collider col)
     {
-        
+        if (col.gameObject.tag == "Player")
+        {
+            Health.makeDamage(Damage);
+            Destroy(gameObject);
+        }
     }
 }

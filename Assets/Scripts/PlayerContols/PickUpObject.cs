@@ -9,7 +9,12 @@ public class PickUpObject : MonoBehaviour
     public GameObject PickedObject;
     public Transform[] interactionZone; //Ubicacion donde quiero que quede agarrado el objeto. Poner la mano
     int hand; // hand = 0 -> derecha, hand = 1 -> izquierda
+    SFXManager SFX;
 
+    void Start()
+    {
+        SFX = GameObject.Find("[SFX-MANAGER]").GetComponent<SFXManager>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -39,6 +44,7 @@ public class PickUpObject : MonoBehaviour
                 PickedObject.GetComponent<Rigidbody>().useGravity = false; //Para que lo agarremos y no se nos caiga
                 PickedObject.GetComponent<Rigidbody>().isKinematic = true; //Para que no le afecte la fisica
                 ObjectToPickUp.GetComponent<PickableObject>().isPicked = true;
+                SFX.PlayPickUpSound();
             }
         }
 
@@ -53,7 +59,7 @@ public class PickUpObject : MonoBehaviour
                 PickedObject.GetComponent<Rigidbody>().useGravity = true;
                 PickedObject.GetComponent<Rigidbody>().isKinematic = false;
                 PickedObject = null;
-
+                SFX.PlayPickUpSound();
             }
         }
     }

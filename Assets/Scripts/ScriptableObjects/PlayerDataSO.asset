@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fcd2ae801a877242b824e53f7af7eb9, type: 3}
   m_Name: PlayerDataSO
   m_EditorClassIdentifier: 
-  cantMonedas: 883
+  cantMonedas: 879
   playerHealth: 100
   playerMaxHealth: 100
   playerDamage: 40

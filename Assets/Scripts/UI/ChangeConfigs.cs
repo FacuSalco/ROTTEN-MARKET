@@ -10,8 +10,9 @@ public class ChangeConfigs : MonoBehaviour
     public CinemachineFreeLook cineCam;
     public float sensitivityX, sensitivityY, volume;
     public Slider volumeSlider, sensXSlider, sensYSlider;
-    public Image VolOnImg, VolOffImg;
+    public Image VolOffImg;
     public TMP_Text VolNumber, XSensNumber, YSensNumber;
+    public GameObject VolOnImg;
 
     // Start is called before the first frame update
     void Start()
@@ -42,14 +43,21 @@ public class ChangeConfigs : MonoBehaviour
     { //Para cambiar la imagen del volumen
         if (VolNumber.text == "0%")
         {
+            volumeSlider.value = 0;
             VolOffImg.enabled = true;
-            VolOnImg.enabled = false;
+            VolOnImg.SetActive(false);
         }
 
         else
         {
             VolOffImg.enabled = false;
-            VolOnImg.enabled = true;
+            VolOnImg.SetActive(true);
         }
     }
+
+    public void Mute()
+    {
+        volumeSlider.value = 0;
+    }
+
 }
