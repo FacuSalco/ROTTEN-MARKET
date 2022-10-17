@@ -18,12 +18,15 @@ public class NpcDialgueManager : MonoBehaviour
     private bool playerOnRange = false;
     private bool hasIntrodusedMission = false;
 
+    private PlayerStats playerStats;
+
 
     // Start is called before the first frame update
     void Start()
     {
         NpcCanvas.SetActive(false);
 
+        playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
@@ -90,11 +93,32 @@ public class NpcDialgueManager : MonoBehaviour
 
                 NextText.text = pressE;
 
-                DialogueText.text = DialogueManager.dialoguesAfterMission[DialogueManager.dialoguesAfterMission.Length - 1];
+                //DialogueText.text = DialogueManager.dialoguesAfterMission[DialogueManager.dialoguesAfterMission.Length - 1];
+
+
+
+                if (DialogueAfterCounter >= DialogueManager.dialoguesAfterMission.Length - 2)
+                {
+                    DialogueText.text = DialogueManager.dialoguesAfterMission[DialogueManager.dialoguesAfterMission.Length - 2];
+
+                    int coins = DialogueManager.coinReward;
+                    Debug.Log("added " + coins + "coins");
+                    playerStats.Data.addCoins(coins);
+                }
+
+
+                if (DialogueAfterCounter >= DialogueManager.dialoguesAfterMission.Length - 1)
+                {
+
+
+                    DialogueText.text = DialogueManager.dialoguesAfterMission[DialogueAfterCounter];
+                }
 
                 if (DialogueAfterCounter >= DialogueManager.dialoguesAfterMission.Length)
                 {
-                    DialogueText.text = DialogueManager.dialoguesAfterMission[DialogueAfterCounter];
+
+
+                    DialogueText.text = DialogueManager.dialoguesAfterMission[DialogueManager.dialoguesAfterMission.Length - 1];
                 }
 
             }
@@ -108,14 +132,20 @@ public class NpcDialgueManager : MonoBehaviour
         
     }
 
-    void OnTriggerEnter()
+    private void OnTriggerEnter(Collider other)
     {
-        playerOnRange = true;
+        if(other.tag == "Player")
+        {
+            playerOnRange = true;
+        }
     }
 
-    void OnTriggerExit()
+    private void OnTriggerExit(Collider other)
     {
-        playerOnRange = false;
+        if(other.tag == "Player")
+        {
+            playerOnRange = false;
+        }
     }
 
     public void GiveReward()

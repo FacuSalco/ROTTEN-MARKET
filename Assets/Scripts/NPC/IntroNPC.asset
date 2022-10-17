@@ -20,7 +20,8 @@ MonoBehaviour:
   dialoguesAfterMission:
   - Gracias por ayudarme
   - Aca tenes tu recompensa
+  - Gracias por todo!!
   hasAcceptedMission: 0
   hasDoneMission: 0
   hasTalked: 0
-  coinReward: 0
+  coinReward: 1
