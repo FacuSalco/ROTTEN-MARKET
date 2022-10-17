@@ -10,6 +10,7 @@ public class EnemyHealthBar : MonoBehaviour
     public float maximumHealth;
 
     private PlayerStats PlayerData;
+    private bool doDamageOnce;
 
     //coin spawn
     public CoinCreate coinSpawn;
@@ -21,10 +22,9 @@ public class EnemyHealthBar : MonoBehaviour
     void Start()
     {
         PlayerData = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+        coinSpawn = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<CoinCreate>();
 
         currentHealth = maximumHealth;
-        coinSpawn = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<CoinCreate>();
-        
     }
 
     // Update is called once per frame
@@ -44,23 +44,6 @@ public class EnemyHealthBar : MonoBehaviour
                 spawn = false;
             }
 
-        }
-    }
-
-    void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.name == "espadapersonaje")
-        {
-            float damage = PlayerData.SwordData.weaponDamage;
-
-            dealDamage(damage);
-        }
-
-        if (col.gameObject.tag == "handHitbox" || col.gameObject.tag == "rightHandHitbox")
-        {
-            float damage = PlayerData.PunchData.weaponDamage; //pasar a igualarlo al data de las upgrades
-
-            dealDamage(damage);
         }
     }
 

@@ -15,7 +15,7 @@ public class NpcDialgueManager : MonoBehaviour
     public npcScriptableObject DialogueManager;
     private int DialogueCounter = 0;
     private int DialogueAfterCounter = 0;
-    private bool playerOnRange;
+    private bool playerOnRange = false;
     private bool hasIntrodusedMission = false;
 
 
@@ -90,7 +90,7 @@ public class NpcDialgueManager : MonoBehaviour
 
                 NextText.text = pressE;
 
-                DialogueText.text = DialogueManager.dialoguesAfterMission[DialogueAfterCounter];
+                DialogueText.text = DialogueManager.dialoguesAfterMission[DialogueManager.dialoguesAfterMission.Length - 1];
 
                 if (DialogueAfterCounter >= DialogueManager.dialoguesAfterMission.Length)
                 {
@@ -118,9 +118,9 @@ public class NpcDialgueManager : MonoBehaviour
         playerOnRange = false;
     }
 
-    public void AceptedMission()
+    public void GiveReward()
     {
-        DialogueManager.hasDoneMission = true;
+
     }
 
 

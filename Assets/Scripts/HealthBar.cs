@@ -47,7 +47,7 @@ public class HealthBar : MonoBehaviour
         {
             isDead = true;
             SFX.PlayDeathSound();
-            thirdPersonCamera.SetActive(false);
+           // thirdPersonCamera.SetActive(false);
             //ANIMACION DE LA CAMARA CUANDO MUERE EL PLAYER
         }
 
