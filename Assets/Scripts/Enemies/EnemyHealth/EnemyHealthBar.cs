@@ -13,7 +13,7 @@ public class EnemyHealthBar : MonoBehaviour
     private bool doDamageOnce;
 
     //coin spawn
-    public CoinCreate coinSpawn;
+    private CoinCreate coinSpawn;
     public GameObject coinPrefab;
     private Vector3 spawnPos;
     bool spawn = true;
