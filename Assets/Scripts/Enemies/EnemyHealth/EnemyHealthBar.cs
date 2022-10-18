@@ -10,6 +10,8 @@ public class EnemyHealthBar : MonoBehaviour
     public float maximumHealth;
 
     private PlayerStats PlayerData;
+    //SFXManager SFX;
+    private bool doDamageOnce;
 
     //coin spawn
     public CoinCreate coinSpawn;
@@ -21,9 +23,11 @@ public class EnemyHealthBar : MonoBehaviour
     void Start()
     {
         PlayerData = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+        coinSpawn = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<CoinCreate>();
 
         currentHealth = maximumHealth;
-        coinSpawn = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<CoinCreate>();
+
+        //SFX = GameObject.Find("[SFX-MANAGER]").GetComponent<SFXManager>();
         
     }
 
@@ -34,7 +38,7 @@ public class EnemyHealthBar : MonoBehaviour
 
         spawnPos = transform.position;
 
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
 
@@ -47,26 +51,10 @@ public class EnemyHealthBar : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.name == "espadapersonaje")
-        {
-            float damage = PlayerData.SwordData.weaponDamage;
-
-            dealDamage(damage);
-        }
-
-        if (col.gameObject.tag == "handHitbox" || col.gameObject.tag == "rightHandHitbox")
-        {
-            float damage = PlayerData.PunchData.weaponDamage; //pasar a igualarlo al data de las upgrades
-
-            dealDamage(damage);
-        }
-    }
-
     public void dealDamage(float damage)
     {
         currentHealth -= damage;
+        //SFX.PlayPunchSound();
     }
 
 }

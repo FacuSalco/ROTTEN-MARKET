@@ -18,6 +18,7 @@ TagManager:
   - ThingKG
   - Heal
   - DamageObject
+  - zipline
   layers:
   - Default
   - TransparentFX

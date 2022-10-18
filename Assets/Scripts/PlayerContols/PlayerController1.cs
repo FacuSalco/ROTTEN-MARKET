@@ -75,7 +75,7 @@ public class PlayerController1 : MonoBehaviour
         playerInput = new Vector3(horizontalMove, 0, verticalMove); //los almacenamos en un Vector3
         playerInput = Vector3.ClampMagnitude(playerInput, 1); //Y limitamos su magnitud a 1 para evitar aceleraciones en movimientos diagonales
 
-        playerAnimatorControler.SetFloat("PlayerWalkVelocity", playerInput.magnitude * playerSpeed);
+        playerAnimatorControler.SetFloat("PlayerWalkVelocity", playerInput.magnitude * playerSpeed ); //Animacion de caminar
 
         CamDirection(); //Llamamos a la funcion CamDirection()
 

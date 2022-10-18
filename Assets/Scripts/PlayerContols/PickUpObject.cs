@@ -29,14 +29,14 @@ public class PickUpObject : MonoBehaviour
                 PickedObject = ObjectToPickUp;
                 float distanceRight = Vector3.Distance(interactionZone[0].position, PickedObject.transform.position); //Distancia entre la mano derecha y el objeto
                 float distanceLeft = Vector3.Distance(interactionZone[1].position, PickedObject.transform.position); //Distancia entre la mano izquierda y el objeto
-                if (distanceRight < distanceLeft) 
+                if (distanceRight > distanceLeft || PickedObject.name == "Tenedor"|| PickedObject.name == "Cuchillo" || PickedObject.name == "Cuchara") 
                 {
                     //Si esta mas cerca la mano derecha, agarra con la mano derecha
-                    hand = 0;
+                    hand = 1;
                 }
                 else
                 {
-                    hand = 1;
+                    hand = 0;
                 }
                 PickedObject.GetComponent<PickableObject>().isPickable = false; //Le avisamos que ya agarramos el objeto
                 PickedObject.transform.SetParent(interactionZone[hand]); //Lo parenteamos
@@ -45,6 +45,32 @@ public class PickUpObject : MonoBehaviour
                 PickedObject.GetComponent<Rigidbody>().isKinematic = true; //Para que no le afecte la fisica
                 ObjectToPickUp.GetComponent<PickableObject>().isPicked = true;
                 SFX.PlayPickUpSound();
+
+                if (PickedObject.name == "Tenedor")
+                {
+                    PickedObject.transform.localPosition = new Vector3(-0.0668f, 0.0091f, -0.0023f);
+                    PickedObject.transform.localRotation = Quaternion.Euler(-4.554f, 85.15f, -83.033f);
+                    PickedObject.transform.localScale = new Vector3(0.005758717f, 0.00575872f, 0.005758714f);
+                    //Cambia el collider del hijo del tenedor a trigger
+                    PickedObject.transform.GetChild(0).gameObject.GetComponent<MeshCollider>().isTrigger = true;
+
+                }
+
+                if (PickedObject.name == "Cuchillo")
+                {
+                    PickedObject.transform.localPosition = new Vector3(-0.0585f, -0.0121f, 0.0085f);
+                    PickedObject.transform.localRotation = Quaternion.Euler(-12.079f, 96.216f, 270f);
+                    PickedObject.transform.localScale = new Vector3(0.005945551f, 0.005945563f, 0.00594556f);
+                    PickedObject.transform.GetChild(0).gameObject.GetComponent<MeshCollider>().isTrigger = true;
+                }
+
+                if (PickedObject.name == "Cuchara")
+                {
+                    PickedObject.transform.localPosition = new Vector3(-0.0551f, -0.0269f, -0.0085f);
+                    PickedObject.transform.localRotation = Quaternion.Euler(-9.294001f, 86.25101f, -73.23901f);
+                    PickedObject.transform.localScale = new Vector3(0.005945551f, 0.005945563f, 0.00594556f);
+                    PickedObject.transform.GetChild(0).gameObject.GetComponent<MeshCollider>().isTrigger = true;                    
+                }
             }
         }
 
@@ -52,7 +78,14 @@ public class PickUpObject : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F)) //para soltar
             {
-                PickedObject.GetComponent<PickableObject>().isPicked = false;
+
+                if (PickedObject.name == "Tenedor" || PickedObject.name == "Cuchillo" || PickedObject.name == "Cuchara")
+                {
+                    //Cambia el colliders del hijo del tenedor a NO trigger
+                    PickedObject.transform.GetChild(0).gameObject.GetComponent<MeshCollider>().isTrigger = false;                    
+                }
+
+                PickedObject.GetComponent<PickableObject>().isPicked = false; 
                 PickedObject.GetComponent<PickableObject>().isPickable = true;
                 PickedObject.transform.SetParent(null);
                 PickedObject.transform.position = interactionZone[hand].position;
