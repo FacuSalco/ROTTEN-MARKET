@@ -19,6 +19,10 @@ TagManager:
   - Heal
   - DamageObject
   - zipline
+  - Cuchara
+  - Cuchillo
+  - Tenedor
+  - Button
   layers:
   - Default
   - TransparentFX

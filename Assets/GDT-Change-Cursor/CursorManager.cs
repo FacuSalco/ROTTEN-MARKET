@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CursorManager : MonoBehaviour
 {
+    bool onButton;
 
     public Texture2D cursor_normal;
     public Vector2 normalCursorHotSpot;
@@ -15,27 +16,22 @@ public class CursorManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (!onButton)
         {
             Cursor.SetCursor(cursor_normal, normalCursorHotSpot, CursorMode.Auto);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Cursor.SetCursor(cursor_OnButton, onButtonCursorHotSpot, CursorMode.Auto);
         }
     }
 
     public void OnButtonCursorEnter()
     {
         Cursor.SetCursor(cursor_OnButton, onButtonCursorHotSpot, CursorMode.Auto);
-
+        onButton = true;
     }
 
     public void OnButtonCursorExit()
     {
         Cursor.SetCursor(cursor_normal, normalCursorHotSpot, CursorMode.Auto);
-
+        onButton = false;
     }
 
 }
