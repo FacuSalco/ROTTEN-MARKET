@@ -1901,9 +1901,10 @@ GameObject:
   - component: {fileID: 9079347805040332629}
   - component: {fileID: 9079347805032554679}
   - component: {fileID: 9079347805039973196}
-  - component: {fileID: 9079347805039973199}
   - component: {fileID: 9079347805039973198}
   - component: {fileID: 9079347805039973232}
+  - component: {fileID: 9079347805039973199}
+  - component: {fileID: 4619592992055123927}
   - component: {fileID: 9079347805039973234}
   m_Layer: 0
   m_Name: ChineseHuevo
@@ -1975,24 +1976,6 @@ MonoBehaviour:
   playerSeen: 0
   rayDistance: 15
   Katana: {fileID: 9079347805039973131}
---- !u!114 &9079347805039973199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9079347805039973237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4e957513d1ea764cb463b368b5d777e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 2839487530282546914}
-  currentHealth: 0
-  maximumHealth: 50
-  coinSpawn: {fileID: 0}
-  coinPrefab: {fileID: 3165047470361269667, guid: d1f30d76def59dd439220b6449d42c7b,
-    type: 3}
 --- !u!195 &9079347805039973198
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2029,6 +2012,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 3
   runSpeed: 3.5
+--- !u!114 &9079347805039973199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9079347805039973237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e957513d1ea764cb463b368b5d777e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 2839487530282546914}
+  currentHealth: 0
+  maximumHealth: 50
+  coinPrefab: {fileID: 3165047470361269667, guid: d1f30d76def59dd439220b6449d42c7b,
+    type: 3}
+--- !u!114 &4619592992055123927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9079347805039973237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1fc8a7e68a5aef4388d7b0507f91a5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &9079347805039973234
 BoxCollider:
   m_ObjectHideFlags: 0

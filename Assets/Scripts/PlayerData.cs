@@ -17,4 +17,9 @@ public class PlayerData : ScriptableObject
     public bool resetNextGame;
     public bool immortal;
 
+    public void addCoins(int coins)
+    {
+        cantMonedas += coins;
+    }
+
 }

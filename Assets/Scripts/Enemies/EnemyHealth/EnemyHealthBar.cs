@@ -10,11 +10,10 @@ public class EnemyHealthBar : MonoBehaviour
     public float maximumHealth;
 
     private PlayerStats PlayerData;
-    //SFXManager SFX;
     private bool doDamageOnce;
 
     //coin spawn
-    public CoinCreate coinSpawn;
+    private CoinCreate coinSpawn;
     public GameObject coinPrefab;
     private Vector3 spawnPos;
     bool spawn = true;
@@ -26,9 +25,6 @@ public class EnemyHealthBar : MonoBehaviour
         coinSpawn = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<CoinCreate>();
 
         currentHealth = maximumHealth;
-
-        //SFX = GameObject.Find("[SFX-MANAGER]").GetComponent<SFXManager>();
-        
     }
 
     // Update is called once per frame
@@ -38,7 +34,7 @@ public class EnemyHealthBar : MonoBehaviour
 
         spawnPos = transform.position;
 
-        if (currentHealth <= 0)
+        if(currentHealth <= 0)
         {
             Destroy(gameObject);
 
@@ -54,7 +50,6 @@ public class EnemyHealthBar : MonoBehaviour
     public void dealDamage(float damage)
     {
         currentHealth -= damage;
-        //SFX.PlayPunchSound();
     }
 
 }

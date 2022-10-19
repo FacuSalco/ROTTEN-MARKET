@@ -15,8 +15,11 @@ public class NpcDialgueManager : MonoBehaviour
     public npcScriptableObject DialogueManager;
     private int DialogueCounter = 0;
     private int DialogueAfterCounter = 0;
-    private bool playerOnRange;
+    private bool playerOnRange = false;
     private bool hasIntrodusedMission = false;
+    private bool hasFinishedTalking = false;
+
+    private PlayerStats playerStats;
 
 
     // Start is called before the first frame update
@@ -24,6 +27,7 @@ public class NpcDialgueManager : MonoBehaviour
     {
         NpcCanvas.SetActive(false);
 
+        playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
@@ -40,6 +44,7 @@ public class NpcDialgueManager : MonoBehaviour
                 DialogueText.text = DialogueManager.dialoguesBeforeMission[DialogueCounter];
             }
 
+            //Pasa los dialogos
             if (Input.GetKeyDown(KeyCode.E))
             {
                 if (DialogueCounter <= DialogueManager.dialoguesBeforeMission.Length)
@@ -87,14 +92,30 @@ public class NpcDialgueManager : MonoBehaviour
 
             if (DialogueManager.hasDoneMission)
             {
-
+                
                 NextText.text = pressE;
 
-                DialogueText.text = DialogueManager.dialoguesAfterMission[DialogueAfterCounter];
+                //DialogueText.text = DialogueManager.dialoguesAfterMission[DialogueManager.dialoguesAfterMission.Length - 1];
 
-                if (DialogueAfterCounter >= DialogueManager.dialoguesAfterMission.Length)
+                //muestra los textos hasta el anteultimo
+                if(DialogueAfterCounter < DialogueManager.dialoguesAfterMission.Length && !hasFinishedTalking)
                 {
                     DialogueText.text = DialogueManager.dialoguesAfterMission[DialogueAfterCounter];
+                }
+
+                //da la recompensa
+                if (DialogueAfterCounter >= DialogueManager.dialoguesAfterMission.Length - 2)
+                {
+                    GiveReward();
+
+                }
+
+                //muestra el ultimo texto indefinidamente
+                if (DialogueAfterCounter >= DialogueManager.dialoguesAfterMission.Length - 1)
+                {
+                    hasFinishedTalking = true;
+
+                    DialogueText.text = DialogueManager.dialoguesAfterMission[DialogueManager.dialoguesAfterMission.Length - 1];
                 }
 
             }
@@ -108,19 +129,27 @@ public class NpcDialgueManager : MonoBehaviour
         
     }
 
-    void OnTriggerEnter()
+    private void OnTriggerEnter(Collider other)
     {
-        playerOnRange = true;
+        if(other.tag == "Player")
+        {
+            playerOnRange = true;
+        }
     }
 
-    void OnTriggerExit()
+    private void OnTriggerExit(Collider other)
     {
-        playerOnRange = false;
+        if(other.tag == "Player")
+        {
+            playerOnRange = false;
+        }
     }
 
-    public void AceptedMission()
+    public void GiveReward()
     {
-        DialogueManager.hasDoneMission = true;
+        int coins = DialogueManager.coinReward;
+        Debug.Log("added " + coins + "coins");
+        playerStats.Data.addCoins(coins);
     }
 
 

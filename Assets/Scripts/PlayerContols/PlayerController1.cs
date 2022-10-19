@@ -30,6 +30,8 @@ public class PlayerController1 : MonoBehaviour
 
     public GameObject leftHand, rightHand;
 
+    public GameObject HitCol;
+
     //Varaibles movimiento relativo a camara
     public Camera mainCamera;
     private Vector3 camForward;
@@ -58,6 +60,7 @@ public class PlayerController1 : MonoBehaviour
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
 
         SFX = GameObject.Find("[SFX-MANAGER]").GetComponent<SFXManager>();
+
 
     }
 
@@ -228,21 +231,32 @@ public class PlayerController1 : MonoBehaviour
     public void ActivatePunchHitbox()
     {
         leftHand.SetActive(true);
+
+        HitCol.SetActive(true);
     }
 
     public void DesactivatePunchHitbox()
     {
         leftHand.SetActive(false);
+
+
+        HitCol.SetActive(false);
+
     }
 
     public void ActivateRightPunchHitbox()
     {
         rightHand.SetActive(true);
+
+        HitCol.SetActive(true);
+
     }
 
     public void DesactivateRightPunchHitbox()
     {
         rightHand.SetActive(false);
+
+        HitCol.SetActive(false);
     }
 }
 
