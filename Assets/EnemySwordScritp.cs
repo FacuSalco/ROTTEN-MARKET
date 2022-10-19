@@ -6,23 +6,28 @@ public class EnemySwordScritp : MonoBehaviour
 {
     private bool DoOnEnter = true;
 
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider other)
     {
-        if (DoOnEnter)
+        if(other.tag == "Player")
         {
-            int damage = 10;
+            if (DoOnEnter)
+            {
+                int damage = 10;
 
-            HealthBar PlayerHealthBar = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthBar>();
+                HealthBar PlayerHealthBar = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthBar>();
 
-            PlayerHealthBar.makeDamage(damage);
+                PlayerHealthBar.makeDamage(damage);
 
-            DoOnEnter = false;
+                DoOnEnter = false;
+            }
         }
-
     }
 
-    void OnTriggerExit()
+    void OnTriggerExit(Collider other)
     {
-        DoOnEnter = true;
+        if(other.tag == "Player")
+        {
+            DoOnEnter = true;
+        }
     }
 }

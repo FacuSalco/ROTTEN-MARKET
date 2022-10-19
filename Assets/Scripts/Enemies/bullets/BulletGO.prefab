@@ -42,7 +42,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5415945971595097539}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.2045373, y: 0.27959514, z: 0.59697056}
@@ -59,9 +59,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb75551d0014a10439ba1c80e16ee74c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 5
   projectileSpeed: 10
   TrailConfig: {fileID: 11400000, guid: b08d9302cc792a9439206fe9278d4ba4, type: 2}
+  Data: {fileID: 0}
 --- !u!96 &5415945971595097538
 TrailRenderer:
   serializedVersion: 2

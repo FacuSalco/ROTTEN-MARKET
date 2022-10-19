@@ -12,6 +12,8 @@ public class EnemyHealthBar : MonoBehaviour
     private PlayerStats PlayerData;
     private bool doDamageOnce;
 
+    private EnemyData Data;
+
     //coin spawn
     private CoinCreate coinSpawn;
     public GameObject coinPrefab;
@@ -23,7 +25,9 @@ public class EnemyHealthBar : MonoBehaviour
     {
         PlayerData = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         coinSpawn = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<CoinCreate>();
+        Data = GetComponent<EnemyData>();
 
+        maximumHealth = Data.enemyData.Health;
         currentHealth = maximumHealth;
     }
 

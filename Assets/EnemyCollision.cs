@@ -6,6 +6,7 @@ public class EnemyCollision : MonoBehaviour
 {
     private PlayerStats PlayerData;
     private EnemyHealthBar HealthBarController;
+    SFXManager SFX;
 
     private bool doHitOnce = true;
 
@@ -14,6 +15,7 @@ public class EnemyCollision : MonoBehaviour
     {
         PlayerData = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         HealthBarController = GetComponent<EnemyHealthBar>();
+        SFX = GameObject.Find("[SFX-MANAGER]").GetComponent<SFXManager>();
 
     }
 
@@ -25,14 +27,23 @@ public class EnemyCollision : MonoBehaviour
             {
                 Debug.Log("hit");
 
-                float damage = PlayerData.PunchData.weaponDamage;
-                HealthBarController.dealDamage(damage);
-                StartCoroutine(DoDamageOnce());
+                DamageEnemyPunch();
             }
 
         }
     }
 
+    private void DamageEnemyPunch()
+    {
+        if (doHitOnce)
+        {
+            float damage = PlayerData.PunchData.weaponDamage;
+            HealthBarController.dealDamage(damage);
+            StartCoroutine(DoDamageOnce());
+            SFX.PlayPunchSound();
+        }
+    }
+   
     IEnumerator DoDamageOnce()
     {
         doHitOnce = false;
