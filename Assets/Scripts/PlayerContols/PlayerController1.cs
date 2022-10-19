@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class PlayerController1 : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerController1 : MonoBehaviour
     bool cooldown = false;
     public PlayerData Data;
     public SFXManager SFX;
+    GameObject PostProcessing;
 
     //Variables movimiento
     float horizontalMove;
@@ -61,6 +63,7 @@ public class PlayerController1 : MonoBehaviour
 
         SFX = GameObject.Find("[SFX-MANAGER]").GetComponent<SFXManager>();
 
+        PostProcessing = GameObject.Find("[POST-PROCESSING]");
 
     }
 
@@ -102,11 +105,13 @@ public class PlayerController1 : MonoBehaviour
         {
             isRunning = true;
             playerSpeed = relativeSpeed * 2;
+            //PostProcessing.GetComponent<PostProcessVolume>().profile.GetSetting<ChromaticAberration>().intensity.value = 0.2f; //Para que la camara se distorsione al correr
         }
         else
         {
             isRunning = false;
             playerSpeed = relativeSpeed;
+            //PostProcessing.GetComponent<PostProcessVolume>().profile.GetSetting<ChromaticAberration>().intensity.value = 0; //Para que vuelva al valor inicial
         }
     }
 

@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Scripts/Enemies/EnemyData.meta
-guid: 18f453e0d5387a2419b380c4bb77e1c0
-========
-guid: 17c772acdbb80d2469e909552a6e9216
->>>>>>>> bf4b76d3eada4649b315fc74724dc42308ed3540:Assets/Models/Mapa2.meta
+guid: 9a5d58bc50c509c45a1742fa75778de0
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
