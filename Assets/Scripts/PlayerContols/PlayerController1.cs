@@ -8,7 +8,7 @@ public class PlayerController1 : MonoBehaviour
     //Variables extras
     bool cooldown = false;
     public PlayerData Data;
-    SFXManager SFX;
+    public SFXManager SFX;
 
     //Variables movimiento
     float horizontalMove;
