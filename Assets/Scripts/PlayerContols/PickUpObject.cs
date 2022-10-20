@@ -46,29 +46,29 @@ public class PickUpObject : MonoBehaviour
                 ObjectToPickUp.GetComponent<PickableObject>().isPicked = true;
                 SFX.PlayPickUpSound();
 
-                if (PickedObject.name == "Tenedor")
+                if (PickedObject.name == "Tenedor") //Cambiarle el nombre a "Tenedor" si no anda con otro tenedor, tienen que tener el mismo nombre
                 {
-                    PickedObject.transform.localPosition = new Vector3(-0.0668f, 0.0091f, -0.0023f);
+                    PickedObject.transform.localPosition = new Vector3(-0.0248f, 0.0108f, 0.0006f);
                     PickedObject.transform.localRotation = Quaternion.Euler(-4.554f, 85.15f, -83.033f);
-                    PickedObject.transform.localScale = new Vector3(0.005758717f, 0.00575872f, 0.005758714f);
+                    PickedObject.transform.localScale = new Vector3(0.004358717f, 0.00435872f, 0.004358714f);
                     //Cambia el collider del hijo del tenedor a trigger
                     PickedObject.transform.GetChild(0).gameObject.GetComponent<MeshCollider>().isTrigger = true;
 
                 }
 
-                if (PickedObject.name == "Cuchillo")
+                if (PickedObject.name == "Cuchillo") //Cambiarle el nombre a "Cuchillo" si no anda con otro cuchillo, tienen que tener el mismo nombre
                 {
-                    PickedObject.transform.localPosition = new Vector3(-0.0585f, -0.0121f, 0.0085f);
+                    PickedObject.transform.localPosition = new Vector3(-0.013f, -0.0023f, 0.003f);
                     PickedObject.transform.localRotation = Quaternion.Euler(-12.079f, 96.216f, 270f);
-                    PickedObject.transform.localScale = new Vector3(0.005945551f, 0.005945563f, 0.00594556f);
+                    PickedObject.transform.localScale = new Vector3(0.004345551f, 0.004345563f, 0.00434556f);
                     PickedObject.transform.GetChild(0).gameObject.GetComponent<MeshCollider>().isTrigger = true;
                 }
 
-                if (PickedObject.name == "Cuchara")
+                if (PickedObject.name == "Cuchara") //Cambiarle el nombre a "Cuchara" si no anda con otro tenedor, tienen que tener el mismo nombre
                 {
-                    PickedObject.transform.localPosition = new Vector3(-0.0551f, -0.0269f, -0.0085f);
+                    PickedObject.transform.localPosition = new Vector3(-0.0322f, -0.0189f, -0.0057f);
                     PickedObject.transform.localRotation = Quaternion.Euler(-9.294001f, 86.25101f, -73.23901f);
-                    PickedObject.transform.localScale = new Vector3(0.005945551f, 0.005945563f, 0.00594556f);
+                    PickedObject.transform.localScale = new Vector3(0.004345551f, 0.004345563f, 0.00434556f);
                     PickedObject.transform.GetChild(0).gameObject.GetComponent<MeshCollider>().isTrigger = true;                    
                 }
             }

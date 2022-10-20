@@ -197,6 +197,12 @@ public class PlayerController1 : MonoBehaviour
         //si el angulo de la pendiente en la que nos encontramos es mayor o igual al asignado en player.slopeLimit, isOnSlope es VERDADERO
         isOnSlope = Vector3.Angle(Vector3.up, hitNormal) >= player.slopeLimit;
 
+        //Si el angulo de la pendiente esta entre 85 y 95, isOnSlope es falso
+        if (Vector3.Angle(Vector3.up, hitNormal) > 85 /*&& Vector3.Angle(Vector3.up, hitNormal) < 95*/)
+        {
+            isOnSlope = false;
+        }
+
         if (isOnSlope) //Si isOnSlope es VERDADERO
         {
             //movemos a nuestro jugador en los ejes "x" y "z" mas o menos deprisa en proporcion al angulo de la pendiente.
