@@ -9,5 +9,4 @@ public class EnemyDataScript : ScriptableObject
     public int WeaponDamage;
     public float RechargeTime;
 
-
 }

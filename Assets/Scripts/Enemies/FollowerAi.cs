@@ -7,36 +7,39 @@ public class FollowerAi : MonoBehaviour
 {
 
     //variables
-    public float rangoDeAlerta, rangoDeAlerta2, rangoDeAtaque;
+    [Header("Dectección de Jugador")]
+
+    public float rangoDeAlerta;
+    public float rangoDeAlerta2;
+    public float rangoDeAtaque;
     public LayerMask capaDelJugador;
-    bool estarAlerta, estarAlerta2;
-    bool prockAttack;
+    private bool estarAlerta, estarAlerta2, prockAttack;
     private Transform Player;
-
     //rutina
-
-    int rutina;
-    float cronometro;
-    //public Animation ani;
-    Quaternion angulo;
-    float grado;
+    [Header("Rutina de movimiento")]
+    public bool CanWonder;
+    private int rutina;
+    private float cronometro;
+    private Quaternion angulo;
+    private float grado;
 
     //navMesh
     private NavMeshAgent agent;
 
+    [Header("Atacar Jugador")]
     //raycast
     public Transform shadowBody;
     [SerializeField] private bool playerSeen = false; 
     [SerializeField] private float rayDistance;
-    RaycastHit hit;
+    private RaycastHit hit;
+    public GameObject Katana;
     //navigation movement
-    EnemyNavMeshController enemyNav;
-
+    private EnemyNavMeshController enemyNav;
+    //animator
     private bool CanAttack = true;
     private bool awakeningComplete = false;
     private Animator enemyAnimator;
 
-    public GameObject Katana;
 
 
     // Start is called before the first frame update
@@ -126,17 +129,13 @@ public class FollowerAi : MonoBehaviour
 
         }
 
-        
-
-
         if (estarAlerta == false && estarAlerta2 == false)
         {
-            ComportamientoEnemigo();
-
-            
+            if (CanWonder)
+            {
+               ComportamientoEnemigo();
+            }
         }
-
-       
     }
 
     IEnumerator Attacking()
