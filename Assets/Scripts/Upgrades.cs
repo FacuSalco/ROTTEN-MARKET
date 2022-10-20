@@ -176,7 +176,7 @@ public class Upgrades : MonoBehaviour
         {
             SFX.PlayCoinSound();
             timesPressed[2]++;
-            Data.playerSpeed += 2;
+            Data.playerSpeed += 1.5f;
             Data.cantMonedas -= precio[2];
         }
     }
