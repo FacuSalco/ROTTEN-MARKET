@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SFXManager : MonoBehaviour
 {
-    public AudioClip coinSound, healSound, clickErrorSound, clickSound, jumpSound, pickUpSound, deathSound, punchSound, questComplete;
+    public AudioClip coinSound, healSound, clickErrorSound, clickSound, jumpSound, pickUpSound, deathSound, punchSound, questCompleteSound, stepSound;
     public AudioClip[] hitSounds;
     AudioSource audioSource;
 
@@ -60,7 +60,12 @@ public class SFXManager : MonoBehaviour
     }
     public void PlayQuestCompleteSound()
     {
-        audioSource.PlayOneShot(questComplete);
+        audioSource.PlayOneShot(questCompleteSound);
+    }
+
+    public void PlayStepSound()
+    {
+        audioSource.PlayOneShot(stepSound, 0.5f);
     }
 
 }
