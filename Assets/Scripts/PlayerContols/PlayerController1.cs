@@ -9,7 +9,7 @@ public class PlayerController1 : MonoBehaviour
     //Variables extras
     bool cooldown = false;
     public PlayerData Data;
-    public SFXManager SFX;
+    SFXManager SFX;
     GameObject PostProcessing;
 
     //Variables movimiento
@@ -268,6 +268,11 @@ public class PlayerController1 : MonoBehaviour
         rightHand.SetActive(false);
 
         HitCol.SetActive(false);
+    }
+
+    public void PlayStepSound()
+    {
+        SFX.PlayStepSound();
     }
 }
 
