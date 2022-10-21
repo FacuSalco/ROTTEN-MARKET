@@ -11,11 +11,16 @@ public class npcScriptableObject : ScriptableObject
     public string mission;
     public string[] dialoguesAfterMission;
 
-    [Header("MissionState")]
+    [Header("Mission")]
 
     public bool hasAcceptedMission;
     public bool hasDoneMission;
     public bool hasTalked;
+
+    [Header("Mission Time")]
+
+    public float missionTime;
+    public bool missionHasTime;
 
     [Header("Rewards")]
 

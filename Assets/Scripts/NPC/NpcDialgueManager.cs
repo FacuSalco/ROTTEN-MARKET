@@ -7,17 +7,28 @@ public class NpcDialgueManager : MonoBehaviour
 {
     [Header("Canvas")]
     public GameObject NpcCanvas;
+    public GameObject DialogueCanvas;
+    public GameObject MissionCanvas;
+    public GameObject FailedTXT;
+    public GameObject FailedPanel;
     public TextMeshProUGUI DialogueText;
     public TextMeshProUGUI NextText;
+    public TextMeshProUGUI TimeTxt;
     public string pressE = "Presione ¨E¨ para continuar";
 
     [Header("Manager")]
     public npcScriptableObject DialogueManager;
+    //Manager
     private int DialogueCounter = 0;
     private int DialogueAfterCounter = 0;
     private bool playerOnRange = false;
     private bool hasIntrodusedMission = false;
     private bool hasFinishedTalking = false;
+
+    private bool hasStartedMission = false;
+    private float TimeCounter, TimeDeltaCounter;
+    public bool hasFailedMission = false;
+
 
     private PlayerStats playerStats;
 
@@ -26,8 +37,12 @@ public class NpcDialgueManager : MonoBehaviour
     void Start()
     {
         NpcCanvas.SetActive(false);
+        MissionCanvas.SetActive(false);
 
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+
+        TimeDeltaCounter = DialogueManager.missionTime;
+        TimeCounter = TimeDeltaCounter;
     }
 
     // Update is called once per frame
@@ -78,14 +93,39 @@ public class NpcDialgueManager : MonoBehaviour
                 {
                     DialogueManager.hasAcceptedMission = true;
                     NextText.text = "";
-                    DialogueManager.hasDoneMission = true;
+                    //DialogueManager.hasDoneMission = true;
                 }
 
             }
+            //empezar mision
             if (DialogueManager.hasAcceptedMission && !DialogueManager.hasDoneMission)
             {
-                //empezar mision
+                StartMission();
 
+                if (DialogueManager.missionHasTime)
+                {
+                    TimeTxt.text = Mathf.Round(TimeCounter).ToString();
+
+                    if (!hasFailedMission)
+                    {
+                        TimeCounter -= Time.deltaTime;
+                    }
+
+                    if (TimeCounter < 0)
+                    {
+                        FailedMission();
+                    }
+
+                    if (hasFailedMission)
+                    {
+                        FailedTXT.SetActive(true);
+                        FailedPanel.SetActive(true);
+                    }
+                }
+                else
+                {
+                    TimeTxt.enabled = false;
+                }
             }
 
             //Termino la misión
@@ -152,5 +192,28 @@ public class NpcDialgueManager : MonoBehaviour
         playerStats.Data.addCoins(coins);
     }
 
+    public void StartMission()
+    {
+        DialogueCanvas.SetActive(false);
+        MissionCanvas.SetActive(true);
+
+    }
+
+    public void FailedMission()
+    {
+        hasFailedMission = true;
+    }
+
+    public void CompleteMission()
+    {
+        DialogueManager.hasDoneMission = true;
+        DialogueCanvas.SetActive(true);
+        MissionCanvas.SetActive(false);
+    }
+
+    public void SetUpCanvas()
+    {
+
+    }
 
 }
