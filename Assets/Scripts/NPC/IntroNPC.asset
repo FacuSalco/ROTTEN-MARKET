@@ -25,4 +25,5 @@ MonoBehaviour:
   hasDoneMission: 0
   hasTalked: 1
   missionTime: 10
+  missionHasTime: 1
   coinReward: 1
