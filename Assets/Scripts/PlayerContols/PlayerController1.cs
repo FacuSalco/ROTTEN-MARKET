@@ -272,7 +272,10 @@ public class PlayerController1 : MonoBehaviour
 
     public void PlayStepSound()
     {
-        SFX.PlayStepSound();
+        if (player.isGrounded)
+        {
+            SFX.PlayStepSound();
+        }
     }
 }
 

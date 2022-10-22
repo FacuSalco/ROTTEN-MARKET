@@ -62,10 +62,9 @@ public class SFXManager : MonoBehaviour
     {
         audioSource.PlayOneShot(questCompleteSound);
     }
-
     public void PlayStepSound()
     {
-        audioSource.PlayOneShot(stepSound, 0.5f);
+        audioSource.PlayOneShot(stepSound, 0.2f);
     }
 
 }
