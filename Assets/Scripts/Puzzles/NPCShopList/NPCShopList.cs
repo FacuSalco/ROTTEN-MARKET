@@ -16,6 +16,7 @@ public class NPCShopList : MonoBehaviour
     public GameObject shopListCanvas;
     public Image[] shopListImages;
     public PlayerData Data;
+    ReciveCoins ReciveCoins;
 
     //Tenedor (fork) es el shopList[0]
     //Cuchillo (knife) es el shopList[1]
@@ -27,6 +28,7 @@ public class NPCShopList : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         //shopList = GameObject.FindGameObjectsWithTag("ObjectNPCList"); //El tag va en el objeto, no el empty
         SFX = GameObject.Find("[SFX-MANAGER]").GetComponent<SFXManager>();
+        ReciveCoins = GameObject.Find("[RECIVE-COINS]").GetComponent<ReciveCoins>();
     }
 
     // Update is called once per frame
@@ -67,12 +69,12 @@ public class NPCShopList : MonoBehaviour
 
             //InvokeRepeating("CoinReward", 4f, 0.2f); //Espera los segundos que le decis y llama a la funcion cada x segundos. En este caso, 4 segundos y llama a CoinReward cada 0.2 segundos
             
-            Invoke ("PlayCoinSound", 4 );
-            Invoke ("PlayCoinSound", 4.2f );
-            Invoke ("PlayCoinSound", 4.4f );
-            Invoke ("PlayCoinSound", 4.6f );
-            Invoke ("PlayCoinSound", 4.8f );
-            Invoke ("PlayCoinSound", 5 );
+            Invoke ("CoinReward", 4 );
+            Invoke ("CoinReward", 4.2f );
+            Invoke ("CoinReward", 4.4f );
+            Invoke ("CoinReward", 4.6f );
+            Invoke ("CoinReward", 4.8f );
+            Invoke ("CoinReward", 5 );
 
 
         }
@@ -134,10 +136,10 @@ public class NPCShopList : MonoBehaviour
         shopListCanvas.SetActive(false);
     }
 
-    void PlayCoinSound()
+    void CoinReward()
     {
         SFX.PlayCoinSound();
-        Data.cantMonedas += coinReward;
+        ReciveCoins.reciveCoins(coinReward);
     }
 
 }

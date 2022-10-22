@@ -31,6 +31,7 @@ public class NpcDialgueManager : MonoBehaviour
 
 
     private PlayerStats playerStats;
+    private ReciveCoins ReciveCoins;
 
 
     // Start is called before the first frame update
@@ -40,9 +41,12 @@ public class NpcDialgueManager : MonoBehaviour
         MissionCanvas.SetActive(false);
 
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+        ReciveCoins = GameObject.Find("[RECIVE-COINS]").GetComponent<ReciveCoins>();
+
 
         TimeDeltaCounter = DialogueManager.missionTime;
         TimeCounter = TimeDeltaCounter;
+        
     }
 
     // Update is called once per frame
@@ -189,7 +193,7 @@ public class NpcDialgueManager : MonoBehaviour
     {
         int coins = DialogueManager.coinReward;
         Debug.Log("added " + coins + "coins");
-        playerStats.Data.addCoins(coins);
+        ReciveCoins.reciveCoins(coins); //CAMBIE ESTA POR OTRA QUE HICE AHORA PORQUE AGRUEGUE UNA MEJORA DE MONEDAS X2
     }
 
     public void StartMission()

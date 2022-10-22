@@ -13,6 +13,7 @@ public class ResetPlayerData : MonoBehaviour
     float playerJumpForce = 10;
     int[] timesUpgraded = new int[5];
     bool hasSword = false;
+    bool x2Coins;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +37,8 @@ public class ResetPlayerData : MonoBehaviour
             Data.playerJumpForce = playerJumpForce;
             Data.timesUpgraded = timesUpgraded;
             Data.hasSword = hasSword;
-            
+            Data.x2Coins = x2Coins;
+
             Data.resetNextGame = false;
 
         }

@@ -10,10 +10,11 @@ public class Upgrades : MonoBehaviour
     public Text txtCoins;
     int myCoins;
     public Image swordUpgrade;
+    public Image x2CoinsUpgrade;
     public PlayerData Data;
-    public int[] timesPressed = new int[5];
-    public TMP_Text[] precios = new TMP_Text[5];
-    int[] precio = new int[5];
+    public int[] timesPressed = new int[4];
+    public TMP_Text[] precios = new TMP_Text[6];
+    int[] precio = new int[6];
     public Image[] healthUpgrade = new Image[3];
     public Image[] speedUpgrade = new Image[3];
     public Image[] jumpForceUpgrade = new Image[3];
@@ -31,9 +32,15 @@ public class Upgrades : MonoBehaviour
             precios[i].text = precioMejora.ToString();
             precio[i] = int.Parse(precios[i].text);
 
-            if (i == 4)
+            if (i == 4) //ESPADA
             {
                 precios[i].text = (precioMejora*3).ToString();
+                precio[i] = int.Parse(precios[i].text);
+            }
+
+            if (i == 5) //MONEDAS
+            {
+                precios[i].text = (precioMejora * 7).ToString();
                 precio[i] = int.Parse(precios[i].text);
             }
         }
@@ -124,6 +131,15 @@ public class Upgrades : MonoBehaviour
             precios[4].text = "MAX";
         }
 
+        //UPDATE DEL X2 COINS
+        
+        if (Data.x2Coins == true)
+        {
+            x2CoinsUpgrade.GetComponent<Image>().color = Color.green;
+            precios[5].text = "MAX";
+        }
+
+
     }
 
     public void UpgradeHealth()
@@ -211,6 +227,22 @@ public class Upgrades : MonoBehaviour
             SFX.PlayCoinSound();
             Data.hasSword = true;
             Data.cantMonedas -= precio[4];
+        }
+    }
+
+    public void UpgradeCoinsX2()
+    {
+        if (myCoins < precio[5] || Data.x2Coins == true)
+        {
+            SFX.PlayClickErrorSound();
+            return;
+        }
+
+        if (Data.x2Coins == false && myCoins >= precio[5])
+        {
+            SFX.PlayCoinSound();
+            Data.x2Coins = true;
+            Data.cantMonedas -= precio[5];
         }
     }
 

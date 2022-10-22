@@ -113,6 +113,12 @@ public class PlayerController1 : MonoBehaviour
             playerSpeed = relativeSpeed;
             //PostProcessing.GetComponent<PostProcessVolume>().profile.GetSetting<ChromaticAberration>().intensity.value = 0; //Para que vuelva al valor inicial
         }
+
+        //Si la posicion del player es y < 0 (es decir que esta debajo del suelo) lo transportamos a la misma posicion que estaba pero en y = 0.41
+        if (player.transform.position.y < 0)
+        {
+            player.transform.position = new Vector3(player.transform.position.x, 0.41f, player.transform.position.z);
+        }
     }
 
     //Funcion para determinar la direccion a la que mira la camara. 
@@ -277,6 +283,8 @@ public class PlayerController1 : MonoBehaviour
             SFX.PlayStepSound();
         }
     }
+
+    
 }
 
 

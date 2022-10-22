@@ -10,16 +10,12 @@ public class PlayerData : ScriptableObject
     public float playerDamage;
     public float playerSpeed;
     public float playerJumpForce;
-    public int[] timesUpgraded = new int[5];
+    public int[] timesUpgraded = new int[4];
     public bool hasSword;
     public bool keepCoins;
     public bool resetAlways;
     public bool resetNextGame;
     public bool immortal;
-
-    public void addCoins(int coins)
-    {
-        cantMonedas += coins;
-    }
+    public bool x2Coins;
 
 }

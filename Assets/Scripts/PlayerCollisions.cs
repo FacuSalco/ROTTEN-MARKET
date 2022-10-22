@@ -7,12 +7,14 @@ public class PlayerCollisions : MonoBehaviour
     public PlayerData Data;
     HealthBar Health;
     SFXManager SFX;
+    ReciveCoins ReciveCoins;
 
     // Start is called before the first frame update
     void Start()
     {
         Health = GetComponent<HealthBar>();
         SFX = GameObject.Find("[SFX-MANAGER]").GetComponent<SFXManager>();
+        ReciveCoins = GameObject.Find("[RECIVE-COINS]").GetComponent<ReciveCoins>();
     }
 
     // Update is called once per frame
@@ -29,7 +31,7 @@ public class PlayerCollisions : MonoBehaviour
             SFX.PlayCoinSound();
             Destroy(col.gameObject);
             Debug.Log("Agarro moneda");
-            Data.cantMonedas++; //Suma monedas
+            ReciveCoins.reciveCoins(1);
         }
 
         if (col.gameObject.tag == "Heal")
