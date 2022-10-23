@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 5669591877313280661}
   m_Layer: 0
   m_Name: shopping_cart
-  m_TagString: Untagged
+  m_TagString: CameraIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

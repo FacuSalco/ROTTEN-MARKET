@@ -10,7 +10,7 @@ public class NPCShopList : MonoBehaviour
     public int coinReward; //PONERLA DIVIDIDO POR 6
     [SerializeField]int cantObjetosEntregados;
     GameObject objetoTraido;
-    bool trajoObjeto;
+    bool trajoObjeto, trajoTenedor, trajoCuchillo, trajoCuchara, trajoSalero, trajoCerezas;
     GameObject player;
     SFXManager SFX;
     public GameObject shopListCanvas;
@@ -34,25 +34,52 @@ public class NPCShopList : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && trajoObjeto && player.GetComponent<PickUpObject>().PickedObject != null && startedQuest) //Si el player toca [E] y trajo un objeto de la lista y el player lo esta agarrando
+        if (Input.GetKeyDown(KeyCode.E) && trajoObjeto && player.GetComponent<PickUpObject>().PickedObject != null && startedQuest && !finishedQuest) //Si el player toca [E] y trajo un objeto de la lista y el player lo esta agarrando
         {
-            objetoTraido.SetActive(false);
-            cantObjetosEntregados++;
-            trajoObjeto = false;
 
-            if (objetoTraido.name == "Fork")
+            if (objetoTraido.name == "Fork" && !trajoTenedor)
             {
                 shopListImages[0].GetComponent<Image>().color = Color.green;
+                objetoTraido.SetActive(false);
+                cantObjetosEntregados++;
+                trajoObjeto = false;
+                trajoTenedor = true;
             }
 
-            if (objetoTraido.name == "Knife")
+            if (objetoTraido.name == "Knife" && !trajoCuchillo)
             {
                 shopListImages[1].GetComponent<Image>().color = Color.green;
+                objetoTraido.SetActive(false);
+                cantObjetosEntregados++;
+                trajoObjeto = false;
+                trajoCuchillo = true;
             }
 
-            if (objetoTraido.name == "Spoon")
+            if (objetoTraido.name == "Spoon" && !trajoCuchara)
             {
                 shopListImages[2].GetComponent<Image>().color = Color.green;
+                objetoTraido.SetActive(false);
+                cantObjetosEntregados++;
+                trajoObjeto = false;
+                trajoCuchara = true;
+            }
+
+            if (objetoTraido.name == "Salero.fbx" && !trajoSalero)
+            {
+                shopListImages[3].GetComponent<Image>().color = Color.green;
+                objetoTraido.SetActive(false);
+                cantObjetosEntregados++;
+                trajoObjeto = false;
+                trajoSalero = true;
+            }
+
+            if (objetoTraido.name == "Cerezas" && !trajoCerezas)
+            {
+                shopListImages[4].GetComponent<Image>().color = Color.green;
+                objetoTraido.SetActive(false);
+                cantObjetosEntregados++;
+                trajoObjeto = false;
+                trajoCerezas = true;
             }
 
         }
@@ -84,31 +111,33 @@ public class NPCShopList : MonoBehaviour
             startedQuest = true;
             shopListCanvas.SetActive(true);
             Debug.Log("Empezaste la quest");
+            talkedToNPC = true;
         }
 
 
     }
     
-    void OnTriggerEnter(Collider col)
+    void OnTriggerStay(Collider col)
     {
+        for (int i = 0; i < shopList.Length; i++)
+        {
+            if (col.gameObject.name == shopList[i].name && col.transform.root.CompareTag("Player")) //Entra con objeto de la lista que el tag del padre es "Player", osea si lo tiene en la mano
+            {
+                trajoObjeto = true;
+                //objetoTraido = shopList[i];
+                objetoTraido = col.gameObject;
+            }            
+        }
+    }
 
-        if (col.gameObject.tag == "Player") //Hacer un dialogo que el NPC te diga que se rompio la pierna y necesita que le traigas algunas cosas del super
+    void OnTriggerEnter (Collider col)
+    {
+        if (col.gameObject.tag == "Player" && !talkedToNPC) //Hacer un dialogo que el NPC te diga que se rompio la pierna y necesita que le traigas algunas cosas del super
         {
             Debug.Log("Hola Manzana, me podrías ayudar? Me lastime la pierna y debo buscar algunas cosas del supermercado, las buscarías por mi? Te pagare bien..." +
             "\nNecesito que me traigas: Un tenedor, un cuchillo y una cuchara. \n[Presiona E para aceptar la mision]");
             nearNPC = true;
-        }
-
-        for (int i = 0; i < shopList.Length; i++)
-        {
-            if (col.gameObject == shopList[i] && col.transform.root.CompareTag("Player")) //Entra con objeto de la lista que el tag del padre es "Player", osea si lo tiene en la mano
-            {
-                trajoObjeto = true;
-                objetoTraido = shopList[i];
-            }
-            
-        }
-
+        }        
     }
 
     void OnTriggerExit(Collider col)
@@ -120,7 +149,6 @@ public class NPCShopList : MonoBehaviour
                 trajoObjeto = false;
                 objetoTraido = null;
             }
-
         }
 
         if (col.gameObject.tag == "Player")

@@ -7,17 +7,29 @@ using TMPro;
 
 public class ChangeConfigs : MonoBehaviour
 {
+    
     public CinemachineFreeLook cineCam;
-    public float sensitivityX, sensitivityY, volume;
-    public Slider volumeSlider, sensXSlider, sensYSlider;
+    [Header("SensX")]
+    public float sensitivityX;
+    public Slider sensXSlider;
+    public TMP_Text sensXTxt;
+    [Header("SensY")]
+    public float sensitivityY;
+    public Slider sensYSlider;
+    public TMP_Text sensYTxt;
+    [Header("Volume")]
+    public float volume;
+    public Slider volumeSlider;
+    public TMP_Text volumeTxt;
     public Image VolOffImg;
-    public TMP_Text VolNumber, XSensNumber, YSensNumber;
     public GameObject VolOnImg;
-
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        sensXSlider.value = sensitivityX / 10;
+        sensYSlider.value = sensitivityY / 10;
+        volumeSlider.value = volume / 100;
     }
 
     // Update is called once per frame
@@ -34,14 +46,14 @@ public class ChangeConfigs : MonoBehaviour
 
         RevisarSiEstaMute();
         //Mostrar sin decimales
-        VolNumber.text = (volume * 100).ToString("0") + "%";
-        XSensNumber.text = (sensitivityX * 10).ToString("F0");
-        YSensNumber.text = (sensitivityY * 10).ToString("F0");
+        volumeTxt.text = (volume * 100).ToString("0") + "%";
+        sensXTxt.text = (sensitivityX * 10).ToString("F0");
+        sensYTxt.text = (sensitivityY * 10).ToString("F0");
     }
 
     void RevisarSiEstaMute()
     { //Para cambiar la imagen del volumen
-        if (VolNumber.text == "0%")
+        if (volumeTxt.text == "0%")
         {
             volumeSlider.value = 0;
             VolOffImg.enabled = true;
