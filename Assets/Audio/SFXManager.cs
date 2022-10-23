@@ -7,6 +7,7 @@ public class SFXManager : MonoBehaviour
     public AudioClip coinSound, healSound, clickErrorSound, clickSound, jumpSound, pickUpSound, deathSound, punchSound, questCompleteSound, stepSound;
     public AudioClip[] hitSounds;
     AudioSource audioSource;
+    bool playingMusic;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +41,7 @@ public class SFXManager : MonoBehaviour
     {
         int i = Random.Range(0, hitSounds.Length);
         audioSource.PlayOneShot(hitSounds[i]);
-        Debug.Log(i);
+        //Debug.Log("Se reprodujo el sonido de daño del indice " + i);
     }
     public void PlayJumpSound()
     {
