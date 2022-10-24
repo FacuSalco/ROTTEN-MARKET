@@ -16,6 +16,7 @@ public class HealthBar : MonoBehaviour
     public GameObject thirdPersonCamera;
     SFXManager SFX;
     static bool isDead;
+    public GameObject DañoVignette;
 
     // Start is called before the first frame update
     void Start()
@@ -47,8 +48,7 @@ public class HealthBar : MonoBehaviour
         {
             isDead = true;
             SFX.PlayDeathSound();
-           //thirdPersonCamera.SetActive(false);
-            //ANIMACION DE LA CAMARA CUANDO MUERE EL PLAYER
+
         }
 
     }
@@ -58,9 +58,21 @@ public class HealthBar : MonoBehaviour
     {
         if (GetComponent<PlayerStats>().Data.immortal == false)
         {
+            DañoVignette.SetActive(false);
             GetComponent<PlayerStats>().Data.playerHealth -= damage;
             SFX.PlayHitSound();
+            DañoVignette.SetActive(true);
+
+            Invoke("DesactivateVignette", 0.3f);
+
         }
     }
+
+    void DesactivateVignette()
+    {
+        DañoVignette.SetActive(false);
+    }
+
+
 
 }
