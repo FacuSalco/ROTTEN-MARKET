@@ -11,9 +11,11 @@ public class NpcDialgueManager : MonoBehaviour
     public GameObject MissionCanvas;
     public GameObject FailedTXT;
     public GameObject FailedPanel;
+    public GameObject RestartTxt;
     public TextMeshProUGUI DialogueText;
     public TextMeshProUGUI NextText;
     public TextMeshProUGUI TimeTxt;
+    public GameObject TimePanel;
     public string pressE = "Presione ¨E¨ para continuar";
 
     [Header("Manager")]
@@ -32,8 +34,8 @@ public class NpcDialgueManager : MonoBehaviour
 
     private PlayerStats playerStats;
     private ReciveCoins ReciveCoins;
-    private PlayerController1 Player;
-
+    private GameObject Player;
+    private Vector3 PlayerRespawnPos;
 
     // Start is called before the first frame update
     void Start()
@@ -43,10 +45,10 @@ public class NpcDialgueManager : MonoBehaviour
 
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         //ReciveCoins = GameObject.Find("[RECIVE-COINS]").GetComponent<ReciveCoins>();
-        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController1>();
+        Player = GameObject.FindGameObjectWithTag("Player");
+        PlayerRespawnPos = Player.GetComponent<PlayerController1>().DefaultPos;
 
         TimeSetUp();
-        
     }
 
     // Update is called once per frame
@@ -61,6 +63,9 @@ public class NpcDialgueManager : MonoBehaviour
             if (!hasIntrodusedMission)
             {
                 DialogueText.text = DialogueManager.dialoguesBeforeMission[DialogueCounter];
+                NextText.enabled = true;
+                NextText.text = pressE;
+                
             }
 
             //Pasa los dialogos
@@ -171,8 +176,13 @@ public class NpcDialgueManager : MonoBehaviour
 
             if (hasFailedMission)
             {
-                FailedTXT.SetActive(true);
-                FailedPanel.SetActive(true);
+                bool TrueFalse = true;
+                FailedMissionActivation(TrueFalse);
+
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    PlayerRespawn();
+                }
             }
         }
         else
@@ -210,6 +220,10 @@ public class NpcDialgueManager : MonoBehaviour
         DialogueCanvas.SetActive(false);
         MissionCanvas.SetActive(true);
 
+        TimePanel.SetActive(true);
+        TimeTxt.enabled = true;
+        
+
         hasStartedMission = true;
 
     }
@@ -235,14 +249,16 @@ public class NpcDialgueManager : MonoBehaviour
         hasIntrodusedMission = false;
         hasFinishedTalking = false;
 
+        DialogueCanvas.SetActive(true);
+
         TimeSetUp();
         CounterSetUp();
+        DesactivateTimeUI();
+
+        bool TrueFalse = false;
+        FailedMissionActivation(TrueFalse);
+
         PlayerRespawn();
-    }
-
-    public void SetUpCanvas()
-    {
-
     }
 
     public void TimeSetUp()
@@ -257,8 +273,33 @@ public class NpcDialgueManager : MonoBehaviour
         DialogueCounter = 0;
     }
 
+    public void FailedMissionActivation(bool TrueFalse)
+    {
+        if (TrueFalse == true)
+        {
+            FailedTXT.SetActive(true);
+            FailedPanel.SetActive(true);
+            RestartTxt.SetActive(true);
+        }
+
+        if (TrueFalse == false)
+        {
+            FailedTXT.SetActive(false);
+            FailedPanel.SetActive(false);
+            RestartTxt.SetActive(false);
+        }
+
+    }
+
+    public void DesactivateTimeUI()
+    {
+        TimePanel.SetActive(false);
+        TimeTxt.enabled = false;
+    }
+
     public void PlayerRespawn()
     {
-        Player.transform.position = Player.DefaultPos;
+        Player.transform.position = PlayerRespawnPos;
+        RestartMission();
     }
 }
