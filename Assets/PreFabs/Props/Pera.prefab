@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4355291424003389135}
   - component: {fileID: 82022613691715776}
   - component: {fileID: 114501454534323384}
+  - component: {fileID: 114862218075627192}
   m_Layer: 0
   m_Name: Pera
   m_TagString: CameraIgnore
@@ -222,3 +223,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sound: {fileID: 8300000, guid: 1b4438b45b25a5848bc755bab4c166b1, type: 3}
   volumeModifier: 1
+--- !u!114 &114862218075627192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4355291424003389169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd6e5c6a790aaf34a800a8dc835cc040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

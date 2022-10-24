@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 64301507351732362}
   - component: {fileID: 7827592511159092725}
   - component: {fileID: 82618241536263406}
+  - component: {fileID: 114040536280805298}
   m_Layer: 0
   m_Name: JugoNaranja
   m_TagString: CameraIgnore
@@ -235,3 +236,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114040536280805298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7027862546867305491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd6e5c6a790aaf34a800a8dc835cc040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

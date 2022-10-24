@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fcd2ae801a877242b824e53f7af7eb9, type: 3}
   m_Name: PlayerDataSO
   m_EditorClassIdentifier: 
-  cantMonedas: 704
+  cantMonedas: 463
   playerHealth: 100
   playerMaxHealth: 100
   playerDamage: 40
-  playerSpeed: 5
-  playerJumpForce: 10
+  playerSpeed: 9.5
+  playerJumpForce: 17.5
   timesUpgraded: 0000000000000000000000000000000000000000
   hasSword: 0
   keepCoins: 1

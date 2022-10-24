@@ -64,7 +64,7 @@ public class NPCShopList : MonoBehaviour
                 trajoCuchara = true;
             }
 
-            if (objetoTraido.name == "Salero.fbx" && !trajoSalero)
+            if (objetoTraido.name == "Salero" && !trajoSalero)
             {
                 shopListImages[3].GetComponent<Image>().color = Color.green;
                 objetoTraido.SetActive(false);
@@ -73,7 +73,7 @@ public class NPCShopList : MonoBehaviour
                 trajoSalero = true;
             }
 
-            if (objetoTraido.name == "Cerezas" && !trajoCerezas)
+            if (objetoTraido.name == "Cereza" && !trajoCerezas)
             {
                 shopListImages[4].GetComponent<Image>().color = Color.green;
                 objetoTraido.SetActive(false);

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7941862528152142036}
   - component: {fileID: 114121000463401398}
   - component: {fileID: 82864104990625714}
+  - component: {fileID: 114740017898038284}
   m_Layer: 0
   m_Name: SalsaTomate
   m_TagString: CameraIgnore
@@ -220,3 +221,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114740017898038284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7941862528535594655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd6e5c6a790aaf34a800a8dc835cc040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

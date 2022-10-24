@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -691,7 +691,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (3)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -1005,12 +1005,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9aad62b8e51447438433175eed632a7, type: 3}
---- !u!1 &72725686 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5113719031450619929, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1640855813737278298}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &83237056 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2489372895113887252, guid: fb2aa98059a0b7540bb6daf581b4e909,
@@ -1238,7 +1232,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (20)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -1702,10 +1696,16 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (21)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
+--- !u!1 &199839895 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1640855813737278298}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &200144067
 GameObject:
   m_ObjectHideFlags: 0
@@ -4226,7 +4226,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (16)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -4558,7 +4558,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (7)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -5748,7 +5748,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (31)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -5995,7 +5995,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (14)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -6064,7 +6064,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (13)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -6548,7 +6548,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (17)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -7146,7 +7146,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (29)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -7472,7 +7472,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (25)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -7648,7 +7648,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (5)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -7856,7 +7856,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1019399944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8689,7 +8689,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (24)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -9397,7 +9397,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (8)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -9466,7 +9466,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (22)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -9535,7 +9535,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (18)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -9760,7 +9760,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (10)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -9829,7 +9829,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (9)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -10400,7 +10400,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (11)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -10642,7 +10642,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (23)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -11142,7 +11142,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (15)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -11673,7 +11673,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (2)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -12001,7 +12001,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (26)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -12989,7 +12989,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (12)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -13316,7 +13316,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (19)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -13532,7 +13532,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (27)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -14201,7 +14201,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (30)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -14493,7 +14493,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (6)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -14562,7 +14562,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (1)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -18694,12 +18694,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cba7405119a8b34ab70d60e26b74b4c, type: 3}
---- !u!1 &1879963833 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7514461186003348816, guid: 9cf55cd969fb998448b24bcaf3035696,
-    type: 3}
-  m_PrefabInstance: {fileID: 1901995815}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1888173371 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7290060100534069607, guid: 4fffec812f650f945b04e34b60d0e6aa,
@@ -18719,6 +18713,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1046182351}
     m_Modifications:
+    - target: {fileID: 82251045768160562, guid: 9cf55cd969fb998448b24bcaf3035696,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960879532314890860, guid: 9cf55cd969fb998448b24bcaf3035696,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6426926294062137457, guid: 9cf55cd969fb998448b24bcaf3035696,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7514461186003348816, guid: 9cf55cd969fb998448b24bcaf3035696,
         type: 3}
       propertyPath: m_IsActive
@@ -19289,7 +19298,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (28)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -19441,6 +19450,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc8a1c8b2a2cf1841bb1e0a12040ce60, type: 3}
+--- !u!1 &1989654007 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7514461187475054234, guid: 9cf55cd969fb998448b24bcaf3035696,
+    type: 3}
+  m_PrefabInstance: {fileID: 1901995815}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1997395176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20096,7 +20111,7 @@ PrefabInstance:
     - target: {fileID: 1640855813479092331, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c,
         type: 3}
       propertyPath: m_Name
-      value: Cereza (4)
+      value: Cereza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601b43e7bfad97d4b9a8ef93fb6bc93c, type: 3}
@@ -22330,7 +22345,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2581579397279111617}
-  m_LocalRotation: {x: 0.24931952, y: 0.6659773, z: -0.25314084, w: 0.6559222}
+  m_LocalRotation: {x: 0.2493195, y: 0.6659773, z: -0.25314084, w: 0.6559222}
   m_LocalPosition: {x: -11.969132, y: 5.2072477, z: -8.851396}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -32939,7 +32954,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6694424359594057283}
-  m_LocalRotation: {x: 0.24931958, y: 0.66597724, z: -0.2531407, w: 0.6559222}
+  m_LocalRotation: {x: 0.24931955, y: 0.66597724, z: -0.2531407, w: 0.6559222}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -33139,7 +33154,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6694424360885830225}
-  m_LocalRotation: {x: -0.2493187, y: -0.6659776, z: 0.25314155, w: -0.6559219}
+  m_LocalRotation: {x: -0.24931866, y: -0.6659776, z: 0.25314155, w: -0.6559219}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -33804,8 +33819,8 @@ MonoBehaviour:
   - {fileID: 2074838502}
   - {fileID: 1114228654}
   - {fileID: 1371947189}
-  - {fileID: 72725686}
-  - {fileID: 1879963833}
+  - {fileID: 199839895}
+  - {fileID: 1989654007}
   finishedQuest: 0
   startedQuest: 0
   talkedToNPC: 0
