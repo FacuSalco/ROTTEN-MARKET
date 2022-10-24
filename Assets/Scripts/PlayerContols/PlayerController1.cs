@@ -49,11 +49,14 @@ public class PlayerController1 : MonoBehaviour
     //Variables anim
     private Animator playerAnimatorControler;
 
+    public Vector3 DefaultPos;
+
     // Cargamos el componente CharacterController en la variable player al iniciar el script
     void Start()
     {
         player = GetComponent<CharacterController>();
         playerAnimatorControler = GetComponent<Animator>();
+        DefaultPos = transform.position;
 
         Cursor.lockState = CursorLockMode.Locked; //Para que no aparezca el mouse en la pantalla
 

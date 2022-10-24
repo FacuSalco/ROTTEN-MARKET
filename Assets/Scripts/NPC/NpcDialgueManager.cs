@@ -32,6 +32,7 @@ public class NpcDialgueManager : MonoBehaviour
 
     private PlayerStats playerStats;
     private ReciveCoins ReciveCoins;
+    private PlayerController1 Player;
 
 
     // Start is called before the first frame update
@@ -41,11 +42,10 @@ public class NpcDialgueManager : MonoBehaviour
         MissionCanvas.SetActive(false);
 
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-        ReciveCoins = GameObject.Find("[RECIVE-COINS]").GetComponent<ReciveCoins>();
+        //ReciveCoins = GameObject.Find("[RECIVE-COINS]").GetComponent<ReciveCoins>();
+        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController1>();
 
-
-        TimeDeltaCounter = DialogueManager.missionTime;
-        TimeCounter = TimeDeltaCounter;
+        TimeSetUp();
         
     }
 
@@ -106,30 +106,6 @@ public class NpcDialgueManager : MonoBehaviour
             {
                 StartMission();
 
-                if (DialogueManager.missionHasTime)
-                {
-                    TimeTxt.text = Mathf.Round(TimeCounter).ToString();
-
-                    if (!hasFailedMission)
-                    {
-                        TimeCounter -= Time.deltaTime;
-                    }
-
-                    if (TimeCounter < 0)
-                    {
-                        FailedMission();
-                    }
-
-                    if (hasFailedMission)
-                    {
-                        FailedTXT.SetActive(true);
-                        FailedPanel.SetActive(true);
-                    }
-                }
-                else
-                {
-                    TimeTxt.enabled = false;
-                }
             }
 
             //Termino la misión
@@ -167,10 +143,43 @@ public class NpcDialgueManager : MonoBehaviour
         }
         else
         {
-            NpcCanvas.SetActive(false);
+            if (hasStartedMission)
+            {
+                DialogueCanvas.SetActive(false);
+            }
+            else
+            {
+                 NpcCanvas.SetActive(false);
+            }
         }
 
-        
+
+
+        if (DialogueManager.missionHasTime)
+        {
+            TimeTxt.text = Mathf.Round(TimeCounter).ToString();
+
+            if (DialogueManager.hasAcceptedMission && !DialogueManager.hasDoneMission && !hasFailedMission)
+            {
+                TimeCounter -= Time.deltaTime;
+            }
+
+            if (TimeCounter < 0)
+            {
+                FailedMission();
+            }
+
+            if (hasFailedMission)
+            {
+                FailedTXT.SetActive(true);
+                FailedPanel.SetActive(true);
+            }
+        }
+        else
+        {
+            TimeTxt.enabled = false;
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -193,13 +202,15 @@ public class NpcDialgueManager : MonoBehaviour
     {
         int coins = DialogueManager.coinReward;
         Debug.Log("added " + coins + "coins");
-        ReciveCoins.reciveCoins(coins); //CAMBIE ESTA POR OTRA QUE HICE AHORA PORQUE AGRUEGUE UNA MEJORA DE MONEDAS X2
+        //ReciveCoins.reciveCoins(coins); //CAMBIE ESTA POR OTRA QUE HICE AHORA PORQUE AGRUEGUE UNA MEJORA DE MONEDAS X2
     }
 
     public void StartMission()
     {
         DialogueCanvas.SetActive(false);
         MissionCanvas.SetActive(true);
+
+        hasStartedMission = true;
 
     }
 
@@ -215,9 +226,39 @@ public class NpcDialgueManager : MonoBehaviour
         MissionCanvas.SetActive(false);
     }
 
+    public void RestartMission()
+    {
+        DialogueManager.hasTalked = false;
+        DialogueManager.hasAcceptedMission = false;
+        hasFailedMission = false;
+        hasStartedMission = false;
+        hasIntrodusedMission = false;
+        hasFinishedTalking = false;
+
+        TimeSetUp();
+        CounterSetUp();
+        PlayerRespawn();
+    }
+
     public void SetUpCanvas()
     {
 
     }
 
+    public void TimeSetUp()
+    {
+        TimeDeltaCounter = DialogueManager.missionTime;
+        TimeCounter = TimeDeltaCounter;
+    }
+
+    public void CounterSetUp()
+    {
+        DialogueAfterCounter = 0;
+        DialogueCounter = 0;
+    }
+
+    public void PlayerRespawn()
+    {
+        Player.transform.position = Player.DefaultPos;
+    }
 }
