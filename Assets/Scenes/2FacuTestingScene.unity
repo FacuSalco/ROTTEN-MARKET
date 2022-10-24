@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5566,7 +5566,7 @@ MeshRenderer:
   m_SortingOrder: 0
 --- !u!222 &596648445
 CanvasRenderer:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -5574,7 +5574,7 @@ CanvasRenderer:
   m_CullTransparentMesh: 0
 --- !u!33 &596648446
 MeshFilter:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -7895,7 +7895,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856673555}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 25.32, y: 0.68, z: -6.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -11156,7 +11156,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1174955326}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 25.32, y: 0.68, z: -3.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -12449,15 +12449,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cineCam: {fileID: 0}
   sensitivityX: 70
+  sensXSlider: {fileID: 1411538408}
+  sensXTxt: {fileID: 0}
   sensitivityY: 40
+  sensYSlider: {fileID: 1257150615}
+  sensYTxt: {fileID: 0}
   volume: 0
   volumeSlider: {fileID: 837960360}
-  sensXSlider: {fileID: 1411538408}
-  sensYSlider: {fileID: 1257150615}
+  volumeTxt: {fileID: 0}
   VolOffImg: {fileID: 1059500555}
-  VolNumber: {fileID: 976790041}
-  XSensNumber: {fileID: 588546667}
-  YSensNumber: {fileID: 945776585}
   VolOnImg: {fileID: 1756755448}
 --- !u!1 &1388679721
 GameObject:
@@ -14678,7 +14678,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1713670341}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 25.32, y: 0.68, z: -1.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -18776,7 +18776,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729792506837204945}
-  m_LocalRotation: {x: 0.21301614, y: 0.7362703, z: -0.26888156, w: 0.5832949}
+  m_LocalRotation: {x: 0.2130161, y: 0.73627025, z: -0.26888147, w: 0.583295}
   m_LocalPosition: {x: -4.9804997, y: 4.6404734, z: -2.1858506}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -20560,6 +20560,7 @@ MonoBehaviour:
   cantMonedas: 0
   cantMonedasTxt: {fileID: 1646592559}
   thirdPersonCamera: {fileID: 8389483732853690799}
+  "Da\xF1oVignette": {fileID: 0}
 --- !u!114 &3827627838876794425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20599,6 +20600,7 @@ MonoBehaviour:
   isOnSlope: 0
   slideVelocity: 10
   slopeForceDown: -10
+  DefaultPos: {x: 0, y: 0, z: 0}
 --- !u!114 &3827627838876794428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21942,7 +21944,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8389483731616929136}
-  m_LocalRotation: {x: 0.2130162, y: 0.7362703, z: -0.26888138, w: 0.583295}
+  m_LocalRotation: {x: 0.21301621, y: 0.73627025, z: -0.26888132, w: 0.5832951}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

@@ -8,6 +8,7 @@ public class PlayerCollisions : MonoBehaviour
     HealthBar Health;
     SFXManager SFX;
     ReciveCoins ReciveCoins;
+    public int healAmount, damageAmount;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +40,7 @@ public class PlayerCollisions : MonoBehaviour
             SFX.PlayHealSound();
             Destroy(col.gameObject);
             Debug.Log("Agarro corazon");
-            Data.playerHealth += 15; //Suma vida
+            Data.playerHealth += healAmount; //Suma vida
 
             if (Data.playerHealth > Data.playerMaxHealth) //Si tiene mas vida que lo maximo
             {
@@ -49,7 +50,7 @@ public class PlayerCollisions : MonoBehaviour
 
         if (col.gameObject.tag == "DamageObject")
         {
-            Health.makeDamage(10);
+            Health.makeDamage(damageAmount);
             Destroy(col.gameObject);
         }
     }
