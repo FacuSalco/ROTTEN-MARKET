@@ -38,6 +38,7 @@ public class NpcDialgueManager : MonoBehaviour
     private GameObject Player;
     private Vector3 PlayerRespawnPos;
     private MissionHandler MissionHand;
+    private MissionStateChecker MissionChecker;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +51,7 @@ public class NpcDialgueManager : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
         PlayerRespawnPos = Player.GetComponent<PlayerController1>().DefaultPos;
         MissionHand = GameObject.Find("[MISSION-MANAGER]").GetComponent<MissionHandler>();
+        MissionChecker = MissionHand.GetComponent<MissionStateChecker>();
 
         TimeSetUp();
         DialogueManagerSetUp();
@@ -121,7 +123,14 @@ public class NpcDialgueManager : MonoBehaviour
 
             if (DialogueManager.hasDoneMission)
             {
-                
+                bool DoOnce = true;
+
+                if (DoOnce)
+                {
+                    MissionChecker.CompletedMission();
+                    DoOnce = false;
+                }
+
                 NextText.text = pressE;
 
                 MissionHand.IsOnMission = false;
