@@ -53,6 +53,7 @@ public class FollowerAi : MonoBehaviour
 
         enemyAnimator = GetComponent<Animator>();
 
+
     }
 
     // Update is called once per frame

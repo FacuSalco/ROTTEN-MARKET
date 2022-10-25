@@ -23,6 +23,7 @@ TagManager:
   - Cuchillo
   - Tenedor
   - Button
+  - NPC
   layers:
   - Default
   - TransparentFX

@@ -36,6 +36,7 @@ public class NpcDialgueManager : MonoBehaviour
     private ReciveCoins ReciveCoins;
     private GameObject Player;
     private Vector3 PlayerRespawnPos;
+    private MissionHandler MissionHand;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +48,7 @@ public class NpcDialgueManager : MonoBehaviour
         //ReciveCoins = GameObject.Find("[RECIVE-COINS]").GetComponent<ReciveCoins>();
         Player = GameObject.FindGameObjectWithTag("Player");
         PlayerRespawnPos = Player.GetComponent<PlayerController1>().DefaultPos;
+        MissionHand = GameObject.Find("[MISSION-MANAGER]").GetComponent<MissionHandler>();
 
         TimeSetUp();
     }
@@ -54,7 +56,8 @@ public class NpcDialgueManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerOnRange)
+
+        if (playerOnRange && !MissionHand.IsOnMission)
         {
             //Empieza a hablar
             NpcCanvas.SetActive(true);
@@ -119,6 +122,8 @@ public class NpcDialgueManager : MonoBehaviour
             {
                 
                 NextText.text = pressE;
+
+                MissionHand.IsOnMission = false;
 
                 //DialogueText.text = DialogueManager.dialoguesAfterMission[DialogueManager.dialoguesAfterMission.Length - 1];
 
@@ -225,7 +230,7 @@ public class NpcDialgueManager : MonoBehaviour
         
 
         hasStartedMission = true;
-
+        MissionHand.IsOnMission = true;
     }
 
     public void FailedMission()
@@ -238,6 +243,8 @@ public class NpcDialgueManager : MonoBehaviour
         DialogueManager.hasDoneMission = true;
         DialogueCanvas.SetActive(true);
         MissionCanvas.SetActive(false);
+
+        MissionHand.IsOnMission = false;
     }
 
     public void RestartMission()
@@ -248,6 +255,8 @@ public class NpcDialgueManager : MonoBehaviour
         hasStartedMission = false;
         hasIntrodusedMission = false;
         hasFinishedTalking = false;
+        MissionHand.IsOnMission = false;
+
 
         DialogueCanvas.SetActive(true);
 
@@ -258,7 +267,6 @@ public class NpcDialgueManager : MonoBehaviour
         bool TrueFalse = false;
         FailedMissionActivation(TrueFalse);
 
-        PlayerRespawn();
     }
 
     public void TimeSetUp()
