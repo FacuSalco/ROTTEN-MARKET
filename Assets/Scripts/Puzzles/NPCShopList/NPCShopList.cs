@@ -17,6 +17,7 @@ public class NPCShopList : MonoBehaviour
     public Image[] shopListImages;
     public PlayerData Data;
     ReciveCoins ReciveCoins;
+    private NpcDialgueManager NpcManager;
 
     //Tenedor (fork) es el shopList[0]
     //Cuchillo (knife) es el shopList[1]
@@ -29,6 +30,7 @@ public class NPCShopList : MonoBehaviour
         //shopList = GameObject.FindGameObjectsWithTag("ObjectNPCList"); //El tag va en el objeto, no el empty
         SFX = GameObject.Find("[SFX-MANAGER]").GetComponent<SFXManager>();
         ReciveCoins = GameObject.Find("[RECIVE-COINS]").GetComponent<ReciveCoins>();
+        NpcManager = GetComponent<NpcDialgueManager>();
     }
 
     // Update is called once per frame
@@ -86,6 +88,7 @@ public class NPCShopList : MonoBehaviour
 
         if (cantObjetosEntregados == shopList.Length && !finishedQuest) //COMPLETO LA QUEST
         {
+            NpcManager.CompleteMission();
             finishedQuest = true;
             Debug.Log("Me trajiste todos los objetos! Gracias");
             SFX.PlayQuestCompleteSound();
@@ -106,7 +109,7 @@ public class NPCShopList : MonoBehaviour
 
         }
 
-        if (nearNPC && Input.GetKeyDown(KeyCode.E) && !startedQuest && !finishedQuest) //Si el player toca [E] y no empezó la quest y no la terminó. ACEPTA LA QUEST
+        if (nearNPC && NpcManager.DialogueManager.hasAcceptedMission && !startedQuest && !finishedQuest) //Si el player toca [E] y no empezó la quest y no la terminó. ACEPTA LA QUEST
         {
             startedQuest = true;
             shopListCanvas.SetActive(true);

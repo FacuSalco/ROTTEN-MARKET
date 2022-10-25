@@ -13098,6 +13098,8 @@ GameObject:
   - component: {fileID: 4615948050703203812}
   - component: {fileID: 4615948050703203810}
   - component: {fileID: 4615948050703203822}
+  - component: {fileID: 4615948050703203826}
+  - component: {fileID: 4615948050703203824}
   m_Layer: 0
   m_Name: EnemigoTanque
   m_TagString: Untagged
@@ -13120,7 +13122,8 @@ MonoBehaviour:
   healthBar: {fileID: 1270318095}
   currentHealth: 0
   maximumHealth: 100
-  coinPrefab: {fileID: 0}
+  coinPrefab: {fileID: 7702297460498248830, guid: 2fd280196e4425940915e64cea435e99,
+    type: 3}
 --- !u!1 &4615948050703203811
 GameObject:
   m_ObjectHideFlags: 0
@@ -13333,6 +13336,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4615948050703203824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4615948050703203809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1fc8a7e68a5aef4388d7b0507f91a5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4615948050703203825
 GameObject:
   m_ObjectHideFlags: 0
@@ -13349,6 +13364,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4615948050703203826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4615948050703203809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ad4606127342a4788fa9ec67e59d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageData: {fileID: 4615948050703203822}
 --- !u!1 &4615948050703203827
 GameObject:
   m_ObjectHideFlags: 0
