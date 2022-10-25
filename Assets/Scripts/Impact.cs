@@ -41,7 +41,7 @@ public class Impact : MonoBehaviour
         cool = false;
         yield return new WaitForSeconds(coolDownTime);
         cool = true;
-        Debug.Log("Cooldown is over");
+        //Debug.Log("Cooldown is over");
     }
 
 }

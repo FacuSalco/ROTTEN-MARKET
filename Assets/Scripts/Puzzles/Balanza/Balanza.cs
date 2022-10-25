@@ -6,10 +6,14 @@ using TMPro;
 
 public class Balanza : MonoBehaviour
 {
-    public float pesoOk, pesoActual, pesoApple;
-    bool playerOn;
+    public int pesoAdecuado, coinReward;
+    public bool terminoPuzzle;
+    float pesoActual, pesoApple;
+    bool playerOn, yaGano;
     GameObject player;
-    public TextMeshPro txtPeso;
+    public TextMeshPro txtPeso, txtPesoAdecuado;
+    SFXManager SFX;
+    ReciveCoins ReciveCoins;
 
     List<Rigidbody> currentRigidbodies = new List<Rigidbody>();
 
@@ -17,14 +21,39 @@ public class Balanza : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        txtPesoAdecuado.text =  "Peso adecuado "+ pesoAdecuado.ToString();
+        SFX = GameObject.Find("[SFX-MANAGER]").GetComponent<SFXManager>();
+        ReciveCoins = GameObject.Find("[RECIVE-COINS]").GetComponent<ReciveCoins>();
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (pesoOk == pesoActual)
+        //Si el peso adecuado es igual al peso actual durante 1 segundo entonces gana  
+
+        if (pesoAdecuado == pesoActual)
         {
-            Debug.Log("Llego al peso requerido, " + pesoOk + "kg");
+            Invoke("CheckOneSecond", 1);
+        }
+        
+        if (terminoPuzzle && !yaGano) //---------------GANO-------------------//
+        {
+            yaGano = true;
+            txtPeso.color = Color.green;
+            txtPeso.text = pesoAdecuado.ToString() + "g";
+            terminoPuzzle = true;
+            SFX.PlayQuestCompleteSound();
+
+            player.GetComponent<PlayerController1>().enabled = false;
+            Invoke("EnablePlayer", 5f);
+            
+            Invoke("CoinReward", 4);
+            Invoke("CoinReward", 4.2f);
+            Invoke("CoinReward", 4.4f);
+            Invoke("CoinReward", 4.6f);
+            Invoke("CoinReward", 4.8f);
+            Invoke("CoinReward", 5);
         }
 
         if (pesoActual < 0)
@@ -34,16 +63,19 @@ public class Balanza : MonoBehaviour
 
         if (player.gameObject.GetComponentInChildren<PickableObject>()) //Si tiene algo en la mano
         {
-            pesoApple = 200 + player.gameObject.GetComponentInChildren<PickableObject>().GetComponent<Rigidbody>().mass*10;
+            pesoApple = 200 + player.gameObject.GetComponentInChildren<PickableObject>().GetComponent<Rigidbody>().mass*100;
         }
         else //Si no tiene algo en la mano
         {
             pesoApple = 200;
         }
 
-        ActualizarPeso();
+        if (!terminoPuzzle)
+        {
+            ActualizarPeso();
+            txtPeso.text = int.Parse(pesoActual.ToString()) + "g";
+        }
 
-        txtPeso.text = pesoActual.ToString() + "g";
 
     }
 
@@ -76,7 +108,7 @@ public class Balanza : MonoBehaviour
     }
 
     void ActualizarPeso()
-    {
+    {        
         if (playerOn)
         {
             pesoActual = pesoApple;
@@ -89,8 +121,28 @@ public class Balanza : MonoBehaviour
         
         foreach (Rigidbody rigidbody in currentRigidbodies)
         {
-            pesoActual += rigidbody.mass *10;
+            pesoActual += rigidbody.mass *100;
         }
 
     }
+
+    void CheckOneSecond()
+    {
+        if (pesoAdecuado == pesoActual && !terminoPuzzle)
+        {
+            terminoPuzzle = true;
+        }
+    }
+
+    void EnablePlayer() //Para volver a permiterle al player moverse
+    {
+        player.GetComponent<PlayerController1>().enabled = true;
+    }
+
+    void CoinReward()
+    {
+        SFX.PlayCoinSound();
+        ReciveCoins.reciveCoins(coinReward);
+    }
+
 }
