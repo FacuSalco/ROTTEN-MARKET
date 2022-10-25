@@ -23,7 +23,7 @@ public class ActivateFKeyImage : MonoBehaviour
 
     void OnTriggerStay(Collider col) //EL PLAYER ESTA CERCA
     {
-        if (col.gameObject.tag == "PlayerInteractionZone") //Agregar si no esta agarrado
+        if (col.gameObject.tag == "Player") //Agregar si no esta agarrado
         {
             gameObject.GetComponent<Canvas>().enabled = true;
         }
@@ -31,7 +31,7 @@ public class ActivateFKeyImage : MonoBehaviour
 
     void OnTriggerExit(Collider col) //EL PLAYER ESTA LEJOS
     {
-        if (col.gameObject.tag == "PlayerInteractionZone") //Poner lo de que si esta agarrando aca
+        if (col.gameObject.tag == "Player") //Poner lo de que si esta agarrando aca
         {
             gameObject.GetComponent<Canvas>().enabled = false;
         }

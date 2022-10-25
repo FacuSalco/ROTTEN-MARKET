@@ -26,8 +26,8 @@ MonoBehaviour:
   - Aca tenes tu recompensa
   - Gracias!!!
   hasAcceptedMission: 1
-  hasDoneMission: 0
+  hasDoneMission: 1
   hasTalked: 1
-  missionTime: 10
+  missionTime: 60
   missionHasTime: 1
   coinReward: 0

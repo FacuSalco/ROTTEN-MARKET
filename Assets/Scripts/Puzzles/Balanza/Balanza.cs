@@ -8,7 +8,7 @@ public class Balanza : MonoBehaviour
 {
     public int pesoAdecuado, coinReward;
     public bool terminoPuzzle;
-    float pesoActual, pesoApple;
+    public float pesoActual, pesoApple;
     bool playerOn, yaGano;
     GameObject player;
     public TextMeshPro txtPeso, txtPesoAdecuado;
@@ -21,7 +21,7 @@ public class Balanza : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        txtPesoAdecuado.text =  "Peso adecuado "+ pesoAdecuado.ToString();
+        txtPesoAdecuado.text =  "Exactamente " + pesoAdecuado.ToString() + "g pesaras y una sorpresa te llevaras";
         SFX = GameObject.Find("[SFX-MANAGER]").GetComponent<SFXManager>();
         ReciveCoins = GameObject.Find("[RECIVE-COINS]").GetComponent<ReciveCoins>();
 
@@ -35,9 +35,11 @@ public class Balanza : MonoBehaviour
         if (pesoAdecuado == pesoActual)
         {
             Invoke("CheckOneSecond", 1);
+            //Para hacer que no tenga que estar 1 segundo descomnetar la linea de abajo y comentar la de arriba
+            //terminoPuzzle = true;
         }
         
-        if (terminoPuzzle && !yaGano) //---------------GANO-------------------//
+        if (terminoPuzzle && !yaGano) //---------------GANO---------------//
         {
             yaGano = true;
             txtPeso.color = Color.green;

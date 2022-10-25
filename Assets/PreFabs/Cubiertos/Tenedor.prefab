@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 8720869097747252237}
   - component: {fileID: 3317001382370231270}
   - component: {fileID: 3182719435248437799}
-  - component: {fileID: 3848438580390679087}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -31,7 +30,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2365879028156263667}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 4.76}
+  m_LocalPosition: {x: 0, y: 0, z: 2.14}
   m_LocalScale: {x: 7.4803877, y: 7.4803877, z: 7.4803877}
   m_Children:
   - {fileID: 3006983034417090980}
@@ -50,7 +49,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2365879028156263667}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -124,7 +123,7 @@ SphereCollider:
   m_GameObject: {fileID: 2365879028156263667}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 2.29
   m_Center: {x: 0, y: 0, z: 0}
@@ -140,19 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17aa676991081cc49bb0f1bd4eeeb10a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &3848438580390679087
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2365879028156263667}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.4682197, y: 0.31, z: 2.6013792}
-  m_Center: {x: -0.032014843, y: -0.72, z: 0.41670984}
 --- !u!1 &5023385068995067489
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,6 +365,7 @@ GameObject:
   - component: {fileID: 3006983034417090980}
   - component: {fileID: 9218915845992134809}
   - component: {fileID: 5208824752816414111}
+  - component: {fileID: 1339026883922927086}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -440,3 +427,22 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!95 &1339026883922927086
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8789712384276554072}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1479fe72f3ee2d9499013d5031085971, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
