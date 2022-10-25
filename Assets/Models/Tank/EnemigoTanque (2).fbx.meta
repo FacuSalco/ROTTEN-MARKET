@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ea0e605aa5140414493f3d00ba727bdd
+guid: 69daef2023fa97d4ca4975c8a4baf5fc
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -109,13 +109,31 @@ ModelImporter:
     2100002: Material.009
     4300000: Pineapple
     7400000: ArmaturePineapple|Armature.001Action.002
-    7400002: ArmaturePineapple|ArmatureAction
+    7400002: TankEnemyIdleAnim
     7400004: ArmaturePineapple|ArmatureAction.001
     7400006: ArmaturePineapple|SmasherAction.001
-    7400008: ArmaturePineapple|ArmatureAction (1)
+    7400008: TankEnemyWalkAnim
+    7400010: TankEnemyAttackAnim
+    7400012: TankEnemyDamagedAnim
+    7400014: TankEnemyDeadAnim
     9500000: //RootNode
     13700000: Pineapple
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.009
+    second: {fileID: 2100000, guid: 41ee3def93b42c14b91c43149f52b45d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "MaterialPi\xF1a"
+    second: {fileID: 2100000, guid: 9f401f6e7df43414e84471c6fc1d7e59, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: lH8yTHvm
+    second: {fileID: 2800000, guid: 29c6eeb3ea8f40d42adbd5f524ca3f35, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
@@ -144,10 +162,122 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: ArmaturePineapple|ArmatureAction (1)
+      name: TankEnemyWalkAnim
       takeName: ArmaturePineapple|ArmatureAction
-      firstFrame: 0
-      lastFrame: 100
+      firstFrame: 3
+      lastFrame: 79
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: TankEnemyIdleAnim
+      takeName: ArmaturePineapple|ArmatureAction
+      firstFrame: 150
+      lastFrame: 210
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: TankEnemyAttackAnim
+      takeName: ArmaturePineapple|ArmatureAction
+      firstFrame: 300
+      lastFrame: 470
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: TankEnemyDamagedAnim
+      takeName: ArmaturePineapple|ArmatureAction
+      firstFrame: 600
+      lastFrame: 680
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: TankEnemyDeadAnim
+      takeName: ArmaturePineapple|ArmatureAction
+      firstFrame: 760
+      lastFrame: 945
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

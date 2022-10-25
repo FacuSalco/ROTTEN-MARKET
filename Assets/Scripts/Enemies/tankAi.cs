@@ -4,25 +4,23 @@ using UnityEngine;
 
 public class tankAi : MonoBehaviour
 {
-    public float rangoDeAlerta, rangoDeAlerta2;
+    public float rangoDeAlerta, rangoDeAlerta2, rangoDeAtaque;
+    private bool estarAlerta, estarAlerta2, prockAttack;
     public LayerMask capaDelJugador;
-    bool estarAlerta;
-    bool estarAlerta2;
     private Transform Player;
-    public float enemySpeed;
-    public float enemySpeed2;
-    public float rangoDeAtaque;
-    bool prockAttack;
-    bool isAttacking = false;
+
+    public bool isAttacking = false;
 
     //raycast
     public Transform shadowBody;
     [SerializeField] private bool playerSeen = false;
-    [SerializeField] private float rayDistance;
+    private float rayDistance;
     RaycastHit hit;
 
     // navigation 
     EnemyNavMeshController enemyNav;
+    private Animator EnemyAnimator;
+    public GameObject Weapon;
 
    
 
@@ -32,6 +30,10 @@ public class tankAi : MonoBehaviour
         Player = GameObject.FindWithTag("Player").transform;
 
         enemyNav = gameObject.GetComponent<EnemyNavMeshController>();
+
+        EnemyAnimator = GetComponent<Animator>();
+
+        rayDistance = rangoDeAlerta2;
     }
 
     // Update is called once per frame
@@ -42,7 +44,6 @@ public class tankAi : MonoBehaviour
         estarAlerta2 = Physics.CheckSphere(transform.position, rangoDeAlerta2, capaDelJugador);
 
         prockAttack = Physics.CheckSphere(transform.position, rangoDeAtaque, capaDelJugador);
-        //
 
 
         Physics.Raycast(shadowBody.position, shadowBody.transform.forward, out hit, rayDistance);
@@ -56,43 +57,71 @@ public class tankAi : MonoBehaviour
 
         if (playerSeen == true)
         {
-            if (estarAlerta == true && isAttacking == false)
-            {
-                enemyNav.navRun();
-                //run anim
-            }
 
-            if (estarAlerta2 == true && estarAlerta == false)
+            if (estarAlerta2)
             {
-                enemyNav.navWalk();
+                if (estarAlerta && !isAttacking)
+                {
+                    enemyNav.navRun();
+                    EnemyAnimator.SetBool("IsWalking", true);
 
+                }
+                if (estarAlerta2 && !isAttacking)
+                {
+                    enemyNav.navWalk();
+                    EnemyAnimator.SetBool("IsWalking", true);
+
+                }
                 //walk anim
+                EnemyAnimator.SetBool("IsWalking", true);
+
+
             }
         }
 
-        if (estarAlerta == false && estarAlerta2 == false)
+        if (!estarAlerta && !estarAlerta2)
         {
             playerSeen = false;
+            EnemyAnimator.SetBool("IsWalking", false);
             //sleep anim
         }
 
-        if(prockAttack == true && isAttacking == false)
+        if( prockAttack && !isAttacking )
         {
             //attack anim
-            isAttacking = true;
+
             StartCoroutine(attack());
+
+        }
+
+        if (isAttacking)
+        {
+            EnemyAnimator.SetBool("CanAttack", true);
+            EnemyAnimator.SetBool("IsWalking", false);
+        }
+        else
+        {
+            EnemyAnimator.SetBool("CanAttack", false);
         }
 
     }
 
     IEnumerator attack()
     {
-
-        gameObject.GetComponent<Animator>().Play("tankAttack");
-        yield return new WaitForSeconds(2.8f);
-        gameObject.GetComponent<Animator>().Play("New State");
+        isAttacking = true;
+        yield return new WaitForSeconds(2f);
         isAttacking = false;
 
+    }
+
+    public void ActivateWeapon()
+    {
+        Weapon.SetActive(true);
+    }
+
+    public void DeActivateWeapon()
+    {
+        Weapon.SetActive(false);
     }
 
     private void OnDrawGizmos()
