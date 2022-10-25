@@ -117,6 +117,10 @@ public class NPCShopList : MonoBehaviour
             talkedToNPC = true;
         }
 
+        if (NpcManager.hasFailedMission)
+        {
+            RestartQuest();
+        }
 
     }
     
@@ -167,7 +171,31 @@ public class NPCShopList : MonoBehaviour
         shopListCanvas.SetActive(false);
     }
 
-    void CoinReward()
+    private void RestartQuest()
+    {
+        for(int i = 0; i < shopListImages.Length; i++)
+        {
+            shopListImages[i].GetComponent<Image>().color = Color.white;
+        }
+        trajoObjeto = false;
+        trajoCerezas = false;
+        trajoCuchara = false;
+        trajoCuchillo = false;
+        trajoSalero = false;
+        trajoTenedor = false;
+
+
+        finishedQuest = false;
+        startedQuest = false;
+        talkedToNPC = false;
+
+        cantObjetosEntregados = 0;
+
+        shopListCanvas.SetActive(false);
+
+}
+
+void CoinReward()
     {
         SFX.PlayCoinSound();
         ReciveCoins.reciveCoins(coinReward);

@@ -56,7 +56,7 @@ public class PlayerController1 : MonoBehaviour
     {
         player = GetComponent<CharacterController>();
         playerAnimatorControler = GetComponent<Animator>();
-        DefaultPos = transform.position;
+        DefaultPos = gameObject.transform.position;
 
         Cursor.lockState = CursorLockMode.Locked; //Para que no aparezca el mouse en la pantalla
 
