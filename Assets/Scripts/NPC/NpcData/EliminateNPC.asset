@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a6f09cffe0d4b94da6d3229a90bed2e, type: 3}
+  m_Name: EliminateNPC
+  m_EditorClassIdentifier: 
+  dialoguesBeforeMission:
+  - Hola nuevo.
+  - Me ayudas en algo?
+  - Hay unos malandros en la entrada del supermercado
+  - Te podrias hacer cargo de ellos?
+  mission: Tenes que eliminar 3 enemigos
+  dialoguesAfterMission:
+  - Gracias por la ayuda nuevo
+  - Aqui tenes tu recompensa
+  - Gracias por la ayuda!
+  hasAcceptedMission: 0
+  hasDoneMission: 0
+  hasTalked: 0
+  missionTime: 120
+  missionHasTime: 1
+  coinReward: 3

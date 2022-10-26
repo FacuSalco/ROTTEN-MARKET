@@ -5,4 +5,5 @@ using UnityEngine;
 public class MissionHandler : MonoBehaviour
 {
     public bool IsOnMission = false;
+    public bool IsOnKillingMission = false;
 }
