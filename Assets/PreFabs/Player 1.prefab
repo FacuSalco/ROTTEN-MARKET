@@ -56,7 +56,6 @@ GameObject:
   - component: {fileID: 3802250536783444390}
   - component: {fileID: 3802250537385810138}
   - component: {fileID: 3802250537385810139}
-  - component: {fileID: 3802250537385810136}
   - component: {fileID: 3802250537385810137}
   - component: {fileID: 3802250537385810142}
   - component: {fileID: 3802250537385810143}
@@ -81,6 +80,7 @@ Transform:
   m_Children:
   - {fileID: 3802250536792954466}
   - {fileID: 3802250537299466602}
+  - {fileID: 5750498840870303154}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -136,18 +136,6 @@ MonoBehaviour:
   Data: {fileID: 11400000, guid: a66c4f0f0bd7fd746aebde5627c0af71, type: 2}
   PunchData: {fileID: 11400000, guid: 2de5bed479a2ee04da993d3837b90701, type: 2}
   SwordData: {fileID: 11400000, guid: f570fb0b329495d4dbe24ec19706edca, type: 2}
---- !u!114 &3802250537385810136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3802250536792787456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 376070a59d724d4409cf9094890bad60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3802250537385810137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,9 +178,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCanvas: {fileID: 0}
   barraVida: {fileID: 0}
+  vidaActual: 0
   vidaMaxima: 100
   cantMonedas: 0
   cantMonedasTxt: {fileID: 0}
+  thirdPersonCamera: {fileID: 0}
+  "Da\xF1oVignette": {fileID: 0}
 --- !u!114 &3802250537385810140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,18 +196,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f9d6866266ac2428e8e2ab5fc0f27c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Data: {fileID: 0}
   player: {fileID: 0}
-  inputPlayerSpeed: 0
+  relativeSpeed: 0
   currentSpeed: 0
   gravity: 25
   fallVelocity: 0
   jumpForce: 10
   leftHand: {fileID: 3802250536654051123}
   rightHand: {fileID: 3802250537237566452}
+  HitCol: {fileID: 0}
   mainCamera: {fileID: 0}
   isOnSlope: 0
   slideVelocity: 10
   slopeForceDown: -10
+  DefaultPos: {x: 0, y: 0, z: 0}
 --- !u!1 &3802250536792787458
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,3 +1513,47 @@ Transform:
   m_Father: {fileID: 3802250536792954464}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1 &4283759690116597760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5750498840870303154}
+  - component: {fileID: 6864924493604210196}
+  m_Layer: 9
+  m_Name: DamageHitBox
+  m_TagString: handHitbox
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &5750498840870303154
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4283759690116597760}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.1499999, z: 1.0599995}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3802250536792954464}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6864924493604210196
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4283759690116597760}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.167997, y: 1, z: 2.0069227}
+  m_Center: {x: 0.22236328, y: 0, z: 0.5034614}

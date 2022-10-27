@@ -39,4 +39,9 @@ public class MissionKillingNPC : MonoBehaviour
             }
         }
     }
+
+    public void EnemyKilled()
+    {
+        EnemyKillCount++;
+    }
 }

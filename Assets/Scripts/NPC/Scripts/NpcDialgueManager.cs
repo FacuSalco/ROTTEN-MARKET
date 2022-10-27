@@ -32,6 +32,7 @@ public class NpcDialgueManager : MonoBehaviour
     public bool hasFailedMission = false;
 
     private bool doDesactivateOnce = true;
+    private bool doSetTimeOnce = true;
 
     private PlayerStats playerStats;
     private ReciveCoins ReciveCoins;
@@ -53,8 +54,8 @@ public class NpcDialgueManager : MonoBehaviour
         MissionHand = GameObject.Find("[MISSION-MANAGER]").GetComponent<MissionHandler>();
         MissionChecker = MissionHand.GetComponent<MissionStateChecker>();
 
-        TimeSetUp();
         DialogueManagerSetUp();
+        TimeSetUp();
     }
 
     // Update is called once per frame
@@ -179,8 +180,9 @@ public class NpcDialgueManager : MonoBehaviour
 
 
 
-        if (DialogueManager.missionHasTime)
+        if (DialogueManager.missionHasTime && hasStartedMission)
         {
+
             TimeTxt.text = Mathf.Round(TimeCounter).ToString();
 
             if (DialogueManager.hasAcceptedMission && !DialogueManager.hasDoneMission && !hasFailedMission)
@@ -206,7 +208,7 @@ public class NpcDialgueManager : MonoBehaviour
         }
         else
         {
-            TimeTxt.enabled = false;
+            //TimeTxt.enabled = false;
         }
 
     }
@@ -251,6 +253,7 @@ public class NpcDialgueManager : MonoBehaviour
     public void FailedMission()
     {
         hasFailedMission = true;
+        MissionHand.IsOnMission = false;
     }
 
     public void CompleteMission()

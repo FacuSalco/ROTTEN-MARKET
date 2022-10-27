@@ -22,9 +22,9 @@ MonoBehaviour:
   - Gracias por la ayuda nuevo
   - Aqui tenes tu recompensa
   - Gracias por la ayuda!
-  hasAcceptedMission: 0
+  hasAcceptedMission: 1
   hasDoneMission: 0
-  hasTalked: 0
+  hasTalked: 1
   missionTime: 120
   missionHasTime: 1
   coinReward: 3
