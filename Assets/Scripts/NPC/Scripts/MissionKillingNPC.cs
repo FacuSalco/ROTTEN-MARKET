@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class MissionKillingNPC : MonoBehaviour
 {
-    public int EnemyKillAmount;
-    private int EnemyKillAmountDelta;
+    public int EnemyMustKillAmount;
     public int EnemyKillCount;
     private bool CompleteMissionOnce = true;
 
@@ -17,25 +16,33 @@ public class MissionKillingNPC : MonoBehaviour
     {
         MissionHand = GameObject.Find("[MISSION-MANAGER]").GetComponent<MissionHandler>();
         NpcManager = GetComponent<NpcDialgueManager>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(NpcManager.DialogueManager.hasAcceptedMission && !NpcManager.DialogueManager.hasDoneMission)
+        {
+            MissionHand.StartKillingMission();
+        }
+
         if (MissionHand.IsOnKillingMission)
         {
-            if(EnemyKillCount == EnemyKillAmount)
+            if(EnemyKillCount == EnemyMustKillAmount)
             {
                 if (CompleteMissionOnce)
                 {
                     NpcManager.CompleteMission();
+                    MissionHand.FinishKillingMission();
+
                     CompleteMissionOnce = false;
                 }
             }
 
             if (NpcManager.hasFailedMission)
             {
-                EnemyKillCount = 0;
+                RestartMission();
             }
         }
     }
@@ -43,5 +50,11 @@ public class MissionKillingNPC : MonoBehaviour
     public void EnemyKilled()
     {
         EnemyKillCount++;
+    }
+
+    private void RestartMission()
+    {
+        EnemyKillCount = 0;
+        MissionHand.FinishKillingMission();
     }
 }

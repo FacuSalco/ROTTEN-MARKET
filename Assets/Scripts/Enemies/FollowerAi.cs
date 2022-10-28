@@ -193,7 +193,7 @@ public class FollowerAi : MonoBehaviour
     {
         Collider KatanaCollider = Katana.GetComponent<Collider>();
 
-        KatanaCollider.enabled = true;
+        KatanaCollider.isTrigger = true;
 
     }
 
@@ -201,7 +201,7 @@ public class FollowerAi : MonoBehaviour
     {
         Collider KatanaCollider = Katana.GetComponent<Collider>();
 
-        KatanaCollider.enabled = false;
+        KatanaCollider.isTrigger = false;
     }
 
     private void OnDrawGizmos()

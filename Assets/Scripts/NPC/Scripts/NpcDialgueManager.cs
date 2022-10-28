@@ -109,6 +109,7 @@ public class NpcDialgueManager : MonoBehaviour
                 {
                     DialogueManager.hasAcceptedMission = true;
                     NextText.text = "";
+                    MissionHand.StartMission();
                     //DialogueManager.hasDoneMission = true;
                 }
 
@@ -117,7 +118,6 @@ public class NpcDialgueManager : MonoBehaviour
             if (DialogueManager.hasAcceptedMission && !DialogueManager.hasDoneMission)
             {
                 StartMission();
-
             }
 
             //Termino la misión
@@ -125,6 +125,9 @@ public class NpcDialgueManager : MonoBehaviour
             if (DialogueManager.hasDoneMission)
             {
                 bool DoOnce = true;
+
+                DialogueCanvas.SetActive(true);
+                MissionCanvas.SetActive(false);
 
                 if (DoOnce)
                 {
@@ -155,7 +158,7 @@ public class NpcDialgueManager : MonoBehaviour
                 if (DialogueAfterCounter >= DialogueManager.dialoguesAfterMission.Length - 1)
                 {
                     hasFinishedTalking = true;
-
+                    NextText.enabled = false;
                     DialogueText.text = DialogueManager.dialoguesAfterMission[DialogueManager.dialoguesAfterMission.Length - 1];
                 }
 
@@ -170,7 +173,7 @@ public class NpcDialgueManager : MonoBehaviour
             }
             else
             {
-                if (doDesactivateOnce)
+                if (doDesactivateOnce && !MissionHand.IsOnMission)
                 {
                     NpcCanvas.SetActive(false);
                     doDesactivateOnce = false;
@@ -247,7 +250,7 @@ public class NpcDialgueManager : MonoBehaviour
         
 
         hasStartedMission = true;
-        MissionHand.IsOnMission = true;
+        MissionHand.StartMission();
     }
 
     public void FailedMission()
@@ -259,9 +262,6 @@ public class NpcDialgueManager : MonoBehaviour
     public void CompleteMission()
     {
         DialogueManager.hasDoneMission = true;
-        DialogueCanvas.SetActive(true);
-        MissionCanvas.SetActive(false);
-
         MissionHand.IsOnMission = false;
     }
 
