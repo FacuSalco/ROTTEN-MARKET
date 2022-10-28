@@ -67,9 +67,11 @@ public class PauseBehaviour : MonoBehaviour
     public void Menu()
     {
         SFX.PlayClickSound();
-        menuMenuUI.SetActive(true);
         pauseMenuUI.SetActive(false);
-
+        Time.timeScale = 0f;
+        gameIsPaused = true;
+        Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadScene("Menu");
     }
 
     public void Options() //PARA EDITAR LAS OPCIONES DEL JUEGO
@@ -99,10 +101,11 @@ public class PauseBehaviour : MonoBehaviour
     public void StartGame()
     {
         SFX.PlayClickSound();
-        menuMenuUI.SetActive(false);
+        //menuMenuUI.SetActive(false);
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         gameIsPaused = false;
+        SceneManager.LoadScene("MapScene");
     }
 
 }
