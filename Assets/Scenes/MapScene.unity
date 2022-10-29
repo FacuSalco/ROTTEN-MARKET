@@ -5414,7 +5414,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: HuevoGunner
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1920768406504149813, guid: 7f969b89ca0cc164f9c148e71886a136, type: 3}
+    - {fileID: 1920768406504149810, guid: 7f969b89ca0cc164f9c148e71886a136, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7f969b89ca0cc164f9c148e71886a136, type: 3}
 --- !u!4 &566646375 stripped
 Transform:
@@ -25863,7 +25865,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2581579397279111617}
-  m_LocalRotation: {x: 0.24931954, y: 0.6659773, z: -0.25314087, w: 0.6559221}
+  m_LocalRotation: {x: 0.24931952, y: 0.6659773, z: -0.25314084, w: 0.6559222}
   m_LocalPosition: {x: -11.969132, y: 5.2072477, z: -8.851396}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -35578,7 +35580,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6694424359594057283}
-  m_LocalRotation: {x: 0.24931958, y: 0.6659773, z: -0.25314075, w: 0.6559221}
+  m_LocalRotation: {x: 0.24931958, y: 0.66597724, z: -0.2531407, w: 0.6559222}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
