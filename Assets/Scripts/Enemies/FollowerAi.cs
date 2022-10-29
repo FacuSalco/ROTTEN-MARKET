@@ -40,7 +40,7 @@ public class FollowerAi : MonoBehaviour
     private bool awakeningComplete = false;
     private Animator enemyAnimator;
 
-
+    bool DoOnce = true;
 
     // Start is called before the first frame update
     void Start()
@@ -77,22 +77,16 @@ public class FollowerAi : MonoBehaviour
 
         if(hit.collider && hit.collider.gameObject.name == "Player")
         {
-
-            if (!awakeningComplete)
-            {
-                StartCoroutine(enemyAwakened());
-
-                enemyAnimator.SetBool("hasAwaken", true);
-            }
-
-            if (awakeningComplete)
+            if (!playerSeen)
             {
                 playerSeen = true;
+                enemyAnimator.SetTrigger("playerSeen");
             }
-
+            
+            
         }
 
-        if(playerSeen == true)
+        if (playerSeen == true)
         {
             if (estarAlerta == true && !prockAttack)
             {
@@ -115,6 +109,7 @@ public class FollowerAi : MonoBehaviour
                 if (CanAttack)
                 {
                     StartCoroutine(Attacking());
+                    transform.LookAt(Player);
                     //enemyAnimator.SetBool("canAttack", true);
                 }
 
@@ -148,15 +143,6 @@ public class FollowerAi : MonoBehaviour
 
         enemyAnimator.SetBool("canAttack", false);
         CanAttack = true;
-    }
-
-    IEnumerator enemyAwakened()
-    {
-        awakeningComplete = false;
-
-        yield return new WaitForSeconds(3f);
-
-        awakeningComplete = true;
     }
 
     public void ComportamientoEnemigo()

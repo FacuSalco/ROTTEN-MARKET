@@ -17,7 +17,7 @@ public class bulletBehaviour : MonoBehaviour
     private void Start()
     {
         PlayerHealthBar = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthBar>();
-        Damage = Data.enemyData.WeaponDamage;
+        Damage = 20;
 
     }
 

@@ -12,7 +12,6 @@ public class GunnerAi : MonoBehaviour
     private bool attackingRangeBool, walkingRangeBool, jugadorCerca, notWalk;
     private Transform Player;
     public float enemySpeed, enemySpeed2;
-    EnemyNavMeshController enemyNav;
     private Animator enemyAnimator;
 
     //turret
@@ -32,7 +31,6 @@ public class GunnerAi : MonoBehaviour
     {
         enemyAnimator = GetComponent<Animator>();
         Player = GameObject.FindWithTag("Player").transform;
-        enemyNav = gameObject.GetComponent<EnemyNavMeshController>();
 
         rayDistance = walkingRange;
     }
