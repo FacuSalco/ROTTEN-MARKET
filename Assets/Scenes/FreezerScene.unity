@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -199,7 +199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!64 &1963133995
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3055,7 +3055,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 861543616748958550}
-  m_LocalRotation: {x: 0.005114146, y: 0.93746966, z: -0.34775645, w: 0.013785168}
+  m_LocalRotation: {x: 0.005114131, y: 0.93746966, z: -0.3477564, w: 0.0137851285}
   m_LocalPosition: {x: -11.632595, y: 87.77959, z: -20.292294}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -3318,7 +3318,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2567435883033879615}
-  m_LocalRotation: {x: 0.005114276, y: 0.93746966, z: -0.3477564, w: 0.013785216}
+  m_LocalRotation: {x: 0.005114261, y: 0.93746966, z: -0.34775636, w: 0.013785177}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3661,7 +3661,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2567435884124338221}
-  m_LocalRotation: {x: -0.0051130126, y: -0.93746966, z: 0.34775642, w: -0.013784739}
+  m_LocalRotation: {x: -0.005113005, y: -0.93746966, z: 0.34775642, w: -0.013784719}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4368,7 +4368,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3434922555528011475
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13362,10 +13362,10 @@ MonoBehaviour:
   cineCam: {fileID: 2567435884270510305}
   sensitivityX: 60
   sensXSlider: {fileID: 3434922557267148810}
-  sensXTxt: {fileID: 3434922556081709619}
+  sensXTxt: {fileID: 3434922556041486217}
   sensitivityY: 30
   sensYSlider: {fileID: 3434922557490218357}
-  sensYTxt: {fileID: 0}
+  sensYTxt: {fileID: 3434922555585051179}
   volume: 50
   volumeSlider: {fileID: 3434922555728895818}
   volumeTxt: {fileID: 3434922555624423419}

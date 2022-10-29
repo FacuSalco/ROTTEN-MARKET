@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 09e46e02f84dd9346b4d79c474612d31
+  - enabled: 1
+    path: Assets/Scenes/FreezerScene.unity
+    guid: a5eec30cef5b0f84690e8e31bce26331
   m_configObjects: {}
