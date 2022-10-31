@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ReturnMapScene : MonoBehaviour
 {
     bool isNear;
-    public static bool returnedFromEntrance, returnedFromExit;
+    public static bool returnedFromEntrance/*, entroAlDeposito*/, returnedFromExit/*, returnedFromDepositExit*/;
     Fade Fade;
 
     // Start is called before the first frame update
@@ -26,11 +26,19 @@ public class ReturnMapScene : MonoBehaviour
             if (gameObject.name == "VolverSuperEntrada")
             {
                 returnedFromEntrance = true;
+                Debug.Log("Bool returnedFromEntrance es " + returnedFromEntrance);
             }
+
+            //if (gameObject.name == "EntradaDeposito")
+            //{
+            //    entroAlDeposito = true;
+            //    Debug.Log("Bool entroAlDeposito es " + entroAlDeposito);
+            //}
             
             if (gameObject.name == "VolverSuperSalida")
             {
                 returnedFromExit = true;
+                Debug.Log("Bool returnedFromExit es " + returnedFromExit);
             }
 
         }
@@ -57,8 +65,19 @@ public class ReturnMapScene : MonoBehaviour
 
     void ChangeScene()
     {
-        SceneManager.LoadScene("MapScene");
-        Fade.FadeIn();
+        if (gameObject.name == "EntradaDeposito")
+        {
+            SceneManager.LoadScene("DepositScene");
+            Fade.FadeIn();
+            Debug.Log("Entrando al deposito...");
+        }
+        
+        else
+        {
+            SceneManager.LoadScene("MapScene");
+            Fade.FadeIn();
+            Debug.Log("Entrando al mapa...");
+        }
     }
 
 }
