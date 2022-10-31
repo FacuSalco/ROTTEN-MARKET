@@ -9,7 +9,7 @@ public class NPCShopList : MonoBehaviour
     public bool finishedQuest, startedQuest, talkedToNPC, nearNPC;
     public int coinReward; //PONERLA DIVIDIDO POR 6
     [SerializeField]int cantObjetosEntregados;
-    GameObject objetoTraido;
+    public GameObject objetoTraido;
     bool trajoObjeto, trajoTenedor, trajoCuchillo, trajoCuchara, trajoSalero, trajoCerezas;
     GameObject player;
     SFXManager SFX;
@@ -128,21 +128,20 @@ public class NPCShopList : MonoBehaviour
     {
         for (int i = 0; i < shopList.Length; i++)
         {
-            if (col.gameObject.name == shopList[i].name && col.transform.root.CompareTag("Player")) //Entra con objeto de la lista que el tag del padre es "Player", osea si lo tiene en la mano
+            if (col.gameObject.name == shopList[i].name /*&& col.transform.root.CompareTag("Player") //Esta parte no anda porque el root ya no es el player, es el Persistent Object. Shhh */) //Entra con objeto de la lista que el tag del padre es "Player", osea si lo tiene en la mano
             {
                 trajoObjeto = true;
                 //objetoTraido = shopList[i];
                 objetoTraido = col.gameObject;
             }            
         }
+        
     }
 
     void OnTriggerEnter (Collider col)
     {
-        if (col.gameObject.tag == "Player" && !talkedToNPC) //Hacer un dialogo que el NPC te diga que se rompio la pierna y necesita que le traigas algunas cosas del super
+        if (col.gameObject.tag == "Player") //Hacer un dialogo que el NPC te diga que se rompio la pierna y necesita que le traigas algunas cosas del super
         {
-            Debug.Log("Hola Manzana, me podrías ayudar? Me lastime la pierna y debo buscar algunas cosas del supermercado, las buscarías por mi? Te pagare bien..." +
-            "\nNecesito que me traigas: Un tenedor, un cuchillo y una cuchara. \n[Presiona E para aceptar la mision]");
             nearNPC = true;
         }        
     }

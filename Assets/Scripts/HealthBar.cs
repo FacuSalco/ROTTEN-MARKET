@@ -48,6 +48,7 @@ public class HealthBar : MonoBehaviour
         {
             isDead = true;
             SFX.PlayDeathSound();
+            Debug.Log("Muerio");
         }
 
     }

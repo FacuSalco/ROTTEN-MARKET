@@ -22,5 +22,10 @@ public class Fade : MonoBehaviour
     {
         animator.Play("FadeOut");
     }
-    
+
+    public void FadeIn()
+    {
+        animator.Play("FadeIn");
+    }
+
 }
