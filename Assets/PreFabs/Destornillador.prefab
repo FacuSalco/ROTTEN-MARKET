@@ -86,10 +86,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8556201382630333007}
-  - component: {fileID: 8556201382630333004}
   - component: {fileID: 8556201382630333005}
   - component: {fileID: 8556201382630333006}
   - component: {fileID: 8556201382630333003}
+  - component: {fileID: 64842595205461556}
   m_Layer: 0
   m_Name: Destornillador
   m_TagString: CameraIgnore
@@ -104,28 +104,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8556201382630332992}
-  m_LocalRotation: {x: -0.7071068, y: -0.00000006181724, z: -7.274205e-15, w: 0.7071067}
-  m_LocalPosition: {x: 1.0396991, y: 2.7869992, z: -14.275407}
-  m_LocalScale: {x: 0.0007336116, y: 0.0008685233, z: 0.0010014527}
+  m_LocalRotation: {x: -0.3912667, y: 0.41361234, z: 0.5889911, w: 0.57351965}
+  m_LocalPosition: {x: -46.134663, y: -0.71801764, z: -76.654205}
+  m_LocalScale: {x: 0.008356217, y: 0.009892938, z: 0.011407064}
   m_Children:
   - {fileID: 1383082348404355852}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &8556201382630333004
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8556201382630332992}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 31.5
-  m_Height: 406.72
-  m_Direction: 1
-  m_Center: {x: 0, y: 130.9, z: 100.9}
 --- !u!54 &8556201382630333005
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -170,3 +156,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sound: {fileID: 8300000, guid: 1b4438b45b25a5848bc755bab4c166b1, type: 3}
   volumeModifier: 0
+--- !u!64 &64842595205461556
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8556201382630332992}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 0}

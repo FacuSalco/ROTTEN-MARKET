@@ -21,7 +21,7 @@ public class Balanza : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        txtPesoAdecuado.text =  "Exactamente " + pesoAdecuado.ToString() + "g pesaras y una sorpresa te llevaras";
+        txtPesoAdecuado.text =  "EXACTAMENTE " + pesoAdecuado.ToString() + "G PESARAS Y UNA SORPRESA TE LLEVARAS";
         SFX = GameObject.Find("[SFX-MANAGER]").GetComponent<SFXManager>();
         ReciveCoins = GameObject.Find("[RECIVE-COINS]").GetComponent<ReciveCoins>();
 
