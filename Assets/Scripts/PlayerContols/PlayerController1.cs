@@ -48,6 +48,8 @@ public class PlayerController1 : MonoBehaviour
 
     //Variables anim
     private Animator playerAnimatorControler;
+    public bool CanMove = false;
+
 
     public Vector3 DefaultPos;
 
@@ -68,60 +70,65 @@ public class PlayerController1 : MonoBehaviour
 
         PostProcessing = GameObject.Find("[POST-PROCESSING]");
 
+        StartCoroutine(PlayerAwakening());
     }
 
     // Bucle de juego que se ejecuta en cada frame
     void Update()
     {
-        jumpForce = Data.playerJumpForce;
-
-        relativeSpeed = Data.playerSpeed;
-
-        //Guardamos el valor de entrada horizontal y vertical para el movimiento
-        horizontalMove = Input.GetAxis("Horizontal");
-        verticalMove = Input.GetAxis("Vertical");
-
-        playerInput = new Vector3(horizontalMove, 0, verticalMove); //los almacenamos en un Vector3
-        playerInput = Vector3.ClampMagnitude(playerInput, 1); //Y limitamos su magnitud a 1 para evitar aceleraciones en movimientos diagonales
-
-        playerAnimatorControler.SetFloat("PlayerWalkVelocity", playerInput.magnitude * playerSpeed ); //Animacion de caminar
-
-        CamDirection(); //Llamamos a la funcion CamDirection()
-
-        movePlayer = playerInput.x * camRight + playerInput.z * camForward;  //Almacenamos en movePlayer el vector de movimiento corregido con respecto a la posicion de la camara.
-
-        movePlayer = movePlayer * playerSpeed;  //Y lo multiplicamos por la velocidad del jugador "playerSpeed"
-
-        player.transform.LookAt(player.transform.position + movePlayer); //Hacemos que nuestro personaje mire siempre en la direccion en la que nos estamos moviendo.
-
-        SetGravity(); //Llamamos a la funcion SetGravity() para aplicar la gravedad
-
-        PlayerSkills(); //Llamamos a la funcion PlayerSkills() para invocar las habilidades de nuestro personaje
-        
-        player.Move(movePlayer * Time.deltaTime); //Y por ultimo trasladamos los datos de movimiento a nuestro jugador * Time.deltaTime 
-                                                  //De este modo mantenemos unos FPS estables independientemente de la potencia del equipo.
-                                                  //Debug.Log("Tocando el suelo: " + player.isGrounded); //Descomenta esta linea si quieres monitorizar si estas tocando el suelo en la consola de depuracion
-
-        currentSpeed = player.velocity.magnitude;
-
-        if (Input.GetKey(KeyCode.LeftShift)) //Para que el personaje corra
+        if (CanMove)
         {
-            isRunning = true;
-            playerSpeed = relativeSpeed * 2;
-            //PostProcessing.GetComponent<PostProcessVolume>().profile.GetSetting<ChromaticAberration>().intensity.value = 0.2f; //Para que la camara se distorsione al correr
-        }
-        else
-        {
-            isRunning = false;
-            playerSpeed = relativeSpeed;
-            //PostProcessing.GetComponent<PostProcessVolume>().profile.GetSetting<ChromaticAberration>().intensity.value = 0; //Para que vuelva al valor inicial
+            jumpForce = Data.playerJumpForce;
+
+            relativeSpeed = Data.playerSpeed;
+
+            //Guardamos el valor de entrada horizontal y vertical para el movimiento
+            horizontalMove = Input.GetAxis("Horizontal");
+            verticalMove = Input.GetAxis("Vertical");
+
+            playerInput = new Vector3(horizontalMove, 0, verticalMove); //los almacenamos en un Vector3
+            playerInput = Vector3.ClampMagnitude(playerInput, 1); //Y limitamos su magnitud a 1 para evitar aceleraciones en movimientos diagonales
+
+            playerAnimatorControler.SetFloat("PlayerWalkVelocity", playerInput.magnitude * playerSpeed); //Animacion de caminar
+
+            CamDirection(); //Llamamos a la funcion CamDirection()
+
+            movePlayer = playerInput.x * camRight + playerInput.z * camForward;  //Almacenamos en movePlayer el vector de movimiento corregido con respecto a la posicion de la camara.
+
+            movePlayer = movePlayer * playerSpeed;  //Y lo multiplicamos por la velocidad del jugador "playerSpeed"
+
+            player.transform.LookAt(player.transform.position + movePlayer); //Hacemos que nuestro personaje mire siempre en la direccion en la que nos estamos moviendo.
+
+            SetGravity(); //Llamamos a la funcion SetGravity() para aplicar la gravedad
+
+            PlayerSkills(); //Llamamos a la funcion PlayerSkills() para invocar las habilidades de nuestro personaje
+
+            player.Move(movePlayer * Time.deltaTime); //Y por ultimo trasladamos los datos de movimiento a nuestro jugador * Time.deltaTime 
+                                                      //De este modo mantenemos unos FPS estables independientemente de la potencia del equipo.
+                                                      //Debug.Log("Tocando el suelo: " + player.isGrounded); //Descomenta esta linea si quieres monitorizar si estas tocando el suelo en la consola de depuracion
+
+            currentSpeed = player.velocity.magnitude;
+
+            if (Input.GetKey(KeyCode.LeftShift)) //Para que el personaje corra
+            {
+                isRunning = true;
+                playerSpeed = relativeSpeed * 2;
+                //PostProcessing.GetComponent<PostProcessVolume>().profile.GetSetting<ChromaticAberration>().intensity.value = 0.2f; //Para que la camara se distorsione al correr
+            }
+            else
+            {
+                isRunning = false;
+                playerSpeed = relativeSpeed;
+                //PostProcessing.GetComponent<PostProcessVolume>().profile.GetSetting<ChromaticAberration>().intensity.value = 0; //Para que vuelva al valor inicial
+            }
+
+            //Si la posicion del player es y < 0 (es decir que esta debajo del suelo) lo transportamos a la misma posicion que estaba pero en y = 0.41
+            if (player.transform.position.y < 0)
+            {
+                player.transform.position = new Vector3(player.transform.position.x, 0.41f, player.transform.position.z);
+            }
         }
 
-        //Si la posicion del player es y < 0 (es decir que esta debajo del suelo) lo transportamos a la misma posicion que estaba pero en y = 0.41
-        if (player.transform.position.y < 0)
-        {
-            player.transform.position = new Vector3(player.transform.position.x, 0.41f, player.transform.position.z);
-        }
     }
 
     //Funcion para determinar la direccion a la que mira la camara. 
@@ -177,6 +184,14 @@ public class PlayerController1 : MonoBehaviour
         playerAnimatorControler.SetBool("PlayerPunchFinished", true);
         canPunch = true;
 
+    }
+
+    IEnumerator PlayerAwakening()
+    {
+        CanMove = false;
+        playerAnimatorControler.SetTrigger("PlayerAwake");
+        yield return new WaitForSeconds(5f);
+        CanMove = true;
     }
 
     //Funcion para la gravedad.

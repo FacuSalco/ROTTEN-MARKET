@@ -41,6 +41,8 @@ public class NpcDialgueManager : MonoBehaviour
     private MissionHandler MissionHand;
     private MissionStateChecker MissionChecker;
 
+    private Animator NpcAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +55,7 @@ public class NpcDialgueManager : MonoBehaviour
         PlayerRespawnPos = Player.GetComponent<PlayerController1>().DefaultPos;
         MissionHand = GameObject.Find("[MISSION-MANAGER]").GetComponent<MissionHandler>();
         MissionChecker = MissionHand.GetComponent<MissionStateChecker>();
+        NpcAnimator = GetComponent<Animator>();
 
         DialogueManagerSetUp();
         TimeSetUp();
@@ -65,7 +68,10 @@ public class NpcDialgueManager : MonoBehaviour
         {
             //Empieza a hablar
             NpcCanvas.SetActive(true);
-
+            if (NpcAnimator)
+            {
+                NpcAnimator.SetBool("IsTalking", true);
+            }
 
             if (!hasIntrodusedMission)
             {
@@ -167,6 +173,10 @@ public class NpcDialgueManager : MonoBehaviour
         }
         else
         {
+            if (NpcAnimator)
+            {
+                NpcAnimator.SetBool("IsTalking", false);
+            }
             if (hasStartedMission)
             {
                 DialogueCanvas.SetActive(false);
