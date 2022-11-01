@@ -71,6 +71,15 @@ public class PickUpObject : MonoBehaviour
                     PickedObject.transform.localScale = new Vector3(0.004345551f, 0.004345563f, 0.00434556f);
                     PickedObject.transform.GetChild(0).gameObject.GetComponent<MeshCollider>().isTrigger = true;                    
                 }
+
+                if (PickedObject.name == "Destornillador")
+                {
+                    PickedObject.transform.localPosition = new Vector3(-0.0035f, 0.0344f, 0.0094f);
+                    PickedObject.transform.localRotation = Quaternion.Euler(99.92798f, -5.533997f, -280.578f);
+                    PickedObject.transform.localScale = new Vector3(0.0002442022f, 0.0002891113f, 0.0003333604f);
+                    PickedObject.transform.GetChild(0).gameObject.GetComponent<MeshCollider>().isTrigger = true;
+                }
+
             }
         }
 

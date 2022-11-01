@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FreezerScene.unity
     guid: a5eec30cef5b0f84690e8e31bce26331
+  - enabled: 1
+    path: Assets/Scenes/DepositScene.unity
+    guid: 6e2fe895efa6fb046b189d23fde58a72
   m_configObjects: {}

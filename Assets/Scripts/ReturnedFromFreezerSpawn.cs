@@ -6,7 +6,7 @@ using Vector3 = UnityEngine.Vector3;
 
 public class ReturnedFromFreezerSpawn : MonoBehaviour
 {
-    public GameObject SpawnAfterWin, SpawnBeforeWin;
+    public GameObject SpawnAfterWin, SpawnBeforeWin/*, SpawnInDepositEntrance, SpawnInDepositExit*/;
     GameObject player;
     
     // Start is called before the first frame update
@@ -25,6 +25,15 @@ public class ReturnedFromFreezerSpawn : MonoBehaviour
             SpawnPlayerAfterWin();
             ReturnMapScene.returnedFromExit = false;
         }
+
+        //if (ReturnMapScene.entroAlDeposito)
+        //{
+        //    SpawnPlayerInDepositEntrace();
+        //    ReturnMapScene.entroAlDeposito = false;
+        //}
+        
+        
+
     }
 
     // Update is called once per frame
@@ -43,7 +52,12 @@ public class ReturnedFromFreezerSpawn : MonoBehaviour
     {
         player.transform.position = SpawnBeforeWin.transform.position;
         player.transform.eulerAngles = SpawnBeforeWin.transform.eulerAngles;
-        Debug.Log("Spawn Entrada");
+    }
+    
+    public void SpawnPlayerInDepositEntrace()
+    {
+        player.transform.position = new UnityEngine.Vector3(119.59f, 147.7f, -111.52f);
+        //player.transform.eulerAngles = SpawnInDepositEntrance.transform.eulerAngles;
     }
 
 }
