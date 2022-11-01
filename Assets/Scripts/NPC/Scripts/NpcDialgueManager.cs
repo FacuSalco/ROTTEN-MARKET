@@ -25,7 +25,7 @@ public class NpcDialgueManager : MonoBehaviour
     private int DialogueAfterCounter = 0;
     private bool playerOnRange = false;
     private bool hasIntrodusedMission = false;
-    private bool hasFinishedTalking = false;
+    public bool hasFinishedTalking = false;
 
     private bool hasStartedMission = false;
     private float TimeCounter, TimeDeltaCounter;
@@ -128,7 +128,7 @@ public class NpcDialgueManager : MonoBehaviour
 
             //Termino la misión
 
-            if (DialogueManager.hasDoneMission)
+            if (DialogueManager.hasDoneMission && !hasFinishedTalking)
             {
                 bool DoOnce = true;
 
@@ -138,13 +138,13 @@ public class NpcDialgueManager : MonoBehaviour
                 if (DoOnce)
                 {
                     MissionChecker.CompletedMission();
+                    MissionHand.IsOnMission = false;
+
+
                     DoOnce = false;
                 }
 
                 NextText.text = pressE;
-
-                MissionHand.IsOnMission = false;
-
                 //DialogueText.text = DialogueManager.dialoguesAfterMission[DialogueManager.dialoguesAfterMission.Length - 1];
 
                 //muestra los textos hasta el anteultimo
@@ -156,7 +156,14 @@ public class NpcDialgueManager : MonoBehaviour
                 //da la recompensa
                 if (DialogueAfterCounter >= DialogueManager.dialoguesAfterMission.Length - 2)
                 {
-                    GiveReward();
+                    bool doOnce = true;
+
+                    if (doOnce)
+                    {
+                        GiveReward();
+                        doOnce = false;
+                    }
+
 
                 }
 
@@ -338,6 +345,11 @@ public class NpcDialgueManager : MonoBehaviour
     {
         TimePanel.SetActive(false);
         TimeTxt.enabled = false;
+    }
+
+    public void DesactivateDialogueUI()
+    {
+        NpcCanvas.SetActive(false);
     }
 
     public void PlayerRespawn()

@@ -21154,6 +21154,7 @@ MonoBehaviour:
   TimePanel: {fileID: 547730448}
   pressE: "Presione \xA8E\xA8 para continuar"
   DialogueManager: {fileID: 11400000, guid: b53d3c81be246ed4c92d8a4b4e3a4b1c, type: 2}
+  hasFinishedTalking: 0
   hasFailedMission: 0
 --- !u!65 &554379296
 BoxCollider:
@@ -58913,6 +58914,7 @@ MonoBehaviour:
   TimePanel: {fileID: 547730448}
   pressE: "Presione \xA8E\xA8 para continuar"
   DialogueManager: {fileID: 11400000, guid: e0aead7e04433574589735ed344bd24e, type: 2}
+  hasFinishedTalking: 0
   hasFailedMission: 0
 --- !u!65 &1583382806
 BoxCollider:
@@ -60584,6 +60586,7 @@ MonoBehaviour:
   TimePanel: {fileID: 547730448}
   pressE: "Presione \xA8E\xA8 para continuar"
   DialogueManager: {fileID: 11400000, guid: d053da08a0cd38444839b23222091ae4, type: 2}
+  hasFinishedTalking: 0
   hasFailedMission: 0
 --- !u!65 &1640988185
 BoxCollider:
@@ -85445,6 +85448,7 @@ MonoBehaviour:
   TimePanel: {fileID: 547730448}
   pressE: "Presione \xA8E\xA8 para continuar"
   DialogueManager: {fileID: 11400000, guid: d053da08a0cd38444839b23222091ae4, type: 2}
+  hasFinishedTalking: 0
   hasFailedMission: 0
 --- !u!1 &5889923826934775096
 GameObject:
@@ -97259,6 +97263,7 @@ MonoBehaviour:
   TimePanel: {fileID: 547730448}
   pressE: "Presione \xA8E\xA8 para continuar"
   DialogueManager: {fileID: 11400000, guid: d053da08a0cd38444839b23222091ae4, type: 2}
+  hasFinishedTalking: 0
   hasFailedMission: 0
 --- !u!114 &6907569325143901402
 MonoBehaviour:
