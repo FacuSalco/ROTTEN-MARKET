@@ -9,6 +9,7 @@ public class FirstMissionBehaviour : MonoBehaviour
     private MissionStateChecker MissionChecker;
     private NpcDialgueManager NpcManager;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,26 +26,6 @@ public class FirstMissionBehaviour : MonoBehaviour
         if(MissionChecker.CompletedMissionCount == 1)
         {
             BarrierBlocks.SetActive(false);
-        }
-
-        if (NpcManager.DialogueManager.hasAcceptedMission)
-        {
-            bool doOnce = true;
-            if (doOnce)
-            {
-                MissionHand.IsOnKillingMission = true;
-                doOnce = false;
-            }
-        }
-
-        if (NpcManager.DialogueManager.hasDoneMission)
-        {
-            bool doOnce = true;
-            if (doOnce)
-            {
-                MissionHand.IsOnKillingMission = false;
-                doOnce = false;
-            }
         }
 
         if (NpcManager.hasFinishedTalking)

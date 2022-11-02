@@ -7,6 +7,7 @@ public class MissionKillingNPC : MonoBehaviour
     public int EnemyMustKillAmount;
     public int EnemyKillCount;
     private bool CompleteMissionOnce = true;
+    private bool StartKillingMissionOnce = true;
 
     private MissionHandler MissionHand;
     private NpcDialgueManager NpcManager;
@@ -24,7 +25,12 @@ public class MissionKillingNPC : MonoBehaviour
     {
         if(NpcManager.DialogueManager.hasAcceptedMission && !NpcManager.DialogueManager.hasDoneMission)
         {
-            MissionHand.StartKillingMission();
+            if (StartKillingMissionOnce)
+            {
+                MissionHand.StartKillingMission();
+                StartKillingMissionOnce = false;
+            }
+
         }
 
         if (MissionHand.IsOnKillingMission)
@@ -56,5 +62,6 @@ public class MissionKillingNPC : MonoBehaviour
     {
         EnemyKillCount = 0;
         MissionHand.FinishKillingMission();
+        StartKillingMissionOnce = true;
     }
 }

@@ -5,6 +5,14 @@ using UnityEngine;
 public class EnemySwordScritp : MonoBehaviour
 {
     private bool DoOnEnter = true;
+    private GameObject Player;
+
+    void Start()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+
+
+    }
 
     void OnTriggerEnter(Collider other)
     {

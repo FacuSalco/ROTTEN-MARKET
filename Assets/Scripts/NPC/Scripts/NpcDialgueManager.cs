@@ -40,6 +40,7 @@ public class NpcDialgueManager : MonoBehaviour
     private Vector3 PlayerRespawnPos;
     private MissionHandler MissionHand;
     private MissionStateChecker MissionChecker;
+    private Fade Fader;
 
     private Animator NpcAnimator;
 
@@ -56,6 +57,7 @@ public class NpcDialgueManager : MonoBehaviour
         MissionHand = GameObject.Find("[MISSION-MANAGER]").GetComponent<MissionHandler>();
         MissionChecker = MissionHand.GetComponent<MissionStateChecker>();
         NpcAnimator = GetComponent<Animator>();
+        Fader = GameObject.Find("Panel").GetComponent<Fade>();
 
         DialogueManagerSetUp();
         TimeSetUp();
@@ -66,8 +68,13 @@ public class NpcDialgueManager : MonoBehaviour
     {
         if (playerOnRange && !MissionHand.IsOnMission)
         {
-            //Empieza a hablar
-            NpcCanvas.SetActive(true);
+            //Empieza a hablar}
+
+            if (!hasFinishedTalking)
+            {
+              NpcCanvas.SetActive(true);
+
+            }
             if (NpcAnimator)
             {
                 NpcAnimator.SetBool("IsTalking", true);
@@ -173,6 +180,8 @@ public class NpcDialgueManager : MonoBehaviour
                     hasFinishedTalking = true;
                     NextText.enabled = false;
                     DialogueText.text = DialogueManager.dialoguesAfterMission[DialogueManager.dialoguesAfterMission.Length - 1];
+
+                    StartCoroutine(DeathFadeInAndOut());
                 }
 
             }
@@ -356,5 +365,17 @@ public class NpcDialgueManager : MonoBehaviour
     {
         Player.transform.position = PlayerRespawnPos;
         RestartMission();
+    }
+
+    IEnumerator DeathFadeInAndOut()
+    {
+        Fader.FadeOut();
+
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
+        NpcCanvas.SetActive(false);
+
+        Fader.FadeIn();
+
     }
 }

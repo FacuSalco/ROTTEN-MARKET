@@ -41,6 +41,8 @@ public class EnemyCollision : MonoBehaviour
             HealthBarController.dealDamage(damage);
             StartCoroutine(DoDamageOnce());
             SFX.PlayPunchSound();
+
+            gameObject.GetComponent<Rigidbody>().AddForce(-transform.forward*100f, ForceMode.Impulse);
         }
     }
    
