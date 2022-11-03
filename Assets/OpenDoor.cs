@@ -6,6 +6,7 @@ public class OpenDoor : MonoBehaviour
 {
     bool isNear, openedDoor;
     GameObject player;
+    public GameObject leftDoor, rightDoor;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,8 @@ public class OpenDoor : MonoBehaviour
             openedDoor = true;
             Debug.Log("Se abrio la puerta");
             //Hacer la animacion que se abre la puerta
+            leftDoor.GetComponent<Animator>().Play("OpenLeftDoor");
+            rightDoor.GetComponent<Animator>().Play("OpenRightDoor");
         }
     }
 
