@@ -6,7 +6,7 @@ public class MissionLookForChildren : MonoBehaviour
 {
     [Header("Spawns")]
     public GameObject[] ChildrenSpawnPos;
-    private GameObject[] Children;
+    public GameObject[] Children;
     public GameObject PlayerSpawn;
     private GameObject Player;
 
@@ -14,7 +14,7 @@ public class MissionLookForChildren : MonoBehaviour
     public GameObject ChildrenPrefab;
     private int FoundedChildren = 0;
 
-    private bool SpawnChildrenOnce = true;
+    public bool SpawnChildrenOnce = true;
     private bool DestroyChildrenOnce = true;
 
     private NpcDialgueManager NpcManager;
@@ -27,7 +27,7 @@ public class MissionLookForChildren : MonoBehaviour
         //<>
         NpcManager = GetComponent<NpcDialgueManager>();
         Player = GameObject.FindGameObjectWithTag("Player");
-        
+     
 
     }
 
@@ -40,6 +40,7 @@ public class MissionLookForChildren : MonoBehaviour
             if (SpawnChildrenOnce)
             {
                 InstantiateChildren();
+				Debug.Log("SPAWNED");
                 SpawnChildrenOnce = false;
             }
 
@@ -75,6 +76,7 @@ public class MissionLookForChildren : MonoBehaviour
     {
         for (int i = 0; i < ChildrenSpawnPos.Length; i++)
         {
+
             Children[i] = Instantiate(ChildrenPrefab, ChildrenSpawnPos[i].transform.position, Quaternion.identity);
         }
     }
