@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
 using TMPro;
+using System.Data.Common;
 
-public class Balanza : MonoBehaviour
+public class BalanzaDeposit : MonoBehaviour
 {
-    public int pesoAdecuado, coinReward;
+    public int pesoAdecuado;
     public bool terminoPuzzle;
     public float pesoActual, pesoApple;
     bool playerOn, yaGano;
@@ -14,6 +15,7 @@ public class Balanza : MonoBehaviour
     public TextMeshPro txtPeso, txtPesoAdecuado;
     SFXManager SFX;
     ReciveCoins ReciveCoins;
+    public GameObject persiana;
 
     List<Rigidbody> currentRigidbodies = new List<Rigidbody>();
 
@@ -21,7 +23,7 @@ public class Balanza : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        txtPesoAdecuado.text =  "EXACTAMENTE " + pesoAdecuado.ToString() + "G PESARAS Y UNA SORPRESA TE LLEVARAS";
+        txtPesoAdecuado.text = "EXACTAMENTE " + pesoAdecuado.ToString() + "G PESARAS Y LA PERSIANA ABRIRAS";
         SFX = GameObject.Find("[SFX-MANAGER]").GetComponent<SFXManager>();
         ReciveCoins = GameObject.Find("[RECIVE-COINS]").GetComponent<ReciveCoins>();
 
@@ -38,22 +40,16 @@ public class Balanza : MonoBehaviour
             //Para hacer que no tenga que estar 1 segundo descomnetar la linea de abajo y comentar la de arriba
             //terminoPuzzle = true;
         }
-        
+
         if (terminoPuzzle && !yaGano) //---------------GANO---------------//
         {
             yaGano = true;
             txtPeso.color = Color.green;
-            txtPeso.text = pesoAdecuado.ToString() + "g";
+            txtPeso.text = pesoAdecuado.ToString() + "G";
             terminoPuzzle = true;
             SFX.PlayQuestCompleteSound();
-            
-            
-            Invoke("CoinReward", 4);
-            Invoke("CoinReward", 4.2f);
-            Invoke("CoinReward", 4.4f);
-            Invoke("CoinReward", 4.6f);
-            Invoke("CoinReward", 4.8f);
-            Invoke("CoinReward", 5);
+            persiana.GetComponent<Animator>().Play("AbrirPersiana2");
+            Debug.Log("GANO");
         }
 
         if (pesoActual < 0)
@@ -63,7 +59,7 @@ public class Balanza : MonoBehaviour
 
         if (player.gameObject.GetComponentInChildren<PickableObject>()) //Si tiene algo en la mano
         {
-            pesoApple = 200 + player.gameObject.GetComponentInChildren<PickableObject>().GetComponent<Rigidbody>().mass*100;
+            pesoApple = 200 + player.gameObject.GetComponentInChildren<PickableObject>().GetComponent<Rigidbody>().mass * 100;
         }
         else //Si no tiene algo en la mano
         {
@@ -89,7 +85,7 @@ public class Balanza : MonoBehaviour
         currentRigidbodies.Remove(col.rigidbody);
     }
 
-    void OnTriggerEnter (Collider col)
+    void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Player")
         {
@@ -108,7 +104,7 @@ public class Balanza : MonoBehaviour
     }
 
     void ActualizarPeso()
-    {        
+    {
         if (playerOn)
         {
             pesoActual = pesoApple;
@@ -118,10 +114,10 @@ public class Balanza : MonoBehaviour
         {
             pesoActual = 0;
         }
-        
+
         foreach (Rigidbody rigidbody in currentRigidbodies)
         {
-            pesoActual += rigidbody.mass *100;
+            pesoActual += rigidbody.mass * 100;
         }
 
     }
@@ -132,12 +128,6 @@ public class Balanza : MonoBehaviour
         {
             terminoPuzzle = true;
         }
-    }
-
-    void CoinReward()
-    {
-        SFX.PlayCoinSound();
-        ReciveCoins.reciveCoins(coinReward);
     }
 
 }

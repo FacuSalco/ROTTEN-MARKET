@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ColorCubeManager : MonoBehaviour
 {
-    public GameObject cuboGanador;
+    public GameObject persiana;
 
     public List<ColorCubes> AllMyCubes;
     
@@ -28,8 +28,8 @@ public class ColorCubeManager : MonoBehaviour
                 }
             }
 
-            Debug.Log("Todos apretaDos");//poner logica cuando esten todos
-            cuboGanador.SetActive(true);
+            persiana.GetComponent<Animator>().Play("AbrirPersiana3");
+            Debug.Log("Todos apretados");//poner logica cuando esten todos apretados
         }
     }
 }

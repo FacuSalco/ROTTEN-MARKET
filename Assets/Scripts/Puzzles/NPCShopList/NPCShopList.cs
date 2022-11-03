@@ -92,14 +92,15 @@ public class NPCShopList : MonoBehaviour
             finishedQuest = true;
             Debug.Log("Me trajiste todos los objetos! Gracias");
             SFX.PlayQuestCompleteSound();
+            shopListCanvas.SetActive(false);
 
             //player.GetComponent<CharacterController>().enabled = false;
-            player.GetComponent<PlayerController1>().enabled = false; //Desactiva el script del player y no se puede mover
-            Invoke("EnablePlayer", 5f); //Espera los segundos que le decis y llama a la funcion. En este caso, 5 segundos y llama a EnablePlayer
+            //player.GetComponent<PlayerController1>().enabled = false; //Desactiva el script del player y no se puede mover
+            //Invoke("EnablePlayer", 5f); //Espera los segundos que le decis y llama a la funcion. En este caso, 5 segundos y llama a EnablePlayer
 
             //InvokeRepeating("CoinReward", 4f, 0.2f); //Espera los segundos que le decis y llama a la funcion cada x segundos. En este caso, 4 segundos y llama a CoinReward cada 0.2 segundos
-            
-            Invoke ("CoinReward", 4 );
+
+            Invoke("CoinReward", 4 );
             Invoke ("CoinReward", 4.2f );
             Invoke ("CoinReward", 4.4f );
             Invoke ("CoinReward", 4.6f );
@@ -167,7 +168,6 @@ public class NPCShopList : MonoBehaviour
     {
         player.GetComponent<PlayerController1>().enabled = true;
         //player.GetComponent<CharacterController>().enabled = true;
-        shopListCanvas.SetActive(false);
     }
 
     private void RestartQuest()

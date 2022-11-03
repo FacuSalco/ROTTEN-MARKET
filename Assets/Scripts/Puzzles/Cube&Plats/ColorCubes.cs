@@ -22,7 +22,7 @@ public class ColorCubes : MonoBehaviour
     {
         isOk = false;
         //Logica de cuando se saca un cubo
-        CCM.cuboGanador.SetActive(false);//Sacar esto si no quiero que cambie algo si saco un cubo
+        //CCM.cuboGanador.SetActive(false);//Sacar esto si no quiero que cambie algo si saco un cubo
     }
 
     void GetPressed()
