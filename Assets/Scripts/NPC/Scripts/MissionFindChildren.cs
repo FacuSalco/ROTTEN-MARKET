@@ -75,7 +75,7 @@ public class MissionFindChildren : MonoBehaviour
     {
         for (int i = 0; i < ChildrenSpawnPos.Length; i++)
         {
-            Children[i] = Instantiate(ChilderPrefab, ChildrenSpawnPos[i].transform.position, Quaternion.identity);
+            Children[i] = Instantiate(ChildrenPrefab, ChildrenSpawnPos[i].transform.position, Quaternion.identity);
         }
     }
 
