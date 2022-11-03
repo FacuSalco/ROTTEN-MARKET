@@ -28,6 +28,7 @@ public class EnemyCollision : MonoBehaviour
                 Debug.Log("hit");
 
                 DamageEnemyPunch();
+                KnockBackBody();
             }
 
         }
@@ -41,11 +42,15 @@ public class EnemyCollision : MonoBehaviour
             HealthBarController.dealDamage(damage);
             StartCoroutine(DoDamageOnce());
             SFX.PlayPunchSound();
-
-            gameObject.GetComponent<Rigidbody>().AddForce(-transform.forward*100f, ForceMode.Impulse);
         }
     }
-   
+
+    private void KnockBackBody()
+    {
+        gameObject.GetComponent<Rigidbody>().AddForce(-transform.forward * 15f, ForceMode.Impulse);
+
+    }
+
     IEnumerator DoDamageOnce()
     {
         doHitOnce = false;
