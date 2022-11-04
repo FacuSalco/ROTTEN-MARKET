@@ -24,6 +24,7 @@ TagManager:
   - Tenedor
   - Button
   - NPC
+  - NpcChild
   layers:
   - Default
   - TransparentFX

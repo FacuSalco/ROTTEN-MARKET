@@ -12,11 +12,12 @@ public class MissionLookForChildren : MonoBehaviour
 
     [Header("Prefabs")]
     public GameObject ChildrenPrefab;
-    private int FoundedChildren = 0;
+    public int FoundedChildren = 0;
 
     public bool SpawnChildrenOnce = true;
     private bool DestroyChildrenOnce = true;
     private bool ExecuteOnce = true;
+    private bool hasFinishedQuest = false;
 
     private NpcDialgueManager NpcManager;
     private MissionStateChecker MissionState;
@@ -36,6 +37,13 @@ public class MissionLookForChildren : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (FoundedChildren == 3 && !hasFinishedQuest)
+        {
+            NpcManager.CompleteMission();
+            hasFinishedQuest = true;
+        }
+
+
         if (NpcManager.DialogueManager.hasAcceptedMission && !NpcManager.DialogueManager.hasDoneMission)
         {
             //empieza mission
@@ -70,6 +78,7 @@ public class MissionLookForChildren : MonoBehaviour
             {
                 DestroyActiveChildren();
                 DestroyChildrenOnce = false;
+                RestartQuest();
             }
         }
 
@@ -116,10 +125,8 @@ public class MissionLookForChildren : MonoBehaviour
     {
         SpawnChildrenOnce = true;
         DestroyChildrenOnce = true;
+        ExecuteOnce = true;
         FoundedChildren = 0;
-
-        DestroyActiveChildren();
-
     }
 
 }

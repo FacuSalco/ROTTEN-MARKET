@@ -23,13 +23,13 @@ MonoBehaviour:
   - Y tenemos que volver con mama ya!!!
   mission: Podes buscar a mis 3 hermanos por mi?
   dialoguesAfterMission:
-  - Wow que velosidad
+  - Wow que velocidad
   - Mil gracias manzana
   - Aca tenes tu recompensa
   - Mi mama no me va a matar!!!
-  hasAcceptedMission: 0
+  hasAcceptedMission: 1
   hasDoneMission: 1
-  hasTalked: 0
+  hasTalked: 1
   missionTime: 300
   missionHasTime: 1
   coinReward: 0
