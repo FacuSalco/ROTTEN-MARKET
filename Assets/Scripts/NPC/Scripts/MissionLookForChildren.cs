@@ -31,7 +31,6 @@ public class MissionLookForChildren : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
         Fader = GameObject.Find("Panel").GetComponent<Fade>();
 
-
     }
 
     // Update is called once per frame
@@ -91,6 +90,7 @@ public class MissionLookForChildren : MonoBehaviour
 
         PlayerMove();
         Fader.FadeIn();
+        
     }
 
     private void PlayerMove()

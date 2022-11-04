@@ -40,7 +40,7 @@ public class HealthBar : MonoBehaviour
 
         //MONEDAS
         cantMonedas = GetComponent<PlayerStats>().Data.cantMonedas;
-        //cantMonedasTxt.text = cantMonedas.ToString();
+        cantMonedasTxt.text = cantMonedas.ToString();
 
 
         //MUERTE
