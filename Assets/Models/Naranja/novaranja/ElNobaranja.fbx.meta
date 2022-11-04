@@ -1,0 +1,243 @@
+fileFormatVersion: 2
+guid: 8ce69ce6a35504f4fb3c9edb2f0ebebb
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature.001
+    100002: Bone
+    100004: Bone.001
+    100006: Bone.002
+    100008: Bone.002_end
+    100010: //RootNode
+    100012: L.Arm
+    100014: L.Eye
+    100016: L.Eye_end
+    100018: L.Fingers
+    100020: L.Fingers_end
+    100022: L.Foot
+    100024: L.Foot_end
+    100026: L.Forearm
+    100028: L.Hand
+    100030: L.Leg
+    100032: L.Shoulder
+    100034: L.Thigh
+    100036: L.Thumb
+    100038: L.Thumb_end
+    100040: Naranjita.001
+    100042: Naranjita.002
+    100044: R.Arm
+    100046: R.Eye
+    100048: R.Eye_end
+    100050: R.Fingers
+    100052: R.Fingers_end
+    100054: R.Foot
+    100056: R.Foot_end
+    100058: R.Forearm
+    100060: R.Hand
+    100062: R.Leg
+    100064: R.Shoulder
+    100066: R.Thigh
+    100068: R.Thumb
+    100070: R.Thumb_end
+    100072: Sphere
+    400000: Armature.001
+    400002: Bone
+    400004: Bone.001
+    400006: Bone.002
+    400008: Bone.002_end
+    400010: //RootNode
+    400012: L.Arm
+    400014: L.Eye
+    400016: L.Eye_end
+    400018: L.Fingers
+    400020: L.Fingers_end
+    400022: L.Foot
+    400024: L.Foot_end
+    400026: L.Forearm
+    400028: L.Hand
+    400030: L.Leg
+    400032: L.Shoulder
+    400034: L.Thigh
+    400036: L.Thumb
+    400038: L.Thumb_end
+    400040: Naranjita.001
+    400042: Naranjita.002
+    400044: R.Arm
+    400046: R.Eye
+    400048: R.Eye_end
+    400050: R.Fingers
+    400052: R.Fingers_end
+    400054: R.Foot
+    400056: R.Foot_end
+    400058: R.Forearm
+    400060: R.Hand
+    400062: R.Leg
+    400064: R.Shoulder
+    400066: R.Thigh
+    400068: R.Thumb
+    400070: R.Thumb_end
+    400072: Sphere
+    2100000: Material.001
+    2100002: Naranja
+    4300000: Naranjita.001
+    4300002: Sphere
+    4300004: Naranjita.002
+    7400000: NovaOrangeNpcIdleAnim
+    7400002: NovaOrangeNpcTalkingAnim
+    9500000: //RootNode
+    13700000: Naranjita.001
+    13700002: Naranjita.002
+    13700004: Sphere
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: fc3fa8d3396f0854da5ef46da0e2d1a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Naranja
+    second: {fileID: 2100000, guid: 9aea17d47a691f344b87992d03194f13, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: NovaOrangeNpcIdleAnim
+      takeName: Armature.001|Armature.001Action
+      firstFrame: 15
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: NovaOrangeNpcTalkingAnim
+      takeName: Armature.001|Armature.001Action
+      firstFrame: 0
+      lastFrame: 330
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

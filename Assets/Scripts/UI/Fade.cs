@@ -28,4 +28,5 @@ public class Fade : MonoBehaviour
         animator.Play("FadeIn");
     }
 
+
 }

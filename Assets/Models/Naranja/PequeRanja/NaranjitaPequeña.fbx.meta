@@ -1,0 +1,234 @@
+fileFormatVersion: 2
+guid: a94fe0ac3d67e5c44832826454fa37f5
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature.001
+    100002: Bone
+    100004: Bone.001
+    100006: Bone.002
+    100008: Bone.002_end
+    100010: L.Arm
+    100012: L.Eye
+    100014: L.Eye_end
+    100016: L.Fingers
+    100018: L.Fingers_end
+    100020: L.Foot
+    100022: L.Foot_end
+    100024: L.Forearm
+    100026: L.Hand
+    100028: L.Leg
+    100030: L.Shoulder
+    100032: L.Thigh
+    100034: L.Thumb
+    100036: L.Thumb_end
+    100038: Naranjita.001
+    100040: //RootNode
+    100042: R.Arm
+    100044: R.Eye
+    100046: R.Eye_end
+    100048: R.Fingers
+    100050: R.Fingers_end
+    100052: R.Foot
+    100054: R.Foot_end
+    100056: R.Forearm
+    100058: R.Hand
+    100060: R.Leg
+    100062: R.Shoulder
+    100064: R.Thigh
+    100066: R.Thumb
+    100068: R.Thumb_end
+    100070: Sphere.001
+    400000: Armature.001
+    400002: Bone
+    400004: Bone.001
+    400006: Bone.002
+    400008: Bone.002_end
+    400010: L.Arm
+    400012: L.Eye
+    400014: L.Eye_end
+    400016: L.Fingers
+    400018: L.Fingers_end
+    400020: L.Foot
+    400022: L.Foot_end
+    400024: L.Forearm
+    400026: L.Hand
+    400028: L.Leg
+    400030: L.Shoulder
+    400032: L.Thigh
+    400034: L.Thumb
+    400036: L.Thumb_end
+    400038: Naranjita.001
+    400040: //RootNode
+    400042: R.Arm
+    400044: R.Eye
+    400046: R.Eye_end
+    400048: R.Fingers
+    400050: R.Fingers_end
+    400052: R.Foot
+    400054: R.Foot_end
+    400056: R.Forearm
+    400058: R.Hand
+    400060: R.Leg
+    400062: R.Shoulder
+    400064: R.Thigh
+    400066: R.Thumb
+    400068: R.Thumb_end
+    400070: Sphere.001
+    2100000: Naranja
+    4300000: Naranjita.001
+    4300002: Sphere.001
+    7400000: LittleOrangeIdleAnim
+    7400002: Armature.001|ArmatureAction
+    7400004: Armature.001|ArmatureAction.001
+    7400006: Armature.001|ArmatureAction.002
+    7400008: Armature.001|Sphere.001Action
+    7400010: Armature.001|Sphere.001Action.001
+    7400012: Armature.001|SphereAction
+    7400014: LittleOrangeFounderAnim
+    9500000: //RootNode
+    13700000: Naranjita.001
+    13700002: Sphere.001
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: LittleOrangeIdleAnim
+      takeName: Armature.001|Armature.001Action
+      firstFrame: 15
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: LittleOrangeFounderAnim
+      takeName: Armature.001|Armature.001Action
+      firstFrame: 250
+      lastFrame: 290
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

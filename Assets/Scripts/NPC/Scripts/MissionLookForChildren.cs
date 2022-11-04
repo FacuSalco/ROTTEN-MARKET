@@ -16,6 +16,7 @@ public class MissionLookForChildren : MonoBehaviour
 
     public bool SpawnChildrenOnce = true;
     private bool DestroyChildrenOnce = true;
+    private bool ExecuteOnce = true;
 
     private NpcDialgueManager NpcManager;
     private MissionStateChecker MissionState;
@@ -27,7 +28,8 @@ public class MissionLookForChildren : MonoBehaviour
         //<>
         NpcManager = GetComponent<NpcDialgueManager>();
         Player = GameObject.FindGameObjectWithTag("Player");
-     
+        Fader = GameObject.Find("Panel").GetComponent<Fade>();
+
 
     }
 
@@ -53,10 +55,11 @@ public class MissionLookForChildren : MonoBehaviour
 
         if (NpcManager.DialogueManager.hasDoneMission)
         {
-
-
-            Player.transform.position = PlayerSpawn.transform.position;
-
+            if (ExecuteOnce)
+            {
+                StartCoroutine(FinishedQuest());
+                ExecuteOnce = false;
+            }
 
         }
 
@@ -69,6 +72,21 @@ public class MissionLookForChildren : MonoBehaviour
                 DestroyChildrenOnce = false;
             }
         }
+
+    }
+
+    IEnumerator FinishedQuest()
+    {
+        Fader.FadeOut();
+        yield return new WaitForSeconds(2f);
+
+        PlayerMove();
+        Fader.FadeIn();
+    }
+
+    private void PlayerMove()
+    {
+        Player.transform.position = PlayerSpawn.transform.position;
 
     }
 

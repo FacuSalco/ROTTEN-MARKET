@@ -28,7 +28,7 @@ MonoBehaviour:
   - Aca tenes tu recompensa
   - Mi mama no me va a matar!!!
   hasAcceptedMission: 0
-  hasDoneMission: 0
+  hasDoneMission: 1
   hasTalked: 0
   missionTime: 300
   missionHasTime: 1
