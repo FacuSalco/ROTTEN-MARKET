@@ -66291,23 +66291,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1692586561}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89bc0142f552e5f4da16050fb6456b92, type: 3}
+  m_Script: {fileID: 11500000, guid: e866efabd978ae54fa5c042b41afb16c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   NpcCanvas: {fileID: 695898916}
   DialogueCanvas: {fileID: 1617537585}
   MissionCanvas: {fileID: 1330328105}
-  FailedTXT: {fileID: 957124660}
-  FailedPanel: {fileID: 2021648630}
-  RestartTxt: {fileID: 207059932}
   DialogueText: {fileID: 1382106263}
   NextText: {fileID: 251148398}
-  TimeTxt: {fileID: 1729857106}
-  TimePanel: {fileID: 547730448}
-  pressE: "Presione \xA8E\xA8 para continuar"
-  DialogueManager: {fileID: 11400000, guid: e0aead7e04433574589735ed344bd24e, type: 2}
-  hasFinishedTalking: 0
-  hasFailedMission: 0
+  Dialogues:
+  - "No podr\xE1s pasar por aqui hasta que completes las misiones de mis hijos"
+  - Son 4 en total
+  - Buscalos y terminalas
+  - Luego te dejare pasar
+  - Suerte!!!
 --- !u!65 &1692586564
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -100362,7 +100359,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6694424360885830225}
-  m_LocalRotation: {x: 0.3495732, y: 0.1671994, z: -0.06355363, w: 0.919676}
+  m_LocalRotation: {x: 0.34957317, y: 0.16719943, z: -0.06355363, w: 0.919676}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -100436,7 +100433,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6694424361009073472}
-  m_LocalRotation: {x: 0.3495732, y: 0.16719937, z: -0.06355352, w: 0.919676}
+  m_LocalRotation: {x: 0.34957322, y: 0.16719934, z: -0.06355351, w: 0.919676}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
