@@ -25,6 +25,7 @@ TagManager:
   - Button
   - NPC
   - NpcChild
+  - SnowBall
   layers:
   - Default
   - TransparentFX

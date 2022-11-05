@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCollisions : MonoBehaviour
 {
@@ -9,8 +10,9 @@ public class PlayerCollisions : MonoBehaviour
     SFXManager SFX;
     ReciveCoins ReciveCoins;
     public int healAmount, damageAmount;
+    SnowBallManager SBM;
 
-    // Start is called before the first frame update
+    // Start is called before the first frame update    
     void Start()
     {
         Health = GetComponent<HealthBar>();
@@ -24,23 +26,24 @@ public class PlayerCollisions : MonoBehaviour
 
     }
 
-    //AGARRAR MONEDA
     void OnTriggerEnter(Collider col)
     {
+        //AGARRAR MONEDA
+        
         if (col.gameObject.tag == "Coin")
         {
             SFX.PlayCoinSound();
-            Destroy(col.gameObject);
-            Debug.Log("Agarro moneda");
             ReciveCoins.reciveCoins(1);
+            Destroy(col.gameObject.transform.parent.gameObject);
         }
 
+        //AGARRAR CORAZON
+        
         if (col.gameObject.tag == "Heal")
         {
             SFX.PlayHealSound();
-            Destroy(col.gameObject);
-            Debug.Log("Agarro corazon");
             Data.playerHealth += healAmount; //Suma vida
+            Destroy(col.gameObject.transform.parent.gameObject);            
 
             if (Data.playerHealth > Data.playerMaxHealth) //Si tiene mas vida que lo maximo
             {
@@ -48,10 +51,33 @@ public class PlayerCollisions : MonoBehaviour
             }
         }
 
+        //AGARRAR CORAZON DE DAÑO
+
         if (col.gameObject.tag == "DamageObject")
         {
             Health.makeDamage(damageAmount);
-            Destroy(col.gameObject);
+            Destroy(col.gameObject.transform.parent.gameObject);
+        }
+
+        //AGARRAR BOLA DE NIEVE
+        
+        if (col.gameObject.tag == "SnowBall")
+        {
+            SBM.CollectSnowBall();
+            Destroy(col.gameObject.transform.parent.gameObject);
+        }
+
+
+    }
+
+    void OnLevelWasLoaded() //cuando carga la escena
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        
+        if (sceneName == "FreezerScene")
+        {
+            SBM = GameObject.Find("[SNOWBALL-MANAGER]").GetComponent<SnowBallManager>();
         }
     }
+
 }
