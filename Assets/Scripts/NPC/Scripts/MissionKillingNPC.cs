@@ -10,12 +10,14 @@ public class MissionKillingNPC : MonoBehaviour
     private bool StartKillingMissionOnce = true;
 
     private MissionHandler MissionHand;
+    private MissionStateChecker MissionChecker;
     private NpcDialgueManager NpcManager;
 
     // Start is called before the first frame update
     void Start()
     {
         MissionHand = GameObject.Find("[MISSION-MANAGER]").GetComponent<MissionHandler>();
+        MissionChecker = MissionHand.GetComponent<MissionStateChecker>();
         NpcManager = GetComponent<NpcDialgueManager>();
 
     }
@@ -43,6 +45,7 @@ public class MissionKillingNPC : MonoBehaviour
                     MissionHand.FinishKillingMission();
 
                     CompleteMissionOnce = false;
+                    MissionChecker.SecondQuestDone = true;
                 }
             }
 

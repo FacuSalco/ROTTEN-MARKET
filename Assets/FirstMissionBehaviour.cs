@@ -5,6 +5,7 @@ using UnityEngine;
 public class FirstMissionBehaviour : MonoBehaviour
 {
     public GameObject BarrierBlocks;
+    public GameObject FirstBarrier;
     private MissionHandler MissionHand;
     private MissionStateChecker MissionChecker;
     private NpcDialgueManager NpcManager;
@@ -26,6 +27,11 @@ public class FirstMissionBehaviour : MonoBehaviour
         if(MissionChecker.CompletedMissionCount == 1)
         {
             BarrierBlocks.SetActive(false);
+        }
+
+        if (NpcManager.DialogueManager.hasAcceptedMission)
+        {
+            FirstBarrier.SetActive(false);
         }
 
         if (NpcManager.hasFinishedTalking)

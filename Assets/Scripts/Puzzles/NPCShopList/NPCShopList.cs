@@ -19,6 +19,9 @@ public class NPCShopList : MonoBehaviour
     ReciveCoins ReciveCoins;
     private NpcDialgueManager NpcManager;
 
+    private MissionHandler MissionHand;
+    private MissionStateChecker MissionChecker;
+
     //Tenedor (fork) es el shopList[0]
     //Cuchillo (knife) es el shopList[1]
     //Cuchara (spoon) es el shopList[2]
@@ -31,6 +34,9 @@ public class NPCShopList : MonoBehaviour
         SFX = GameObject.Find("[SFX-MANAGER]").GetComponent<SFXManager>();
         ReciveCoins = GameObject.Find("[RECIVE-COINS]").GetComponent<ReciveCoins>();
         NpcManager = GetComponent<NpcDialgueManager>();
+
+        MissionHand = GameObject.Find("[MISSION-MANAGER]").GetComponent<MissionHandler>();
+        MissionChecker = MissionHand.GetComponent<MissionStateChecker>();
     }
 
     // Update is called once per frame
@@ -89,6 +95,7 @@ public class NPCShopList : MonoBehaviour
         if (cantObjetosEntregados == shopList.Length && !finishedQuest) //COMPLETO LA QUEST
         {
             NpcManager.CompleteMission();
+            MissionChecker.ThirdQuestDone = true;
             finishedQuest = true;
             Debug.Log("Me trajiste todos los objetos! Gracias");
             SFX.PlayQuestCompleteSound();

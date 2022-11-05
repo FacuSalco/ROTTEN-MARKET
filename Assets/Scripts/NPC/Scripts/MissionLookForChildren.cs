@@ -20,8 +20,10 @@ public class MissionLookForChildren : MonoBehaviour
     private bool hasFinishedQuest = false;
 
     private NpcDialgueManager NpcManager;
-    private MissionStateChecker MissionState;
+    private MissionHandler MissionHand;
+    private MissionStateChecker MissionChecker;
     private Fade Fader;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,9 @@ public class MissionLookForChildren : MonoBehaviour
         NpcManager = GetComponent<NpcDialgueManager>();
         Player = GameObject.FindGameObjectWithTag("Player");
         Fader = GameObject.Find("Panel").GetComponent<Fade>();
+
+        MissionHand = GameObject.Find("[MISSION-MANAGER]").GetComponent<MissionHandler>();
+        MissionChecker = MissionHand.GetComponent<MissionStateChecker>();
 
     }
 
@@ -66,6 +71,8 @@ public class MissionLookForChildren : MonoBehaviour
             {
                 StartCoroutine(FinishedQuest());
                 ExecuteOnce = false;
+
+                MissionChecker.FirstQuestDone = true;
             }
 
         }
@@ -105,6 +112,7 @@ public class MissionLookForChildren : MonoBehaviour
         {
 
             Children[i] = Instantiate(ChildrenPrefab, ChildrenSpawnPos[i].transform.position, Quaternion.identity);
+            Children[i].transform.rotation = ChildrenSpawnPos[i].transform.rotation;
         }
     }
 
