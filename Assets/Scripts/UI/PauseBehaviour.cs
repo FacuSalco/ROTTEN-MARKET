@@ -58,6 +58,7 @@ public class PauseBehaviour : MonoBehaviour
         Time.timeScale = 0f;
         gameIsPaused = true;
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void Quit()

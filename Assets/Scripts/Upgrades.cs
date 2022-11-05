@@ -55,7 +55,6 @@ public class Upgrades : MonoBehaviour
         myCoins = Data.cantMonedas;
         txtCoins.text = myCoins.ToString();
 
-        //HACER PARA QUE ESTE BIEN EL PRECIO, POR AHORA SOLO ESTA CUANDO ESTA AL MAXIMO
 
         //UPDATE DEL HEALTH
         for (int i = 0; i < timesPressed[0]; i++)

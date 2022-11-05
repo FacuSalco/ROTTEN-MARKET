@@ -1476,7 +1476,7 @@ GameObject:
   - component: {fileID: 7627140618038507159}
   m_Layer: 0
   m_Name: ChineseHuevo
-  m_TagString: Untagged
+  m_TagString: CameraIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

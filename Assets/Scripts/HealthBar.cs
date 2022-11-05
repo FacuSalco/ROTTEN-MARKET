@@ -16,7 +16,7 @@ public class HealthBar : MonoBehaviour
     public GameObject thirdPersonCamera;
     SFXManager SFX;
     static bool isDead;
-    public GameObject DañoVignette;
+    public GameObject DañoVignette, deathCanvas;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +48,12 @@ public class HealthBar : MonoBehaviour
         {
             isDead = true;
             SFX.PlayDeathSound();
-            Debug.Log("Muerio");
+            Debug.Log("Murio");
+            deathCanvas.SetActive(true);
+            Time.timeScale = 0f;
+            PauseBehaviour.gameIsPaused = true;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
     }

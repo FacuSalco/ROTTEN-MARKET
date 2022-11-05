@@ -11,7 +11,12 @@ ModelImporter:
     2300000: 17767_Stellar_dendrites_shaped_Snowflake
     3300000: 17767_Stellar_dendrites_shaped_Snowflake
     4300000: 17767_Stellar_dendrites_shaped_Snowflake
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 17767_Stellar_dendrites_shaped_SnowflakeMat
+    second: {fileID: 2100000, guid: 32ebc61472704864eb50481fa40362cc, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

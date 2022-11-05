@@ -45,7 +45,7 @@ public class BalanzaDeposit : MonoBehaviour
         {
             yaGano = true;
             txtPeso.color = Color.green;
-            txtPeso.text = pesoAdecuado.ToString() + "G";
+            txtPeso.text = pesoAdecuado.ToString() + "g";
             terminoPuzzle = true;
             SFX.PlayQuestCompleteSound();
             persiana.GetComponent<Animator>().Play("AbrirPersiana2");

@@ -28,6 +28,7 @@ public class Shop : MonoBehaviour
             playerCanvas.SetActive(false);
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 

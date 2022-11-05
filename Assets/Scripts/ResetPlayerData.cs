@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ResetPlayerData : MonoBehaviour
 {
@@ -14,10 +16,14 @@ public class ResetPlayerData : MonoBehaviour
     int[] timesUpgraded = new int[5];
     bool hasSword = false;
     bool x2Coins;
+    public GameObject deathCanvas;
+    GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+
         for (int i = 0; i < timesUpgraded.Length; i++)
         {
             timesUpgraded[i] = 0;
@@ -50,4 +56,15 @@ public class ResetPlayerData : MonoBehaviour
     {
         
     }
+
+    public void ResetBtn()
+    {
+        Data.playerHealth = Data.playerMaxHealth;
+        Time.timeScale = 1f;
+        PauseBehaviour.gameIsPaused = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        deathCanvas.SetActive(false);
+    }
+
 }
