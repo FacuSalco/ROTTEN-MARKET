@@ -7,6 +7,7 @@ public class OpenDoor : MonoBehaviour
     bool isNear, openedDoor;
     GameObject player;
     public GameObject leftDoor, rightDoor;
+    public ParticleSystem confetti;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class OpenDoor : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && isNear && player.GetComponent<PickUpObject>().PickedObject.name == "Destornillador" && !openedDoor)
         {
+            confetti.Play();
             player.GetComponent<PickUpObject>().PickedObject.SetActive(false);
             openedDoor = true;
             Debug.Log("Se abrio la puerta");

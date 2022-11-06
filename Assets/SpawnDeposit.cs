@@ -32,6 +32,7 @@ public class SpawnDeposit : MonoBehaviour
     {
         player.transform.position = new UnityEngine.Vector3(119.59f, 147.7f, -111.52f);
         player.transform.eulerAngles = SpawnInDepositEntrance.transform.eulerAngles;
+        Debug.Log("SpawnPlayerInDepositEntrace");
     }
 
 }
