@@ -24288,7 +24288,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1719001231
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28397,6 +28397,7 @@ MonoBehaviour:
   cantMonedasTxt: {fileID: 3434922557099597773}
   thirdPersonCamera: {fileID: 2567435884270510304}
   "Da\xF1oVignette": {fileID: 3027568211991028941}
+  deathCanvas: {fileID: 0}
 --- !u!4 &376615987777055010
 Transform:
   m_ObjectHideFlags: 0
@@ -44895,6 +44896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: a66c4f0f0bd7fd746aebde5627c0af71, type: 2}
+  deathCanvas: {fileID: 0}
 --- !u!4 &8680310406134028439
 Transform:
   m_ObjectHideFlags: 0

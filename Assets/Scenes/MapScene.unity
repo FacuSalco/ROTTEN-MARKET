@@ -59988,7 +59988,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftDoor: {fileID: 1853776895}
   rightDoor: {fileID: 1853776893}
-  confetti: {fileID: 0}
+  confetti: {fileID: 5254953635631793008}
 --- !u!65 &1511324006
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -105646,7 +105646,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6694424361009073472}
-  m_LocalRotation: {x: 0.3495732, y: 0.16719937, z: -0.06355352, w: 0.919676}
+  m_LocalRotation: {x: 0.34957322, y: 0.16719934, z: -0.06355351, w: 0.919676}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

@@ -6401,9 +6401,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.99989253, y: 1.6976014, z: 1.7245219}
-  m_Children: []
+  m_Children:
+  - {fileID: 3393355637113131077}
   m_Father: {fileID: 7317234223470488377}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!65 &887356456
 BoxCollider:
@@ -6470,7 +6471,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 887356454}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7541deabf8acc543b5aa7a6dc860b3a, type: 3}
   m_Name: 
@@ -15658,7 +15659,7 @@ Transform:
   m_LocalScale: {x: 18.623497, y: 0.4455353, z: 0.24602321}
   m_Children: []
   m_Father: {fileID: 7317234223470488377}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!108 &1618178405548651043
 Light:
@@ -16229,17 +16230,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3393355637113131082}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0.013}
-  m_LocalScale: {x: -0.00088930683, y: -0.0019884196, z: -0.0007717668}
+  m_LocalRotation: {x: -3.67213e-15, y: 0.70710677, z: -1.0658141e-14, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0075385966}
+  m_LocalScale: {x: -0.00051568315, y: -0.0011713111, z: -0.00077184994}
   m_Children:
   - {fileID: 3393355638286226576}
-  m_Father: {fileID: 7317234223470488377}
+  m_Father: {fileID: 887356455}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -2.1, y: -0.592}
+  m_AnchoredPosition: {x: 2.1000867, y: -0.34872848}
   m_SizeDelta: {x: 451, y: 254}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3393355637113131078
@@ -16304,7 +16305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &3393355637687166724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17246,7 +17247,6 @@ Transform:
   m_LocalPosition: {x: -7.1892157, y: 2.897, z: -8.321871}
   m_LocalScale: {x: 0.004714067, y: 0.19704923, z: 0.35684606}
   m_Children:
-  - {fileID: 3393355637113131077}
   - {fileID: 887356455}
   - {fileID: 1618178405548651042}
   m_Father: {fileID: 7317234223470488341}
