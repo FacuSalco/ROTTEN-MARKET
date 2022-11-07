@@ -27,9 +27,9 @@ MonoBehaviour:
   - Mil gracias manzana
   - Aca tenes tu recompensa
   - Mi mama no me va a matar!!!
-  hasAcceptedMission: 1
-  hasDoneMission: 1
-  hasTalked: 1
+  hasAcceptedMission: 0
+  hasDoneMission: 0
+  hasTalked: 0
   missionTime: 300
   missionHasTime: 1
   coinReward: 0

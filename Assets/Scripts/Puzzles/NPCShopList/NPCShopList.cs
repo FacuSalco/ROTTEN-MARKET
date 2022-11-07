@@ -95,7 +95,7 @@ public class NPCShopList : MonoBehaviour
         if (cantObjetosEntregados == shopList.Length && !finishedQuest) //COMPLETO LA QUEST
         {
             NpcManager.CompleteMission();
-            MissionChecker.ThirdQuestDone = true;
+            MissionChecker.SecondQuestDone = true;
             finishedQuest = true;
             Debug.Log("Me trajiste todos los objetos! Gracias");
             SFX.PlayQuestCompleteSound();

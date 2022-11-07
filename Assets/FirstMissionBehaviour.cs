@@ -6,6 +6,7 @@ public class FirstMissionBehaviour : MonoBehaviour
 {
     public GameObject BarrierBlocks;
     public GameObject FirstBarrier;
+    public GameObject NpcSnow;
     private MissionHandler MissionHand;
     private MissionStateChecker MissionChecker;
     private NpcDialgueManager NpcManager;
@@ -32,6 +33,11 @@ public class FirstMissionBehaviour : MonoBehaviour
         if (NpcManager.DialogueManager.hasAcceptedMission)
         {
             FirstBarrier.SetActive(false);
+        }
+
+        if (NpcManager.DialogueManager.hasDoneMission)
+        {
+            NpcSnow.SetActive(true);
         }
 
         if (NpcManager.hasFinishedTalking)
