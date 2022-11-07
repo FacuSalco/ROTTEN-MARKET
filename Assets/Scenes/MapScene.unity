@@ -9234,7 +9234,7 @@ GameObject:
   - component: {fileID: 212191450}
   m_Layer: 0
   m_Name: Cube (4)
-  m_TagString: Untagged
+  m_TagString: CameraIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41340,7 +41340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1027003450
 Transform:
   m_ObjectHideFlags: 0
@@ -53663,7 +53663,7 @@ GameObject:
   - component: {fileID: 1357991662}
   m_Layer: 0
   m_Name: FirstBarrier
-  m_TagString: Untagged
+  m_TagString: CameraIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57410,7 +57410,7 @@ GameObject:
   - component: {fileID: 1451757841}
   m_Layer: 0
   m_Name: Cube (5)
-  m_TagString: Untagged
+  m_TagString: CameraIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58904,7 +58904,7 @@ GameObject:
   - component: {fileID: 1490523360}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: CameraIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59780,7 +59780,7 @@ GameObject:
   - component: {fileID: 1510192021}
   m_Layer: 0
   m_Name: BarrierBlocks
-  m_TagString: Untagged
+  m_TagString: CameraIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64171,7 +64171,7 @@ GameObject:
   - component: {fileID: 1626831738}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: CameraIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69194,7 +69194,7 @@ GameObject:
   - component: {fileID: 1743122837}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: CameraIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73204,7 +73204,7 @@ GameObject:
   - component: {fileID: 1844813221}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: CameraIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105572,7 +105572,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6694424360885830225}
-  m_LocalRotation: {x: 0.34957317, y: 0.16719943, z: -0.06355363, w: 0.919676}
+  m_LocalRotation: {x: 0.3495732, y: 0.16719942, z: -0.063553624, w: 0.919676}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -105646,7 +105646,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6694424361009073472}
-  m_LocalRotation: {x: 0.3495732, y: 0.16719937, z: -0.06355352, w: 0.919676}
+  m_LocalRotation: {x: 0.34957322, y: 0.16719934, z: -0.06355351, w: 0.919676}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
