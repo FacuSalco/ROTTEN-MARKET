@@ -45,7 +45,6 @@ public class MissionKillingNPC : MonoBehaviour
                     MissionHand.FinishKillingMission();
 
                     CompleteMissionOnce = false;
-                    MissionChecker.SecondQuestDone = true;
                 }
             }
 
