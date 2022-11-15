@@ -28,6 +28,6 @@ MonoBehaviour:
   hasAcceptedMission: 0
   hasDoneMission: 0
   hasTalked: 0
-  missionTime: 60
+  missionTime: 300
   missionHasTime: 1
   coinReward: 0
