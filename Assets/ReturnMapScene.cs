@@ -8,11 +8,15 @@ public class ReturnMapScene : MonoBehaviour
     bool isNear;
     public static bool returnedFromEntrance/*, entroAlDeposito*/, returnedFromExit/*, returnedFromDepositExit*/;
     Fade Fade;
+    [SerializeField] private GameObject NpcCanvas;
 
     // Start is called before the first frame update
     void Start()
     {
         Fade = GameObject.Find("Panel").GetComponent<Fade>();
+        NpcCanvas = GameObject.Find("NpcCanvas");
+
+        NpcCanvas.SetActive(false);
     }
 
     // Update is called once per frame

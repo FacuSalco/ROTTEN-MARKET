@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class ResetPlayerData : MonoBehaviour
 {
     public PlayerData Data;
-    int cantMonedas = 0;
+    int cantMonedas = 150;
     float playerHealth = 100;
     float playerMaxHealth = 100;
     float playerDamage = 40;
@@ -64,7 +64,10 @@ public class ResetPlayerData : MonoBehaviour
         PauseBehaviour.gameIsPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        deathCanvas.SetActive(false);
+        if (deathCanvas != null)
+        {
+            deathCanvas.SetActive(false);
+        }
     }
 
 }

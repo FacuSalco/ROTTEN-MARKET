@@ -16,7 +16,7 @@ public class SnowBallManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SBObjetivo = GameObject.FindGameObjectsWithTag("SnowBall").Length;
+        SBObjetivo = GameObject.FindGameObjectsWithTag("SnowBall").Length - 2;
         cantSBtxtTMP.text = "NECESITAS " + SBObjetivo.ToString();
     }
 

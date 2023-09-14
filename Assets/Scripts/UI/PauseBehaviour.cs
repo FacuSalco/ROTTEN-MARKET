@@ -67,6 +67,11 @@ public class PauseBehaviour : MonoBehaviour
         Application.Quit(); //SOLO ANDA CUANDO EL JUEGO ESTA BILDEADO, PERO SI ANDA
     }
 
+    public void Reset()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void Menu()
     {
         SFX.PlayClickSound();

@@ -123,10 +123,10 @@ public class PlayerController1 : MonoBehaviour
             }
 
             //Si la posicion del player es y < 0 (es decir que esta debajo del suelo) lo transportamos a la misma posicion que estaba pero en y = 0.41
-            if (player.transform.position.y < 0)
-            {
-                player.transform.position = new Vector3(player.transform.position.x, 0.41f, player.transform.position.z);
-            }
+            //if (player.transform.position.y < 0)
+            //{
+            //    player.transform.position = new Vector3(player.transform.position.x, 0.41f, player.transform.position.z);
+            //}
         }
 
     }

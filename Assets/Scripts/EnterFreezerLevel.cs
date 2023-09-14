@@ -7,11 +7,18 @@ public class EnterFreezerLevel : MonoBehaviour
 {
     bool isNear;
     Fade Fade;
+    public PlayerData Data;
+    [SerializeField] private GameObject NpcCanvas;
+    //[SerializeField] private GameObject MAP;
+
 
     // Start is called before the first frame update
     void Start()
     {
         Fade = GameObject.Find("Panel").GetComponent<Fade>();
+        NpcCanvas = GameObject.Find("NpcCanvas");
+        //MAP = GameObject.Find("EVERYTHING");
+
     }
 
     // Update is called once per frame
@@ -20,6 +27,12 @@ public class EnterFreezerLevel : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && isNear) //Entra al nivel Freezer
         {
             Fade.FadeOut();
+            //NpcCanvas.SetActive(false);
+            Debug.Log("NPC Canvas off");
+            if (Data.playerJumpForce < 20)
+            {
+                Data.playerJumpForce = 20;
+            }
             Invoke("ChangeScene", 2);
         }
     }
@@ -47,6 +60,7 @@ public class EnterFreezerLevel : MonoBehaviour
     {
         SceneManager.LoadScene("FreezerScene");
         Fade.FadeIn();
+        //MAP.transform.position = new Vector3(0,0,0);
     }
 
 }
